@@ -13,6 +13,8 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
+    "prebuild-ios": "expo prebuild --platform ios",
+    "prebuild-android": "expo prebuild --platform android",
     "increment-android-version": "node incrementVersion.js",
     "push-android-testing": "cd android && fastlane beta && cd ..",
     "doctor": "npx expo-doctor",
@@ -29,6 +31,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo/cli": "^0.18.29",
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/native": "^6.0.2",
     "expo": "~51.0.28",
