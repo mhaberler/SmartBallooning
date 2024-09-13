@@ -14,7 +14,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.haberler.SmartBallooning"
+      "bundleIdentifier": "com.haberler.SmartBallooning",
+      "infoPlist": {
+        "NSMotionUsageDescription": "Since iOS 17.4 the access is required to read the built-in barometer pressure sensor. Without this permission, the app will not be able to use the barometer option for altitude. Enable in Settings > App Name > Motion & Fitness"
+      }
     },
     "android": {
       "adaptiveIcon": {
