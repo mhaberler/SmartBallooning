@@ -3,7 +3,7 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --dev-client",
     "reset-project": "node ./scripts/reset-project.js",
     "android-debug": "expo run:android",
     "android-release": "expo run:android --variant release",
@@ -25,7 +25,9 @@
     "build-android-debug-apk": "cd android && ./gradlew assembleDebug && cd ..",
     "build-android-release-apk": "cd android && ./gradlew assembleRelease && cd ..",
     "deploy-android-mah": "rsync -avz android/app/build/outputs/apk  mah.priv.at:/var/www/static.mah.priv.at/apps/mobile/android/$npm_package_name",
-    "npm_package_name": "echo $npm_package_name"
+    "npm_package_name": "echo $npm_package_name",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "jest": {
     "preset": "jest-expo"
