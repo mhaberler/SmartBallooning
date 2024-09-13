@@ -33,7 +33,7 @@ const LocationDisplay = () => {
         <Text>Waiting for location...</Text>
       )}
       {error && <Text style={styles.errorText}>Error: {error}</Text>}
-      <Button title="Watch Location" onPress={watchLocation} />
+      {/* <Button title="Watch Location" onPress={watchLocation} /> */}
     </View>
   );
 };
@@ -48,7 +48,7 @@ const PressureDisplay = () => {
     <View>
       <Text>Current Pressure: {pressure ? pressure.pressure : 'N/A'} hPa</Text>
     </View>
-  );
+  );r
 };
 
 const App = () => {

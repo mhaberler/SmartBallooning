@@ -24,6 +24,7 @@ export const LocationProvider = ({ children }) => {
       } catch (error) {
         setError(error.message);
       } finally {
+        watchLocation(true);
         setIsLoading(false);
       }
     };
