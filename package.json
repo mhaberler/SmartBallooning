@@ -64,6 +64,7 @@
     "expo-network": "~6.0.1",
     "expo-quick-actions": "^2.0.0",
     "expo-router": "~3.5.23",
+    "expo-sensors": "~13.0.9",
     "expo-splash-screen": "~0.27.5",
     "expo-sqlite": "~14.0.6",
     "expo-status-bar": "~1.12.1",

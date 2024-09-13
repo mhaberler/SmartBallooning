@@ -63,6 +63,8 @@ PODS:
     - ExpoModulesCore
   - ExpoQuickActions (2.0.0):
     - ExpoModulesCore
+  - ExpoSensors (13.0.9):
+    - ExpoModulesCore
   - ExpoSQLite (14.0.6):
     - ExpoModulesCore
     - "sqlite3 (~> 3.45.3+1)"
@@ -1850,6 +1852,7 @@ DEPENDENCIES:
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - ExpoNetwork (from `../node_modules/expo-network/ios`)
   - ExpoQuickActions (from `../node_modules/expo-quick-actions/ios`)
+  - ExpoSensors (from `../node_modules/expo-sensors/ios`)
   - ExpoSQLite (from `../node_modules/expo-sqlite/ios`)
   - ExpoStoreReview (from `../node_modules/expo-store-review/ios`)
   - ExpoSystemUI (from `../node_modules/expo-system-ui/ios`)
@@ -1994,6 +1997,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-network/ios"
   ExpoQuickActions:
     :path: "../node_modules/expo-quick-actions/ios"
+  ExpoSensors:
+    :path: "../node_modules/expo-sensors/ios"
   ExpoSQLite:
     :path: "../node_modules/expo-sqlite/ios"
   ExpoStoreReview:
@@ -2194,6 +2199,7 @@ SPEC CHECKSUMS:
   ExpoModulesCore: 0f12e4d48d4484886e2940ece708f4dc73d6319c
   ExpoNetwork: 0d2c2504d56096fe8be3930d5c70cb3390dac5bf
   ExpoQuickActions: 64fa5626dc168f892b38ec353218b8d10d1f02f7
+  ExpoSensors: 3bc12e5186b94703464d1554ce5ebfff05f91093
   ExpoSQLite: 80476d564ec75b26ffe801f3953d876377b3c9fe
   ExpoStoreReview: 15f9a636b62ff00bb21cbe9a9fe22f0239da4481
   ExpoSystemUI: d4f065a016cae6721b324eb659cdee4d4cf0cb26
