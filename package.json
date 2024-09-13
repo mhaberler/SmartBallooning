@@ -1,6 +1,7 @@
-
 {
-  "main": "index.js",
+  "kmain": "index.js",
+  "main": "expo-router/entry",
+
   "scripts": {
     "kandroid": "react-native run-android",
     "kios": "react-native run-ios",
@@ -65,6 +66,7 @@
     "expo-network": "~6.0.1",
     "expo-notifications": "~0.28.16",
     "expo-quick-actions": "^2.0.0",
+    "expo-router": "~3.5.23",
     "expo-splash-screen": "~0.27.5",
     "expo-sqlite": "~14.0.6",
     "expo-status-bar": "~1.12.1",
@@ -98,6 +100,7 @@
     "react-native-zip-archive": "^6.0.10",
     "rn-emoji-keyboard": "^1.7.0",
     "tslib": "^2.6.2",
+    "typescript": "~5.3.3",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
@@ -109,5 +112,3 @@
   "name": "sensor-app",
   "version": "1.0.0"
 }
-
-
