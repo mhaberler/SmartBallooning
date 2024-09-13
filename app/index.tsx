@@ -95,7 +95,7 @@
 
 //   useEffect(() => {
 //     (async () => {
-      
+
 //       let { status } = await Location.requestForegroundPermissionsAsync();
 //       if (status !== 'granted') {
 //         setErrorMsg('Permission to access location was denied');
@@ -133,3 +133,4 @@
 //     textAlign: 'center',
 //   },
 // });
+

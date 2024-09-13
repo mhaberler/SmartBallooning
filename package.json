@@ -1,6 +1,8 @@
 {
   "kmain": "index.js",
-  "main": "expo-router/entry",
+  "mainx": "expo-router/entry",
+  "main": "node_modules/expo/AppEntry.js",
+
   "scripts": {
     "kandroid": "react-native run-android",
     "kios": "react-native run-ios",
