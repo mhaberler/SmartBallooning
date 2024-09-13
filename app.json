@@ -25,6 +25,12 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.haberler.SmartBallooning"
+      //, "permissions": [
+      //   "android.permission.BLUETOOTH",
+      //   "android.permission.BLUETOOTH_ADMIN",
+      //   "android.permission.BLUETOOTH_CONNECT",
+      //   "android.permission.HIGH_SAMPLING_RATE_SENSORS"
+      // ],
     },
     "web": {
       "bundler": "metro",
@@ -51,6 +57,18 @@
           ],
           "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices",
           "bluetoothPeripheralPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ],
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "Allow $(PRODUCT_NAME) to access your device motion."
         }
       ]
     ],
