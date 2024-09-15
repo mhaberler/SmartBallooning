@@ -2,10 +2,14 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
 import { startScan, stopScan, clearSensors, strengthHeuristics } from '../util/BLE';
+import { decodeBLE } from '../util/BLEDecodeAdvertisements';
 
 const BLEContext = createContext();
 
-let scanDuration = 3;
+let scanDuration = 60;
+
+
+
 
 export const BLEProvider = ({ children }) => {
     const [scanning, setScanning] = useState(false);
@@ -13,8 +17,10 @@ export const BLEProvider = ({ children }) => {
     const [error, setError] = useState(null);
 
     function updateCallback(p) {
+        // console.log(p)
+        decodeBLE(p);
         setDevices(p);
-        console.log(p)
+   
     }
 
     useEffect(() => {
