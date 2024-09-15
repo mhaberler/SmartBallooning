@@ -1,6 +1,6 @@
 import { volt2percent, int2Hex } from './misc'
 
-export const parseRawRuuvi = function (data) {
+export const parseRuuvi = function (data) {
     if (data[2] != 5) {
         // old ruuvi fw
         return {};

@@ -1,5 +1,6 @@
 import { Buffer } from 'buffer';
-import { parseRawRuuvi } from './ruuvi'
+import { parseRuuvi } from './ruuvi'
+import { parseMopeka } from './mopeka'
 
 
 
@@ -13,12 +14,15 @@ export const decodeBLE = (ad) => {
     // console.log("mfid: " + mfId.toString(16))
     switch (mfId) {
         case 0x0499:  // ruuvi
-            const d = parseRawRuuvi(data);
+            const d = parseRuuvi(data);
             console.log(d)
             break;
         case 0x03b1:  // otodata
             break;
         case 0x0059:  // mopeka
+            const m = parseMopeka(data);
+            console.log(m)
+
             break;
         // tpms 1, 2
 
