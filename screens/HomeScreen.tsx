@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LocationProvider, useLocation } from '../contexts/LocationContext';
 import { PressureProvider, usePressure } from '../contexts/PressureContext';
+import { BLEProvider, useBLE } from '../contexts/BLEContext';
 
 const LocationDisplay = () => {
   const { location, error, isLoading, watchLocation } = useLocation();
@@ -41,6 +42,21 @@ const PressureDisplay = () => {
   ); r
 };
 
+const BLEDisplay = () => {
+  const { scanning, devices, error } = useBLE();
+
+  if (scanning) return <Text>Scanning...</Text>;
+  if (error) return <Text>Error: {error}</Text>;
+
+  return (
+    <View>
+      <Text>BLE Devices: {devices ? devices : 'N/A'}</Text>
+    </View>
+  ); r
+};
+
+
+
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
@@ -51,6 +67,9 @@ const HomeScreen = () => {
       <PressureProvider>
         <PressureDisplay />
       </PressureProvider>
+      <BLEProvider>
+        <BLEDisplay />
+      </BLEProvider>
     </View>
   );
 };
