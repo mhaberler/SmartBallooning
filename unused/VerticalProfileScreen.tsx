@@ -27,24 +27,26 @@ sounding.addLevel({
 
 // import React, { useRef, useEffect } from 'react';
 
-function VertcialProfileScreen() {
-    const myDivRef = useRef(null);
+// function VertcialProfileScreen() {
+//     const myDivRef = useRef(null);
 
-    useEffect(() => {
-        // Access the DOM node here
-        if (myDivRef.current) {
-            console.log(myDivRef.current); // This will give you the DOM node
-            //  const td = new ThermodynamicDiagram({ renderTo: myDivRef.current });
+//     useEffect(() => {
+//         // Access the DOM node here
+//         if (myDivRef.current) {
+//             console.log(myDivRef.current); // This will give you the DOM node
+//              const td = new ThermodynamicDiagram({ renderTo: myDivRef.current });
 
-        }
-    }, []); // Empty dependency array means this runs once on mount
+//         }
+//     }, []); // Empty dependency array means this runs once on mount
 
-    return (
-        <View style={styles.container}>
-          <Text>Vertcial Profile Screen</Text>
-        </View>
-      );
-}
+//     return (
+//         <View>
+//             <View ref={myDivRef}>
+//                 {/* Your content here */}
+//             </View>
+//         </View>
+//     );
+// }
 
 // let td: any;
 // const VertcialProfileScreen = () => {
