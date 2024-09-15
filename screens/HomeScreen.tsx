@@ -45,12 +45,12 @@ const PressureDisplay = () => {
 const BLEDisplay = () => {
   const { scanning, devices, error } = useBLE();
 
-  if (scanning) return <Text>Scanning...</Text>;
+  if (!scanning) return <Text>scanning stopped</Text>;
   if (error) return <Text>Error: {error}</Text>;
 
   return (
     <View>
-      <Text>BLE Devices: {devices ? devices : 'N/A'}</Text>
+      <Text>BLE Devices: {devices ? devices.id : 'N/A'}</Text>
     </View>
   ); r
 };

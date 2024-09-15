@@ -5,17 +5,17 @@ import { startScan, stopScan, clearSensors, strengthHeuristics } from '../util/B
 
 const BLEContext = createContext();
 
-let devices = [];
-let scanDuration = 0;
-
-function updateCallback(p) {
-    console.log(p)
-}
+let scanDuration = 3;
 
 export const BLEProvider = ({ children }) => {
     const [scanning, setScanning] = useState(false);
-    const [devices, setDevices] = useState([]);
+    const [devices, setDevices] = useState({});
     const [error, setError] = useState(null);
+
+    function updateCallback(p) {
+        setDevices(p);
+        console.log(p)
+    }
 
     useEffect(() => {
         const startBLE = async () => {
