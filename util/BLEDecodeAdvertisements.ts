@@ -18,7 +18,8 @@ export const decodeBLE = (ad) => {
     let t = {}
     switch (mfId) {
         case 0x0499:  // ruuvi
-            t = parseRuuvi(data);
+        // console.log(view.buffer.byteLength)
+            t = parseRuuvi(view);
             console.log(t)
             break;
         // case 0x03b1:  // otodata
