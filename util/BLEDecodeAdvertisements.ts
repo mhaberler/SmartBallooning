@@ -1,8 +1,8 @@
 import { Buffer } from 'buffer';
 import { parseRuuvi } from './ruuvi'
 import { parseMopeka } from './mopeka'
-import { parseTPMS0100 } from './tpms'
-
+import { parseTPMS0100, parseTPMS00AC } from './tpms'
+import { parseOtodata } from './otodata'
 
 export const decodeBLE = (ad) => {
     if (!ad?.manufacturerData)
@@ -12,37 +12,29 @@ export const decodeBLE = (ad) => {
         return {};
     const view = new DataView(data.buffer);
 
-    const mfId = view.getInt16(0, true); // (data[1] << 8) | (data[0] & 0xff);
-    // console.log("mfid: " + mfId.toString(16))
+    const mfId = view.getInt16(0, true);
+    // console.log("mfid: " + mfId.toString(16), view.buffer.byteLength)
     // console.log(ad)
+
     let t = {}
     switch (mfId) {
-        // case 0x0499:  // ruuvi
-        // console.log(view.buffer.byteLength)
-        // t = parseRuuvi(view);
-        // console.log(t)
-        // break;
-        // case 0x03b1:  // otodata
-        //     break;
-        // case 0x0059:  // mopeka
-        //     console.log(ad)
-        //     t = parseMopeka(view);
-        //     console.log(t)
-        //     break;
+        case 0x0499:  // ruuvi
+            t = parseRuuvi(view);
+            break;
+        case 0x03b1:  // otodata
+            t = parseOtodata(view);
+            break;
+        case 0x0059:  // mopeka
+            t = parseMopeka(view);
+            break;
         case 0x0100: // TPMS manufacturer ID variant 1
-            console.log(ad)
-            console.log(view.buffer.byteLength)
             t = parseTPMS0100(view);
-            console.log(t)
-
-
             break;
-            // case 0x00AC: // TPMS manufacturer ID variant 2
+        case 0x00AC: // TPMS manufacturer ID variant 2
+            t = parseTPMS00AC(view);
             break;
-        // tpms 1, 2
-
+        default: ;
     }
-
-
+    return t;
 };
 

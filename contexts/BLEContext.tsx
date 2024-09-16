@@ -6,21 +6,24 @@ import { decodeBLE } from '../util/BLEDecodeAdvertisements';
 
 const BLEContext = createContext();
 
-let scanDuration = 3600;
+let scanDuration = 0;
 
-
-
+function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}
 
 export const BLEProvider = ({ children }) => {
     const [scanning, setScanning] = useState(false);
-    const [devices, setDevices] = useState({});
+    const [devices, setDevices] = useState("");
     const [error, setError] = useState(null);
 
     function updateCallback(p) {
-        // console.log(p)
-        decodeBLE(p);
-        setDevices(p);
 
+        const s = decodeBLE(p);
+        // console.log(p, s)
+        if (!isEmpty(s)) {
+            setDevices(JSON.stringify(s));
+        }
     }
 
     useEffect(() => {
@@ -40,6 +43,7 @@ export const BLEProvider = ({ children }) => {
 
         startBLE();
         return () => {
+            console.log("BLEProvider shutdown")
             stopScan();
         };
     }, []);

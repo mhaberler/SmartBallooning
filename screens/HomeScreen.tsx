@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LocationProvider, useLocation } from '../contexts/LocationContext';
 import { PressureProvider, usePressure } from '../contexts/PressureContext';
@@ -45,12 +45,21 @@ const PressureDisplay = () => {
 const BLEDisplay = () => {
   const { scanning, devices, error } = useBLE();
 
+  useEffect(() => {
+    console.log('BLEDisplay did mount');
+    // Cleanup function
+    return () => {
+      console.log('BLEDisplay did Unmount');
+    };
+  }, []);
+
+
   if (!scanning) return <Text>scanning stopped</Text>;
   if (error) return <Text>Error: {error}</Text>;
 
   return (
     <View>
-      <Text>BLE Devices: {devices ? devices.id : 'N/A'}</Text>
+      <Text>BLE Devices: {devices ? devices : 'N/A'}</Text>
     </View>
   ); r
 };
