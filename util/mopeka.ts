@@ -28,7 +28,8 @@ const MOPEKA_TANK_LEVEL_COEFFICIENTS_PROPANE_0 = 0.573045;
 const MOPEKA_TANK_LEVEL_COEFFICIENTS_PROPANE_1 = -0.002822;
 const MOPEKA_TANK_LEVEL_COEFFICIENTS_PROPANE_2 = -0.00000535;
 
-export const parseMopeka = function (data) {
+export const parseMopeka = function (data : Uint8Array) {
+
     if (data.length != 12) {
         console.log("mopeka: incorrect length adv")
         return {};

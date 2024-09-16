@@ -1,7 +1,7 @@
 import { Buffer } from 'buffer';
 import { parseRuuvi } from './ruuvi'
 import { parseMopeka } from './mopeka'
-
+import { parseTPMS0100 } from './tpms'
 
 
 export const decodeBLE = (ad) => {
@@ -10,23 +10,33 @@ export const decodeBLE = (ad) => {
     const data = Buffer.from(ad.manufacturerData, 'hex');
     if (data.length < 2)
         return {};
-    const mfId = (data[1] << 8) | (data[0] & 0xff);
+    const view = new DataView(data.buffer);
+
+    const mfId = view.getInt16(0, true); // (data[1] << 8) | (data[0] & 0xff);
     // console.log("mfid: " + mfId.toString(16))
+    // console.log(ad)
+    let t = {}
     switch (mfId) {
         case 0x0499:  // ruuvi
-            const d = parseRuuvi(data);
-            console.log(d)
+            t = parseRuuvi(data);
+            console.log(t)
             break;
-        case 0x03b1:  // otodata
-            break;
-        case 0x0059:  // mopeka
-            const m = parseMopeka(data);
-            console.log(m)
+        // case 0x03b1:  // otodata
+        //     break;
+        // case 0x0059:  // mopeka
+        //     t = parseMopeka(data);
+        //     break;
+        // case 0x0100: // TPMS manufacturer ID variant 1
+        //     t = parseTPMS0100(data);
 
+
+        //     break;
+        // case 0x00AC: // TPMS manufacturer ID variant 2
             break;
         // tpms 1, 2
 
     }
+
 
 };
 

@@ -6,7 +6,7 @@ import { decodeBLE } from '../util/BLEDecodeAdvertisements';
 
 const BLEContext = createContext();
 
-let scanDuration = 60;
+let scanDuration = 3600;
 
 
 
