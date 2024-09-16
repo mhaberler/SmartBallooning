@@ -20,22 +20,24 @@ export const BLEProvider = ({ children }) => {
         // console.log(p)
         decodeBLE(p);
         setDevices(p);
-   
+
     }
 
     useEffect(() => {
         const startBLE = async () => {
-            let { status } = await startScan(scanning,
-                setScanning,
-                devices,
-                scanDuration,
-                updateCallback);
-            if (status) {
+            try {
+                const response = await startScan(scanning,
+                    setScanning,
+                    devices,
+                    scanDuration,
+                    updateCallback);
+            } catch (e) {
                 setError('BLE failed to start');
                 setScanning(false);
-                return;
+                console.error(e);
             }
         };
+
         startBLE();
         return () => {
             stopScan();
