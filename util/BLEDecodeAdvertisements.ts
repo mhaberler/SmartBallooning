@@ -24,16 +24,19 @@ export const decodeBLE = (ad) => {
         // break;
         // case 0x03b1:  // otodata
         //     break;
-        case 0x0059:  // mopeka
+        // case 0x0059:  // mopeka
+        //     console.log(ad)
+        //     t = parseMopeka(view);
+        //     console.log(t)
+        //     break;
+        case 0x0100: // TPMS manufacturer ID variant 1
             console.log(ad)
-            t = parseMopeka(view);
+            console.log(view.buffer.byteLength)
+            t = parseTPMS0100(view);
             console.log(t)
+
+
             break;
-            // case 0x0100: // TPMS manufacturer ID variant 1
-            //     t = parseTPMS0100(data);
-
-
-            //     break;
             // case 0x00AC: // TPMS manufacturer ID variant 2
             break;
         // tpms 1, 2
