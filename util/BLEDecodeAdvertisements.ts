@@ -17,22 +17,24 @@ export const decodeBLE = (ad) => {
     // console.log(ad)
     let t = {}
     switch (mfId) {
-        case 0x0499:  // ruuvi
+        // case 0x0499:  // ruuvi
         // console.log(view.buffer.byteLength)
-            t = parseRuuvi(view);
-            console.log(t)
-            break;
+        // t = parseRuuvi(view);
+        // console.log(t)
+        // break;
         // case 0x03b1:  // otodata
         //     break;
-        // case 0x0059:  // mopeka
-        //     t = parseMopeka(data);
-        //     break;
-        // case 0x0100: // TPMS manufacturer ID variant 1
-        //     t = parseTPMS0100(data);
+        case 0x0059:  // mopeka
+            console.log(ad)
+            t = parseMopeka(view);
+            console.log(t)
+            break;
+            // case 0x0100: // TPMS manufacturer ID variant 1
+            //     t = parseTPMS0100(data);
 
 
-        //     break;
-        // case 0x00AC: // TPMS manufacturer ID variant 2
+            //     break;
+            // case 0x00AC: // TPMS manufacturer ID variant 2
             break;
         // tpms 1, 2
 

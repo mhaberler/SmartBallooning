@@ -25,15 +25,15 @@ export const int2Hex = function (str) {
     return ("0" + str.toString(16).toUpperCase()).slice(-2);
 }
 
-export function bytesToMacAddress(dataView, byteOffset = 0) {
+export function bytesToMacAddress(dataView, byteOffset = 0, length = 6) {
     // Ensure we have at least 6 bytes available
-    if (dataView.byteLength - byteOffset < 6) {
+    if (dataView.byteLength - byteOffset < length) {
         throw new Error("Not enough bytes to form a MAC address");
     }
 
     // Extract the 6 bytes
     const bytes = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < length; i++) {
         bytes.push(dataView.getUint8(byteOffset + i));
     }
 
