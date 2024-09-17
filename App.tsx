@@ -5,12 +5,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Foundation from '@expo/vector-icons/Foundation';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 // Screens
 import HomeScreen from './screens/HomeScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import SensorScreen from './screens/SensorScreen';
 import VertcialProfileScreen from './screens/VerticalProfileScreen';
+import NFCScreen from './screens/NFCScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -38,6 +40,9 @@ function App() {
               iconName = focused ? 'settings' : 'settings-outline';
               return <Ionicons name={iconName} size={size} color={color} />;
 
+            } else if (route.name === 'NFC') {
+              return <FontAwesome6 name="nfc-symbol" size={size} color={color} />
+
             }
           },
         })}
@@ -57,6 +62,7 @@ function App() {
       >
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Profile" component={VertcialProfileScreen} />
+        <Tab.Screen name="NFC" component={NFCScreen} />
         <Tab.Screen name="Sensors" component={SensorScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
