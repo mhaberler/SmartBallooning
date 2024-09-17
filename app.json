@@ -39,6 +39,7 @@
     },
     "plugins": [
       "expo-router",
+      "@maplibre/maplibre-react-native",
       [
         "expo-camera",
         {
@@ -82,7 +83,7 @@
           //   "8008"
           // ],
           // "includeNdefEntitlement": false,
-        }
+        }        
       ]
     ],
     "experiments": {
