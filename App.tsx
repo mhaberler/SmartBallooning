@@ -12,6 +12,7 @@ import SettingsScreen from './screens/SettingsScreen';
 import SensorScreen from './screens/SensorScreen';
 import VertcialProfileScreen from './screens/VerticalProfileScreen';
 
+
 const Tab = createBottomTabNavigator();
 
 function App() {
