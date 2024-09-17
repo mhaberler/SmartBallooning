@@ -13,7 +13,7 @@ import SettingsScreen from './screens/SettingsScreen';
 import SensorScreen from './screens/SensorScreen';
 import VertcialProfileScreen from './screens/VerticalProfileScreen';
 import NFCScreen from './screens/NFCScreen';
-
+import MQTTScreen from './screens/MQTTScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -43,6 +43,9 @@ function App() {
             } else if (route.name === 'NFC') {
               return <FontAwesome6 name="nfc-symbol" size={size} color={color} />
 
+            } else if (route.name === 'MQTT') {
+              return <MaterialCommunityIcons name="connection" size={size} color={color} />
+
             }
           },
         })}
@@ -62,9 +65,12 @@ function App() {
       >
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Profile" component={VertcialProfileScreen} />
+        <Tab.Screen name="MQTT" component={MQTTScreen} />
         <Tab.Screen name="NFC" component={NFCScreen} />
         <Tab.Screen name="Sensors" component={SensorScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
+
+        
       </Tab.Navigator>
     </NavigationContainer >
   );
