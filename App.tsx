@@ -6,6 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Foundation from '@expo/vector-icons/Foundation';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 // Screens
 import HomeScreen from './screens/HomeScreen';
@@ -14,6 +15,7 @@ import SensorScreen from './screens/SensorScreen';
 import VertcialProfileScreen from './screens/VerticalProfileScreen';
 import NFCScreen from './screens/NFCScreen';
 import MQTTScreen from './screens/MQTTScreen'
+import MapScreen from './screens/MapScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -46,6 +48,9 @@ function App() {
             } else if (route.name === 'MQTT') {
               return <MaterialCommunityIcons name="connection" size={size} color={color} />
 
+            }  else if (route.name === 'Map') {
+              return <FontAwesome5 name="map" size={size} color={color} />
+
             }
           },
         })}
@@ -65,6 +70,7 @@ function App() {
       >
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Profile" component={VertcialProfileScreen} />
+        <Tab.Screen name="Map" component={MapScreen } />
         <Tab.Screen name="MQTT" component={MQTTScreen} />
         <Tab.Screen name="NFC" component={NFCScreen} />
         <Tab.Screen name="Sensors" component={SensorScreen} />
