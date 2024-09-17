@@ -1347,6 +1347,8 @@ PODS:
     - React-Core
   - react-native-netinfo (11.3.1):
     - React-Core
+  - react-native-nfc-manager (3.16.0):
+    - React-Core
   - react-native-safe-area-context (4.10.5):
     - React-Core
   - react-native-segmented-control (2.5.2):
@@ -1823,6 +1825,27 @@ PODS:
     - React-Core
   - RNSVG (15.6.0):
     - React-Core
+  - RNVectorIcons (10.2.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNWatch (1.1.0):
     - React
   - RNWifi (4.12.1):
@@ -1921,6 +1944,7 @@ DEPENDENCIES:
   - react-native-image-marker (from `../node_modules/react-native-image-marker`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
+  - react-native-nfc-manager (from `../node_modules/react-native-nfc-manager`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-segmented-control (from `../node_modules/@react-native-segmented-control/segmented-control`)"
   - "react-native-skia (from `../node_modules/@shopify/react-native-skia`)"
@@ -1963,6 +1987,7 @@ DEPENDENCIES:
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNShare (from `../node_modules/react-native-share`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - RNWatch (from `../node_modules/react-native-watch-connectivity`)
   - RNWifi (from `../node_modules/react-native-wifi-reborn`)
   - RNZipArchive (from `../node_modules/react-native-zip-archive`)
@@ -2110,6 +2135,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
+  react-native-nfc-manager:
+    :path: "../node_modules/react-native-nfc-manager"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-segmented-control:
@@ -2194,6 +2221,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-share"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   RNWatch:
     :path: "../node_modules/react-native-watch-connectivity"
   RNWifi:
@@ -2270,6 +2299,7 @@ SPEC CHECKSUMS:
   react-native-image-marker: 01caff7bfa50f44277922cf84e7c29a732994ea8
   react-native-maps: 2e6e9896195781327ee15b33e3e84bf73c08207a
   react-native-netinfo: bdb108d340cdb41875c9ced535977cac6d2ff321
+  react-native-nfc-manager: 1bcdf6f96c9065a8f4c8d9a0c6fb2db625205b2c
   react-native-safe-area-context: a240ad4b683349e48b1d51fed1611138d1bdad97
   react-native-segmented-control: b92809e9111013dfa266e1168ba366d62898d9a4
   react-native-skia: 00e92fdc3e2e9e7d6df254296d2f3e8c548224af
@@ -2313,6 +2343,7 @@ SPEC CHECKSUMS:
   RNSentry: b2e710a717d9d10301046849d75f637c2b83e871
   RNShare: 0fad69ae2d71de9d1f7b9a43acf876886a6cb99c
   RNSVG: 5da7a24f31968ec74f0b091e3440080f347e279b
+  RNVectorIcons: 6382277afab3c54658e9d555ee0faa7a37827136
   RNWatch: fd30ca40a5b5ef58dcbc195638e68219bc455236
   RNWifi: d4dbe8edf13059dbffdc96181bb695caa726831c
   RNZipArchive: 6d736ee4e286dbbd9d81206b7a4da355596ca04a
