@@ -3,9 +3,6 @@
   "mainx": "expo-router/entry",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "kandroid": "react-native run-android",
-    "kios": "react-native run-ios",
-    "kstart": "expo start --dev-client",
     "postinstall": "patch-package",
     "start": "expo start --dev-client",
     "reset-project": "node ./scripts/reset-project.js",
