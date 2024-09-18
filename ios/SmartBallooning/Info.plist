@@ -49,8 +49,16 @@
     <string>Allow $(PRODUCT_NAME) to connect to bluetooth devices</string>
     <key>NSBluetoothPeripheralUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to connect to bluetooth devices</string>
+    <key>NSBonjourServices</key>
+    <array>
+      <string>_mqtt._tcp.</string>
+      <string>_mqttws._tcp.</string>
+      <string>_arduino._tcp</string>
+    </array>
     <key>NSCameraUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to access your camera</string>
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>Describe why you want to use local network discovery here</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to use your location.</string>
     <key>NSLocationAlwaysUsageDescription</key>
@@ -63,6 +71,7 @@
     <string>Allow $(PRODUCT_NAME) to access your device motion.</string>
     <key>NSUserActivityTypes</key>
     <array>
+      <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
     </array>
     <key>UIBackgroundModes</key>
