@@ -111,6 +111,7 @@
     "react-native-wifi-reborn": "^4.12.1",
     "react-native-zeroconf": "^0.13.8",
     "react-native-zip-archive": "^6.0.10",
+    "replace-in-file": "^8.1.0",
     "rn-emoji-keyboard": "^1.7.0",
     "tslib": "^2.6.2",
     "typescript": "~5.3.3",
