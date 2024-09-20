@@ -4,6 +4,8 @@ import { LocationProvider, useLocation } from '../contexts/LocationContext';
 import { PressureProvider, usePressure } from '../contexts/PressureContext';
 import { BLEProvider, useBLE } from '../contexts/BLEContext';
 
+import { altitudeISAByPres } from 'meteojs/calc.js';
+
 const LocationDisplay = () => {
   const { location, error, isLoading, watchLocation } = useLocation();
 
@@ -14,11 +16,11 @@ const LocationDisplay = () => {
     <View>
       {location ? (
         <View>
-          <Text>Latitude: {location.coords.latitude}</Text>
-          <Text>Longitude: {location.coords.longitude}</Text>
-          <Text>altitude: {location.coords.altitude}</Text>
-          <Text>heading: {location.coords.heading}</Text>
-          <Text>speed: {location.coords.speed}</Text>
+          {/* <Text style={styles.field}>Latitude: {location.coords.latitude}</Text>
+          <Text style={styles.field}>Longitude: {location.coords.longitude}</Text> */}
+          <Text style={styles.field}>altitude: { Math.round(location.coords.altitude*10)/10}m</Text>
+          <Text style={styles.field}>heading: {location.coords.heading}°</Text>
+          <Text style={styles.field}>speed: {Math.round(location.coords.speed*10)/10} m/s</Text>
         </View>
       ) : (
         <Text>Waiting for location...</Text>
@@ -37,7 +39,7 @@ const PressureDisplay = () => {
 
   return (
     <View>
-      <Text>Current Pressure: {pressure ? pressure.pressure : 'N/A'} hPa</Text>
+      <Text style={styles.field}>baro altitude: {pressure ? Math.round(altitudeISAByPres(pressure.pressure)*10)/10 : 'N/A'} m</Text>
     </View>
   ); r
 };
@@ -70,7 +72,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       {/* <Text>Home Screen</Text> */}
-      <LocationProvider>
+      <LocationProvider >
         <LocationDisplay />
       </LocationProvider>
       <PressureProvider>
@@ -87,8 +89,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'left',
-    alignItems: 'center',
+    alignItems: 'left',
   },
+  field: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    alignItems: 'left',
+
+  }
 });
 
 export default HomeScreen;
