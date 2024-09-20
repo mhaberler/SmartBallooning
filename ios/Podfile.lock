@@ -148,8 +148,6 @@ PODS:
   - maplibre-react-native/DynamicLibrary (10.0.0-alpha.13):
     - React
     - React-Core
-  - PurchasesHybridCommon (13.1.0):
-    - RevenueCat (= 5.3.0)
   - RCT-Folly (2024.01.01.00):
     - boost
     - DoubleConversion
@@ -1385,8 +1383,6 @@ PODS:
     - React-Core
   - react-native-blob-util (0.19.11):
     - React-Core
-  - react-native-image-marker (1.2.6):
-    - React-Core
   - react-native-maps (1.18.0):
     - React-Core
   - react-native-netinfo (11.3.1):
@@ -1726,7 +1722,6 @@ PODS:
     - React-logger (= 0.75.2)
     - React-perflogger (= 0.75.2)
     - React-utils (= 0.75.2)
-  - RevenueCat (5.3.0)
   - RNCAsyncStorage (2.0.0):
     - React-Core
   - RNCMaskedView (0.3.1):
@@ -1754,9 +1749,6 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNPurchases (8.1.0):
-    - PurchasesHybridCommon (= 13.1.0)
-    - React-Core
   - RNReanimated (3.15.2):
     - DoubleConversion
     - glog
@@ -1892,8 +1884,6 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNWatch (1.1.0):
-    - React
   - RNWifi (4.12.1):
     - React-Core
   - RNZipArchive (6.1.2):
@@ -1994,7 +1984,6 @@ DEPENDENCIES:
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
   - react-native-ble-manager (from `../node_modules/react-native-ble-manager`)
   - react-native-blob-util (from `../node_modules/react-native-blob-util`)
-  - react-native-image-marker (from `../node_modules/react-native-image-marker`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-nfc-manager (from `../node_modules/react-native-nfc-manager`)
@@ -2035,23 +2024,19 @@ DEPENDENCIES:
   - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - RNPurchases (from `../node_modules/react-native-purchases`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNShare (from `../node_modules/react-native-share`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
-  - RNWatch (from `../node_modules/react-native-watch-connectivity`)
   - RNWifi (from `../node_modules/react-native-wifi-reborn`)
   - RNZipArchive (from `../node_modules/react-native-zip-archive`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
-    - PurchasesHybridCommon
     - ReachabilitySwift
-    - RevenueCat
     - Sentry
     - SocketRocket
     - sqlite3
@@ -2198,8 +2183,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-ble-manager"
   react-native-blob-util:
     :path: "../node_modules/react-native-blob-util"
-  react-native-image-marker:
-    :path: "../node_modules/react-native-image-marker"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
   react-native-netinfo:
@@ -2280,8 +2263,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/datetimepicker"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
-  RNPurchases:
-    :path: "../node_modules/react-native-purchases"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -2294,8 +2275,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
-  RNWatch:
-    :path: "../node_modules/react-native-watch-connectivity"
   RNWifi:
     :path: "../node_modules/react-native-wifi-reborn"
   RNZipArchive:
@@ -2342,7 +2321,6 @@ SPEC CHECKSUMS:
   glog: 69ef571f3de08433d766d614c73a9838a06bf7eb
   hermes-engine: 3b6e0717ca847e2fc90a201e59db36caf04dee88
   maplibre-react-native: 25e0e0bd9bd4c620a8429c125085a3fd3ee531c6
-  PurchasesHybridCommon: 04828bd308b446146db7976c35b54d62f3659a9b
   RCT-Folly: 4464f4d875961fce86008d45f4ecf6cef6de0740
   RCTDeprecation: 34cbf122b623037ea9facad2e92e53434c5c7422
   RCTRequired: 24c446d7bcd0f517d516b6265d8df04dc3eb1219
@@ -2375,7 +2353,6 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 87b8de96f937faefece8afd2cb3a518321b2ef99
   react-native-ble-manager: 26188ccddc07e62e06009b20c86a822d10baf994
   react-native-blob-util: 39a20f2ef11556d958dc4beb0aa07d1ef2690745
-  react-native-image-marker: 01caff7bfa50f44277922cf84e7c29a732994ea8
   react-native-maps: 2e6e9896195781327ee15b33e3e84bf73c08207a
   react-native-netinfo: bdb108d340cdb41875c9ced535977cac6d2ff321
   react-native-nfc-manager: 1bcdf6f96c9065a8f4c8d9a0c6fb2db625205b2c
@@ -2412,19 +2389,16 @@ SPEC CHECKSUMS:
   React-utils: 81a715d9c0a2a49047e77a86f3a2247408540deb
   ReactCodegen: 60973d382704c793c605b9be0fc7f31cb279442f
   ReactCommon: 6ef348087d250257c44c0204461c03f036650e9b
-  RevenueCat: 4ad1d1c656f4d66bbfde7c83a4669fa1c1cb6527
   RNCAsyncStorage: d35c79ffba52c1013013e16b1fc295aec2feabb6
   RNCMaskedView: 090213d32d8b3bb83a4dcb7d12c18f0152591906
   RNDateTimePicker: 40ffda97d071a98a10fdca4fa97e3977102ccd14
   RNGestureHandler: 939f21fabf5d45a725c0bf175eb819dd25cf2e70
-  RNPurchases: 2233090d55e80c8aab508ea426ba720f41b2e142
   RNReanimated: ece067b779e0d6c7887c6bb80d381d0a0efd43c9
   RNScreens: 19719a9c326e925498ac3b2d35c4e50fe87afc06
   RNSentry: b2e710a717d9d10301046849d75f637c2b83e871
   RNShare: 0fad69ae2d71de9d1f7b9a43acf876886a6cb99c
   RNSVG: 5da7a24f31968ec74f0b091e3440080f347e279b
   RNVectorIcons: 6382277afab3c54658e9d555ee0faa7a37827136
-  RNWatch: fd30ca40a5b5ef58dcbc195638e68219bc455236
   RNWifi: d4dbe8edf13059dbffdc96181bb695caa726831c
   RNZipArchive: 5b9117cd223931bae7a384e4b8078fc3ea47022d
   Sentry: f8374b5415bc38dfb5645941b3ae31230fbeae57
