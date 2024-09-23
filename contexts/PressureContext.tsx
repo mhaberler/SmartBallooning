@@ -37,6 +37,7 @@ export const PressureProvider = ({ children }) => {
                 return () => {
                     subscription.remove();
                     Barometer.stop();
+                    console.log("Barometer.stop()")
                 };
             } catch (err) {
                 setError(err.message);

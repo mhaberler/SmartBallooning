@@ -7,6 +7,8 @@ const AppStateExample = () => {
 
   useEffect(() => {
     const subscription = AppState.addEventListener('change', nextAppState => {
+      console.log('nextAppState',nextAppState);
+
       if (
         appState.current.match(/inactive|background/) &&
         nextAppState === 'active'
@@ -24,7 +26,7 @@ const AppStateExample = () => {
     };
   }, []);
 
-  return (
+  return ( 
     <View style={styles.container}>
       <Text>Current state is: {appStateVisible}</Text>
     </View>

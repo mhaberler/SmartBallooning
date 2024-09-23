@@ -4,7 +4,7 @@ import { LocationProvider, useLocation } from '../contexts/LocationContext';
 import { PressureProvider, usePressure } from '../contexts/PressureContext';
 import { BLEProvider, useBLE } from '../contexts/BLEContext';
 
-import { altitudeISAByPres } from 'meteojs/calc.js';
+import { altitudeISAByPres, windspeedMSToKMH } from 'meteojs/calc.js';
 
 const LocationDisplay = () => {
   const { location, error, isLoading, watchLocation } = useLocation();
@@ -18,9 +18,9 @@ const LocationDisplay = () => {
         <View>
           {/* <Text style={styles.field}>Latitude: {location.coords.latitude}</Text>
           <Text style={styles.field}>Longitude: {location.coords.longitude}</Text> */}
-          <Text style={styles.field}>altitude: { Math.round(location.coords.altitude*10)/10}m</Text>
-          <Text style={styles.field}>heading: {location.coords.heading}°</Text>
-          <Text style={styles.field}>speed: {Math.round(location.coords.speed*10)/10} m/s</Text>
+          <Text style={styles.field}>GPS altitude: {Math.round(location.coords.altitude * 10) / 10}m</Text>
+          <Text style={styles.field}>heading: {location.coords.heading < 0 ? "" : Math.round(location.coords.heading) + "°"}</Text>
+          <Text style={styles.field}>speed: {location.coords.speed < 0 ? "" : (Math.round(windspeedMSToKMH(location.coords.speed * 10) / 10) + " km/h")}</Text>
         </View>
       ) : (
         <Text>Waiting for location...</Text>
@@ -38,14 +38,22 @@ const PressureDisplay = () => {
   if (error) return <Text>Error: {error}</Text>;
 
   return (
-    <View>
-      <Text style={styles.field}>baro altitude: {pressure ? Math.round(altitudeISAByPres(pressure.pressure)*10)/10 : 'N/A'} m</Text>
-    </View>
-  ); r
+    pressure ?
+      <View>
+        <Text style={styles.field}>baro altitude: {Math.round(altitudeISAByPres(pressure.pressure) * 100) / 100} m</Text>
+      </View>
+      : null
+  );
+};
+
+const syncPressed = (report) => {
+  return  {backgroundColor : report?.syncPressed ? 'red' : 'transparent' };
 };
 
 const BLEDisplay = () => {
-  const { scanning, devices, error } = useBLE();
+  const { scanning, devices, error,
+    envelope, oat, tank1, tank2, tank3, tank4, tank5, tank6
+  } = useBLE();
 
   useEffect(() => {
     console.log('BLEDisplay did mount');
@@ -61,8 +69,18 @@ const BLEDisplay = () => {
 
   return (
     <View>
-      <Text>BLE Devices: {devices ? devices : 'N/A'}</Text>
-    </View>
+        {/* return <View style={[{ backgroundColor }, style]} {...otherProps} />; */}
+
+      {/* <Text style={styles.field}>BLE Devices: {devices ? devices : ''}</Text> */}
+      <Text style={styles.field}>envelope: {envelope ? Math.round(envelope.temp * 10)/10 : ''}</Text>
+      <Text style={styles.field}>oat: {oat ? Math.round(oat.temp * 10)/10 : ''}</Text>
+      <Text style={[syncPressed(tank1),  styles.field]}>tank1: {tank1 ? tank1.level : ''}</Text>
+      <Text style={[syncPressed(tank2),  styles.field]}>tank2: {tank2 ? tank2.level : ''}</Text>
+      <Text style={[syncPressed(tank3),  styles.field]}>tank3: {tank3 ? tank3.level : ''}</Text>
+      <Text style={[syncPressed(tank4),  styles.field]}>tank4: {tank4 ? tank4.level : ''}</Text>
+
+      {/* <Text style={styles.field}>Envelope: {envelope !== {} ? envelope.temp + "°" : ''}</Text> */}
+      </View>
   ); r
 };
 
@@ -89,13 +107,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'left',
-    alignItems: 'left',
+    alignItems: 'center',
   },
   field: {
     fontSize: 20,
     fontWeight: 'bold',
-    alignItems: 'left',
-
+    // alignItems: 'right',
   }
 });
 

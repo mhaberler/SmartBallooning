@@ -109,6 +109,7 @@
     "replace-in-file": "^8.1.0",
     "tslib": "^2.6.2",
     "typescript": "~5.3.3",
+    "uplot": "^1.6.30",
     "yargs": "^17.7.2"
   },
   "devDependencies": {

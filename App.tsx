@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, {useRef, useState, useEffect} from 'react';
+import {AppState, StyleSheet, Text, View} from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -16,12 +18,42 @@ import VertcialProfileScreen from './screens/VerticalProfileScreen';
 import NFCScreen from './screens/NFCScreen';
 import MQTTScreen from './screens/MQTTScreen'
 import MapScreen from './screens/MapScreen'
+// import UPlotExample from './screens/UplotScreen'
+
+// import AppStateExample from './AppStateExample'
 
 const Tab = createBottomTabNavigator();
 
 function App() {
+  const appState = useRef(AppState.currentState);
+  const [appStateVisible, setAppStateVisible] = useState(appState.current);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', nextAppState => {
+      console.log('nextAppState',nextAppState);
+
+      if (
+        appState.current.match(/inactive|background/) &&
+        nextAppState === 'active'
+      ) {
+        console.log('App has come to the foreground!');
+      }
+
+      appState.current = nextAppState;
+      setAppStateVisible(appState.current);
+      console.log('AppState', appState.current);
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
+
   return (
+
     <NavigationContainer>
+          {/* <AppStateExample /> */}
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -70,6 +102,9 @@ function App() {
       >
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Profile" component={VertcialProfileScreen} />
+        {/* <Tab.Screen name="Uplot" component={UPlotExample} /> */}
+
+        
         <Tab.Screen name="Map" component={MapScreen } />
         <Tab.Screen name="MQTT" component={MQTTScreen} />
         <Tab.Screen name="NFC" component={NFCScreen} />
@@ -78,7 +113,10 @@ function App() {
 
         
       </Tab.Navigator>
+   
+
     </NavigationContainer >
+
   );
 }
 
