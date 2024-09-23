@@ -70,8 +70,8 @@ export const parseMopeka = function (data: DataView): any {
     mopeka.temperature = mopeka.raw_temp - 40; // °C
     mopeka.qualityStars = (data.getUint8(6) >> 6);
 
-    mopeka.acceloX = data.getUint8(10);
-    mopeka.acceloY = data.getUint8(11);
+    mopeka.accX = data.getUint8(10);
+    mopeka.accY = data.getUint8(11);
 
     mopeka.raw_level = data.getUint16(5, true) & 0x3fff; // ((data[6] << 8) + data[5]) & 0x3fff;
     mopeka.level = mopeka.raw_level *
