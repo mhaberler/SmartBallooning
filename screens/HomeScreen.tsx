@@ -99,7 +99,7 @@ const HomeScreen = () => {
       <BLEProvider>
         <BLEDisplay />
       </BLEProvider>
-    </View>
+      </View>
   );
 };
 

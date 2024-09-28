@@ -23,6 +23,7 @@ export const BLEProvider = ({ children }) => {
     const [tank2, setTank2] = useState(null);
     const [tank3, setTank3] = useState(null);
     const [tank4, setTank4] = useState(null);
+    const [pressure, setPressure] = useState(null);
 
     const sensormap = {
         "C2:6E:D1:70:2B:44": setEnvelope,
@@ -32,6 +33,7 @@ export const BLEProvider = ({ children }) => {
         "6E:8D:17": setTank1,
         "42:FD:86": setTank2,
         "9B:EA:A3": setTank3,
+        "82:EA:CA:32:22:4C": setPressure
     }
 
     function updateCallback(p) {

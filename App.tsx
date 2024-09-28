@@ -13,7 +13,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 // Screens
 import HomeScreen from './screens/HomeScreen';
 import SettingsScreen from './screens/SettingsScreen';
-import SensorScreen from './screens/SensorScreen';
+import QRCodeScreen from './screens/QRCodeScreen';
 import VertcialProfileScreen from './screens/VerticalProfileScreen';
 import NFCScreen from './screens/NFCScreen';
 import MQTTScreen from './screens/MQTTScreen'
@@ -108,7 +108,7 @@ function App() {
         <Tab.Screen name="Map" component={MapScreen } />
         <Tab.Screen name="MQTT" component={MQTTScreen} />
         <Tab.Screen name="NFC" component={NFCScreen} />
-        <Tab.Screen name="Sensors" component={SensorScreen} />
+        <Tab.Screen name="Sensors" component={QRCodeScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
 
         

@@ -1,1 +1,1 @@
-const parseRuuvi = function (data : Uint8Array) : any;
+const parseRuuvi = function (data : DataView) : any;
