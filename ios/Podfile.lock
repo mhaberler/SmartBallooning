@@ -1077,7 +1077,7 @@ PODS:
   - React-Mapbuffer (0.74.5):
     - glog
     - React-debug
-  - react-native-ble-manager (11.5.5):
+  - react-native-ble-manager (11.5.6):
     - React-Core
   - react-native-blob-util (0.19.11):
     - React-Core
@@ -1137,7 +1137,7 @@ PODS:
     - Yoga
   - react-native-view-shot (3.8.0):
     - React-Core
-  - react-native-webview (13.8.6):
+  - react-native-webview (13.12.3):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1902,7 +1902,7 @@ SPEC CHECKSUMS:
   React-jsitracing: 3b6060bbf5317663667e1dd93560c7943ab86ccc
   React-logger: 257858bd55f3a4e1bc0cf07ddc8fb9faba6f8c7c
   React-Mapbuffer: 6c1cacdbf40b531f549eba249e531a7d0bfd8e7f
-  react-native-ble-manager: 26188ccddc07e62e06009b20c86a822d10baf994
+  react-native-ble-manager: 3a9e5edf9dbf7fe076807edcd45e46d62a37ca72
   react-native-blob-util: 39a20f2ef11556d958dc4beb0aa07d1ef2690745
   react-native-maps: cbf2f03bfeebfd7ec45966b066db13a075fd2af3
   react-native-netinfo: bdb108d340cdb41875c9ced535977cac6d2ff321
@@ -1912,7 +1912,7 @@ SPEC CHECKSUMS:
   react-native-skia: 80282ed176572d97f6abe128ddcb567e0c33fe93
   react-native-slider: ce295d2bf830a7990af05b0bd70ab28c133e230c
   react-native-view-shot: 6b7ed61d77d88580fed10954d45fad0eb2d47688
-  react-native-webview: 05bae3a03a1e4f59568dfc05286c0ebf8954106c
+  react-native-webview: 445e447f227f775d8dd2b4823bca55c458d4eff7
   react-native-zeroconf: 5b38b434ccc6ca245c8a5ffd64a4501e67f9edcb
   React-nativeconfig: ba9a2e54e2f0882cf7882698825052793ed4c851
   React-NativeModulesApple: 8d11ff8955181540585c944cf48e9e7236952697
