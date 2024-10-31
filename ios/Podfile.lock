@@ -141,11 +141,11 @@ PODS:
   - hermes-engine (0.74.5):
     - hermes-engine/Pre-built (= 0.74.5)
   - hermes-engine/Pre-built (0.74.5)
-  - maplibre-react-native (10.0.0-alpha.13):
-    - maplibre-react-native/DynamicLibrary (= 10.0.0-alpha.13)
+  - maplibre-react-native (10.0.0-alpha.23):
+    - maplibre-react-native/DynamicLibrary (= 10.0.0-alpha.23)
     - React
     - React-Core
-  - maplibre-react-native/DynamicLibrary (10.0.0-alpha.13):
+  - maplibre-react-native/DynamicLibrary (10.0.0-alpha.23):
     - React
     - React-Core
   - RCT-Folly (2024.01.01.00):
@@ -1137,7 +1137,7 @@ PODS:
     - Yoga
   - react-native-view-shot (3.8.0):
     - React-Core
-  - react-native-webview (13.12.3):
+  - react-native-webview (13.8.6):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1469,13 +1469,6 @@ PODS:
     - Yoga
   - RNWifi (4.12.1):
     - React-Core
-  - RNZipArchive (6.1.2):
-    - React-Core
-    - RNZipArchive/Core (= 6.1.2)
-    - SSZipArchive (~> 2.2)
-  - RNZipArchive/Core (6.1.2):
-    - React-Core
-    - SSZipArchive (~> 2.2)
   - Sentry/HybridSDK (8.36.0)
   - SocketRocket (0.7.0)
   - "sqlite3 (3.45.3+1)":
@@ -1487,7 +1480,6 @@ PODS:
     - sqlite3/common
   - "sqlite3/fts5 (3.45.3+1)":
     - sqlite3/common
-  - SSZipArchive (2.4.3)
   - Yoga (0.0.0)
   - ZXingObjC/Core (3.6.9)
   - ZXingObjC/OneD (3.6.9):
@@ -1605,7 +1597,6 @@ DEPENDENCIES:
   - RNShare (from `../node_modules/react-native-share`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - RNWifi (from `../node_modules/react-native-wifi-reborn`)
-  - RNZipArchive (from `../node_modules/react-native-zip-archive`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1614,7 +1605,6 @@ SPEC REPOS:
     - Sentry
     - SocketRocket
     - sqlite3
-    - SSZipArchive
     - ZXingObjC
 
 EXTERNAL SOURCES:
@@ -1833,8 +1823,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-vector-icons"
   RNWifi:
     :path: "../node_modules/react-native-wifi-reborn"
-  RNZipArchive:
-    :path: "../node_modules/react-native-zip-archive"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1876,7 +1864,7 @@ SPEC CHECKSUMS:
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
   glog: fdfdfe5479092de0c4bdbebedd9056951f092c4f
   hermes-engine: 8c1577f3fdb849cbe7729c2e7b5abc4b845e88f8
-  maplibre-react-native: 25e0e0bd9bd4c620a8429c125085a3fd3ee531c6
+  maplibre-react-native: 051c8bfe391b6f28e07f9a84948d4bb6eb2766b6
   RCT-Folly: 02617c592a293bd6d418e0a88ff4ee1f88329b47
   RCTDeprecation: 3afceddffa65aee666dafd6f0116f1d975db1584
   RCTRequired: ec1239bc9d8bf63e10fb92bd8b26171a9258e0c1
@@ -1912,7 +1900,7 @@ SPEC CHECKSUMS:
   react-native-skia: 80282ed176572d97f6abe128ddcb567e0c33fe93
   react-native-slider: ce295d2bf830a7990af05b0bd70ab28c133e230c
   react-native-view-shot: 6b7ed61d77d88580fed10954d45fad0eb2d47688
-  react-native-webview: 445e447f227f775d8dd2b4823bca55c458d4eff7
+  react-native-webview: 05bae3a03a1e4f59568dfc05286c0ebf8954106c
   react-native-zeroconf: 5b38b434ccc6ca245c8a5ffd64a4501e67f9edcb
   React-nativeconfig: ba9a2e54e2f0882cf7882698825052793ed4c851
   React-NativeModulesApple: 8d11ff8955181540585c944cf48e9e7236952697
@@ -1947,11 +1935,9 @@ SPEC CHECKSUMS:
   RNShare: 0fad69ae2d71de9d1f7b9a43acf876886a6cb99c
   RNVectorIcons: 845eda5c7819bd29699cafd0fc98c9d4afe28c96
   RNWifi: d4dbe8edf13059dbffdc96181bb695caa726831c
-  RNZipArchive: 5b9117cd223931bae7a384e4b8078fc3ea47022d
   Sentry: f8374b5415bc38dfb5645941b3ae31230fbeae57
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   sqlite3: 02d1f07eaaa01f80a1c16b4b31dfcbb3345ee01a
-  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Yoga: 950bbfd7e6f04790fdb51149ed51df41f329fcc8
   ZXingObjC: 8898711ab495761b2dbbdec76d90164a6d7e14c5
 

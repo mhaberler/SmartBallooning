@@ -1485,13 +1485,6 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@mapbox/geo-viewport@>= 0.4.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/geo-viewport/-/geo-viewport-0.5.0.tgz#5e3b4ef19ed113169d168eec9c60840e430c52a6"
-  integrity sha512-h0b10JU+lSxw8/TLXGdzcVTPxMN9Ikv0os8sCo0OAHXUiSDkQs5fx4WWLJeQTnC++qaGFl6/Ssr+H5N6NIvE5g==
-  dependencies:
-    "@mapbox/sphericalmercator" "^1.2.0"
-
 "@mapbox/jsonlint-lines-primitives@~2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@mapbox/jsonlint-lines-primitives/-/jsonlint-lines-primitives-2.0.2.tgz#ce56e539f83552b58d10d672ea4d6fc9adc7b234"
@@ -1516,33 +1509,25 @@
   resolved "https://registry.yarnpkg.com/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz#8a83f9335c7860effa2eeeca254332aa0aeed8f2"
   integrity sha512-6j56HdLTwWGO0fJPlrZtdU/B13q8Uwmo18Ck2GnGgN9PCFyKTZ3UbXeEdRFh18i9XQ92eH2VdtpJHpBD3aripQ==
 
-"@mapbox/sphericalmercator@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/sphericalmercator/-/sphericalmercator-1.2.0.tgz#55d4896be906bfff859e22a1d72267329a0fff90"
-  integrity sha512-ZTOuuwGuMOJN+HEmG/68bSEw15HHaMWmQ5gdTsWdWsjDe56K1kGvLOK6bOSC8gWgIvEO0w6un/2Gvv1q5hJSkQ==
-
 "@mapbox/unitbezier@^0.0.0":
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/@mapbox/unitbezier/-/unitbezier-0.0.0.tgz#15651bd553a67b8581fb398810c98ad86a34524e"
   integrity sha512-HPnRdYO0WjFjRTSwO3frz1wKaU649OBFPX3Zo/2WZvuRi6zMiRGui8SnPQiQABgqCf8YikDe5t3HViTVw1WUzA==
 
-"@maplibre/maplibre-react-native@^10.0.0-alpha.13":
-  version "10.0.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/@maplibre/maplibre-react-native/-/maplibre-react-native-10.0.0-alpha.13.tgz#70ee98e23b603160ab2e4db23a4279cfc5d5499f"
-  integrity sha512-fHzs+wW9ZML3j5vnNsBAnYnTxkg0isdfyLGBHT2Q3i4j4CMgN6VRrwl90nGrV+0Fzo2jqoVoNa5Qim9G0HVWXg==
+"@maplibre/maplibre-react-native@^10.0.0-alpha.23":
+  version "10.0.0-alpha.23"
+  resolved "https://registry.yarnpkg.com/@maplibre/maplibre-react-native/-/maplibre-react-native-10.0.0-alpha.23.tgz#d95fc51a2d8d99a8703560a339c7e765c3a10295"
+  integrity sha512-JpjkYuivXzNdVuEZu89ZchmcfrtUxmm4u224Vt07eQ056192Q48r5Jw/zKRmU76qF64OJ2bTR34SOHHmEIcfhQ==
   dependencies:
-    "@mapbox/geo-viewport" ">= 0.4.0"
-    "@turf/along" "6.5.0"
-    "@turf/distance" "6.5.0"
-    "@turf/helpers" "6.5.0"
-    "@turf/length" "6.5.0"
-    "@turf/nearest-point-on-line" "6.5.0"
+    "@turf/distance" "^7.1.0"
+    "@turf/helpers" "^7.1.0"
+    "@turf/length" "^7.1.0"
+    "@turf/nearest-point-on-line" "^7.1.0"
     "@types/debounce" "^1.2.1"
-    "@types/geojson" "^7946.0.10"
+    "@types/geojson" "^7946.0.14"
     "@types/jest" "^29.5.12"
-    "@types/mapbox__geo-viewport" "^0.4.1"
     "@types/node" "^18.11.18"
-    "@types/react" "^18.2.15"
+    "@types/react" "^18.2.79"
     "@types/react-native" "0.67.8"
     debounce "^2.0.0"
 
@@ -2370,55 +2355,35 @@
   resolved "https://registry.yarnpkg.com/@svgdotjs/svg.js/-/svg.js-3.2.4.tgz#4716be92a64c66b29921b63f7235fcfb953fb13a"
   integrity sha512-BjJ/7vWNowlX3Z8O4ywT58DqbNRyYlkk6Yz/D13aB7hGmfQTvGX4Tkgtm/ApYlu9M7lCQi15xUEidqMUmdMYwg==
 
-"@turf/along@6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/along/-/along-6.5.0.tgz#ab12eec58a14de60fe243a62d31a474f415c8fef"
-  integrity sha512-LLyWQ0AARqJCmMcIEAXF4GEu8usmd4Kbz3qk1Oy5HoRNpZX47+i5exQtmIWKdqJ1MMhW26fCTXgpsEs5zgJ5gw==
-  dependencies:
-    "@turf/bearing" "^6.5.0"
-    "@turf/destination" "^6.5.0"
-    "@turf/distance" "^6.5.0"
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-
-"@turf/bbox@*":
+"@turf/bearing@^7.1.0":
   version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@turf/bbox/-/bbox-7.1.0.tgz#45a9287c084f7b79577ee88b7b539d83562b923b"
-  integrity sha512-PdWPz9tW86PD78vSZj2fiRaB8JhUHy6piSa/QXb83lucxPK+HTAdzlDQMTKj5okRCU8Ox/25IR2ep9T8NdopRA==
+  resolved "https://registry.yarnpkg.com/@turf/bearing/-/bearing-7.1.0.tgz#77e2db3667f19b62a6b89669be1c4060faa9941d"
+  integrity sha512-X5lackrZ6FW+YhgjWxwVFRgWD1j4xm4t5VvE6EE6v/1PVaHQ5OCjf6u1oaLx5LSG+gaHUhjTlAHrn9MYPFaeTA==
   dependencies:
     "@turf/helpers" "^7.1.0"
-    "@turf/meta" "^7.1.0"
+    "@turf/invariant" "^7.1.0"
     "@types/geojson" "^7946.0.10"
     tslib "^2.6.2"
 
-"@turf/bearing@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/bearing/-/bearing-6.5.0.tgz#462a053c6c644434bdb636b39f8f43fb0cd857b0"
-  integrity sha512-dxINYhIEMzgDOztyMZc20I7ssYVNEpSv04VbMo5YPQsqa80KO3TFvbuCahMsCAW5z8Tncc8dwBlEFrmRjJG33A==
+"@turf/destination@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@turf/destination/-/destination-7.1.0.tgz#2e11330f331c0fc699f5a22d02bd54d7fd958c14"
+  integrity sha512-97XuvB0iaAiMg86hrnZ529WwP44TQAA9mmI5PMlchACiA4LFrEtWjjDzvO6234coieoqhrw6dZYcJvd5O2PwrQ==
   dependencies:
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
+    "@turf/helpers" "^7.1.0"
+    "@turf/invariant" "^7.1.0"
+    "@types/geojson" "^7946.0.10"
+    tslib "^2.6.2"
 
-"@turf/destination@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/destination/-/destination-6.5.0.tgz#30a84702f9677d076130e0440d3223ae503fdae1"
-  integrity sha512-4cnWQlNC8d1tItOz9B4pmJdWpXqS0vEvv65bI/Pj/genJnsL7evI0/Xw42RvEGROS481MPiU80xzvwxEvhQiMQ==
+"@turf/distance@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@turf/distance/-/distance-7.1.0.tgz#12317573f9774e1c9d6fb08bf90338d9904d2f1d"
+  integrity sha512-hhNHhxCHB3ddzAGCNY4BtE29OZh+DAJPvUapQz+wOjISnlwvMcwLKvslgHWSYF536QDVe/93FEU2q67+CsZTPA==
   dependencies:
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-
-"@turf/distance@6.5.0", "@turf/distance@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/distance/-/distance-6.5.0.tgz#21f04d5f86e864d54e2abde16f35c15b4f36149a"
-  integrity sha512-xzykSLfoURec5qvQJcfifw/1mJa+5UwByZZ5TZ8iaqjGYN0vomhV9aiSLeYdUGtYRESZ+DYC/OzY+4RclZYgMg==
-  dependencies:
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-
-"@turf/helpers@6.5.0", "@turf/helpers@6.x", "@turf/helpers@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-6.5.0.tgz#f79af094bd6b8ce7ed2bd3e089a8493ee6cae82e"
-  integrity sha512-VbI1dV5bLFzohYYdgqwikdMVpe7pJ9X3E+dlr425wa2/sMJqYDhTO++ec38/pcPvPE6oD9WEEeU3Xu3gza+VPw==
+    "@turf/helpers" "^7.1.0"
+    "@turf/invariant" "^7.1.0"
+    "@types/geojson" "^7946.0.10"
+    tslib "^2.6.2"
 
 "@turf/helpers@^7.1.0":
   version "7.1.0"
@@ -2428,48 +2393,35 @@
     "@types/geojson" "^7946.0.10"
     tslib "^2.6.2"
 
-"@turf/invariant@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-6.5.0.tgz#970afc988023e39c7ccab2341bd06979ddc7463f"
-  integrity sha512-Wv8PRNCtPD31UVbdJE/KVAWKe7l6US+lJItRR/HOEW3eh+U/JwRCSUl/KZ7bmjM/C+zLNoreM2TU6OoLACs4eg==
+"@turf/invariant@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-7.1.0.tgz#c90cffa093291316b597212396d68bf9e465cf2e"
+  integrity sha512-OCLNqkItBYIP1nE9lJGuIUatWGtQ4rhBKAyTfFu0z8npVzGEYzvguEeof8/6LkKmTTEHW53tCjoEhSSzdRh08Q==
   dependencies:
-    "@turf/helpers" "^6.5.0"
+    "@turf/helpers" "^7.1.0"
+    "@types/geojson" "^7946.0.10"
+    tslib "^2.6.2"
 
-"@turf/length@6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/length/-/length-6.5.0.tgz#ff4e9072d5f997e1c32a1311d214d184463f83fa"
-  integrity sha512-5pL5/pnw52fck3oRsHDcSGrj9HibvtlrZ0QNy2OcW8qBFDNgZ4jtl6U7eATVoyWPKBHszW3dWETW+iLV7UARig==
+"@turf/length@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@turf/length/-/length-7.1.0.tgz#bd04f024e1dfa8c4d767175ebbe6411bb8c52c82"
+  integrity sha512-wUJj9WLKEudG1ngNao2ZwD+Dt6UkvWIbubuJ6lR6FndFDL3iezFhNGy0IXS+0xH9kXi2apiTnM9Vk5+i8BTEvQ==
   dependencies:
-    "@turf/distance" "^6.5.0"
-    "@turf/helpers" "^6.5.0"
-    "@turf/meta" "^6.5.0"
+    "@turf/distance" "^7.1.0"
+    "@turf/helpers" "^7.1.0"
+    "@turf/meta" "^7.1.0"
+    "@types/geojson" "^7946.0.10"
+    tslib "^2.6.2"
 
-"@turf/line-intersect@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/line-intersect/-/line-intersect-6.5.0.tgz#dea48348b30c093715d2195d2dd7524aee4cf020"
-  integrity sha512-CS6R1tZvVQD390G9Ea4pmpM6mJGPWoL82jD46y0q1KSor9s6HupMIo1kY4Ny+AEYQl9jd21V3Scz20eldpbTVA==
+"@turf/line-intersect@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@turf/line-intersect/-/line-intersect-7.1.0.tgz#60c46a62143e42d6663be93f893de1cfac584cf9"
+  integrity sha512-JI3dvOsAoCqd4vUJ134FIzgcC42QpC/tBs+b4OJoxWmwDek3REv4qGaZY6wCg9X4hFSlCKFcnhMIQQZ/n720Qg==
   dependencies:
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-    "@turf/line-segment" "^6.5.0"
-    "@turf/meta" "^6.5.0"
-    geojson-rbush "3.x"
-
-"@turf/line-segment@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/line-segment/-/line-segment-6.5.0.tgz#ee73f3ffcb7c956203b64ed966d96af380a4dd65"
-  integrity sha512-jI625Ho4jSuJESNq66Mmi290ZJ5pPZiQZruPVpmHkUw257Pew0alMmb6YrqYNnLUuiVVONxAAKXUVeeUGtycfw==
-  dependencies:
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-    "@turf/meta" "^6.5.0"
-
-"@turf/meta@6.x", "@turf/meta@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/meta/-/meta-6.5.0.tgz#b725c3653c9f432133eaa04d3421f7e51e0418ca"
-  integrity sha512-RrArvtsV0vdsCBegoBtOalgdSOfkBrTJ07VkpiCnq/491W67hnMWmDu7e6Ztw0C3WldRYTXkg3SumfdzZxLBHA==
-  dependencies:
-    "@turf/helpers" "^6.5.0"
+    "@turf/helpers" "^7.1.0"
+    "@types/geojson" "^7946.0.10"
+    sweepline-intersections "^1.5.0"
+    tslib "^2.6.2"
 
 "@turf/meta@^7.1.0":
   version "7.1.0"
@@ -2479,18 +2431,20 @@
     "@turf/helpers" "^7.1.0"
     "@types/geojson" "^7946.0.10"
 
-"@turf/nearest-point-on-line@6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@turf/nearest-point-on-line/-/nearest-point-on-line-6.5.0.tgz#8e1cd2cdc0b5acaf4c8d8b3b33bb008d3cb99e7b"
-  integrity sha512-WthrvddddvmymnC+Vf7BrkHGbDOUu6Z3/6bFYUGv1kxw8tiZ6n83/VG6kHz4poHOfS0RaNflzXSkmCi64fLBlg==
+"@turf/nearest-point-on-line@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@turf/nearest-point-on-line/-/nearest-point-on-line-7.1.0.tgz#002dce6723ff6a01bff4ed6168ee36f62cc66f41"
+  integrity sha512-aTjAOm7ab0tl5JoxGYRx/J/IbRL1DY1ZCIYQDMEQjK5gOllhclgeBC0wDXDkEZFGaVftjw0W2RtE2I0jX7RG4A==
   dependencies:
-    "@turf/bearing" "^6.5.0"
-    "@turf/destination" "^6.5.0"
-    "@turf/distance" "^6.5.0"
-    "@turf/helpers" "^6.5.0"
-    "@turf/invariant" "^6.5.0"
-    "@turf/line-intersect" "^6.5.0"
-    "@turf/meta" "^6.5.0"
+    "@turf/bearing" "^7.1.0"
+    "@turf/destination" "^7.1.0"
+    "@turf/distance" "^7.1.0"
+    "@turf/helpers" "^7.1.0"
+    "@turf/invariant" "^7.1.0"
+    "@turf/line-intersect" "^7.1.0"
+    "@turf/meta" "^7.1.0"
+    "@types/geojson" "^7946.0.10"
+    tslib "^2.6.2"
 
 "@types/cookie@^0.6.0":
   version "0.6.0"
@@ -2502,12 +2456,7 @@
   resolved "https://registry.yarnpkg.com/@types/debounce/-/debounce-1.2.4.tgz#cb7e85d9ad5ababfac2f27183e8ac8b576b2abb3"
   integrity sha512-jBqiORIzKDOToaF63Fm//haOCHuwQuLa2202RK4MozpA6lh93eCBc+/8+wZn5OzjJt3ySdc+74SXWXB55Ewtyw==
 
-"@types/geojson@7946.0.8":
-  version "7946.0.8"
-  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.8.tgz#30744afdb385e2945e22f3b033f897f76b1f12ca"
-  integrity sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==
-
-"@types/geojson@^7946.0.10", "@types/geojson@^7946.0.13":
+"@types/geojson@^7946.0.10", "@types/geojson@^7946.0.13", "@types/geojson@^7946.0.14":
   version "7946.0.14"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.14.tgz#319b63ad6df705ee2a65a73ef042c8271e696613"
   integrity sha512-WCfD5Ht3ZesJUsONdhvm84dmzWOiOzOAqOncN0++w0lBw1o8OuDNJF2McvvCef/yBqb/HYRahp1BYtODFQ8bRg==
@@ -2565,11 +2514,6 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
 
-"@types/mapbox__geo-viewport@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@types/mapbox__geo-viewport/-/mapbox__geo-viewport-0.4.1.tgz#77cc476c40fcbc168dceb0e0f85cb486402191a9"
-  integrity sha512-aW7Orm58KsT9KmpZb1sqM2l/KufsS1IUsL1RCplVLfUIbpTk3PYkpOat3CN7jA8KcO1w1TuNFapn0g+/rASWzQ==
-
 "@types/node-forge@^1.3.0":
   version "1.3.11"
   resolved "https://registry.yarnpkg.com/@types/node-forge/-/node-forge-1.3.11.tgz#0972ea538ddb0f4d9c2fa0ec5db5724773a604da"
@@ -2626,10 +2570,10 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
-"@types/react@^18.2.15":
-  version "18.3.7"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.7.tgz#6decbfbb01f8d82d56ff5403394121940faa6569"
-  integrity sha512-KUnDCJF5+AiZd8owLIeVHqmW9yM4sqmDVf2JRJiBMFkGvkoZ4/WyV2lL4zVsoinmRS/W3FeEdZLEWFRofnT2FQ==
+"@types/react@^18.2.79":
+  version "18.3.12"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.12.tgz#99419f182ccd69151813b7ee24b792fe08774f60"
+  integrity sha512-D2wOSq/d6Agt28q7rSI3jhU7G6aiuzljDGZ2hTZHIkrTLUI+AF3WMeKkEZ9nN2fkBAlcktT6vcZjDFiIhMYEQw==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -4058,15 +4002,15 @@ escape-html@~1.0.3:
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==
 
+escape-string-regexp@2.0.0, escape-string-regexp@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
+  integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
+
 escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==
-
-escape-string-regexp@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
-  integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
 
 escape-string-regexp@^4.0.0:
   version "4.0.0"
@@ -4814,17 +4758,6 @@ gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==
-
-geojson-rbush@3.x:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/geojson-rbush/-/geojson-rbush-3.2.0.tgz#8b543cf0d56f99b78faf1da52bb66acad6dfc290"
-  integrity sha512-oVltQTXolxvsz1sZnutlSuLDEcQAKYC/uXt9zDzJJ6bu0W+baTI8LZBaTup5afzibEH4N3jlq2p+a152wlBJ7w==
-  dependencies:
-    "@turf/bbox" "*"
-    "@turf/helpers" "6.x"
-    "@turf/meta" "6.x"
-    "@types/geojson" "7946.0.8"
-    rbush "^3.0.1"
 
 geotiff@2.0.4:
   version "2.0.4"
@@ -7450,12 +7383,12 @@ react-native-web@~0.19.10:
     postcss-value-parser "^4.2.0"
     styleq "^0.1.3"
 
-react-native-webview@13.12.3:
-  version "13.12.3"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-13.12.3.tgz#3aa9d2fc982ba2681e56d3e96e22b63a0d929270"
-  integrity sha512-Y1I5YyDYyE7NC96RHLhd2nxh7ymLYOYLTefgx5ixxw2OToQK0ow3OJ+o77QcI1Tuevj5PCxwqC/14ceS/7yPJQ==
+react-native-webview@13.8.6:
+  version "13.8.6"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-13.8.6.tgz#5d4a62cb311d5ef8d910a8e112b3f1f2807bcd18"
+  integrity sha512-jtZ9OgB2AN6rhDwto6dNL3PtOtl/SI4VN93pZEPbMLvRjqHfxiUrilGllL5fKAXq5Ry5FJyfUi82A4Ii8olZ7A==
   dependencies:
-    escape-string-regexp "^4.0.0"
+    escape-string-regexp "2.0.0"
     invariant "2.2.4"
 
 react-native-wifi-reborn@^4.12.1:
@@ -7469,11 +7402,6 @@ react-native-zeroconf@^0.13.8:
   integrity sha512-frGS1xNbNCA7BfETSubNYODu7s7mlU55vgArEzZW9EuSQ8SYqlNQC5zpKHDZEAXy4fFqe+CgnMCxKAjQqYM6XA==
   dependencies:
     events "^3.0.0"
-
-react-native-zip-archive@^6.0.10:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-zip-archive/-/react-native-zip-archive-6.1.2.tgz#6febcf2ac1b30ef1ed85c88ed29849571c1ba8c8"
-  integrity sha512-LcJomSY/6O3KHy/LF6Gb7F/yRJiZJ0lTlPQPbfeOHBQzfvqNJFJZ8x6HrdeYeokFf/UGB5bY7jfh4es6Y/PhBA==
 
 react-native@0.74.5:
   version "0.74.5"
@@ -8402,6 +8330,13 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
+sweepline-intersections@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/sweepline-intersections/-/sweepline-intersections-1.5.0.tgz#85ab3629a291875926fae0acd508496430d8a647"
+  integrity sha512-AoVmx72QHpKtItPu72TzFL+kcYjd67BPLDoR0LarIk+xyaRg+pDTMFXndIEvZf9xEKnJv6JdhgRMnocoG0D3AQ==
+  dependencies:
+    tinyqueue "^2.0.0"
+
 tar@^6.0.5, tar@^6.1.11:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/tar/-/tar-6.2.1.tgz#717549c541bc3c2af15751bea94b1dd068d4b03a"
@@ -8522,6 +8457,11 @@ tiny-queue@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/tiny-queue/-/tiny-queue-0.2.1.tgz#25a67f2c6e253b2ca941977b5ef7442ef97a6046"
   integrity sha512-EijGsv7kzd9I9g0ByCl6h42BWNGUZrlCSejfrb3AKeHC33SGbASu1VDf5O3rRiiUOhAC9CHdZxFPbZu0HmR70A==
+
+tinyqueue@^2.0.0:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/tinyqueue/-/tinyqueue-2.0.3.tgz#64d8492ebf39e7801d7bd34062e29b45b2035f08"
+  integrity sha512-ppJZNDuKGgxzkHihX8v9v9G5f+18gzaTfrukGrq6ueg0lmH4nqVnA2IPG0AEH3jKEk2GRJCUhDoqpoiw3PHLBA==
 
 tmp@^0.0.33:
   version "0.0.33"
