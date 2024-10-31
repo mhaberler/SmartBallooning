@@ -12,10 +12,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		96905EF65AED1B983A6B3ABC /* libPods-SmartBallooning.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-SmartBallooning.a */; };
-		98B677C0BEE04314BDAFB107 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D331D6ED8BB4A8098221EE0 /* noop-file.swift */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C6A62097AB8DD014393C1290 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 18B40285845AE80C61061243 /* PrivacyInfo.xcprivacy */; };
+		EF2DD0DD9D200119749FFB8B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A087816CC41A88E6F4251 /* PrivacyInfo.xcprivacy */; };
+		F94C867F9C8448DCB3F34828 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEEC09561954F2B8B2780B1 /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,14 +25,14 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SmartBallooning/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SmartBallooning/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SmartBallooning/main.m; sourceTree = "<group>"; };
-		18B40285845AE80C61061243 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = SmartBallooning/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		4D9A087816CC41A88E6F4251 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = SmartBallooning/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-SmartBallooning.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartBallooning.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2E3173556A471DD304B334 /* Pods-SmartBallooning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBallooning.debug.xcconfig"; path = "Target Support Files/Pods-SmartBallooning/Pods-SmartBallooning.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-SmartBallooning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBallooning.release.xcconfig"; path = "Target Support Files/Pods-SmartBallooning/Pods-SmartBallooning.release.xcconfig"; sourceTree = "<group>"; };
-		9D331D6ED8BB4A8098221EE0 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "SmartBallooning/noop-file.swift"; sourceTree = "<group>"; };
+		7AEEC09561954F2B8B2780B1 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "SmartBallooning/noop-file.swift"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = SmartBallooning/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		DCFCDB3602D54B29B8D3717F /* SmartBallooning-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "SmartBallooning-Bridging-Header.h"; path = "SmartBallooning/SmartBallooning-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF51357E25654FB9A71CC3D2 /* SmartBallooning-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "SmartBallooning-Bridging-Header.h"; path = "SmartBallooning/SmartBallooning-Bridging-Header.h"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SmartBallooning/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,9 +59,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				9D331D6ED8BB4A8098221EE0 /* noop-file.swift */,
-				DCFCDB3602D54B29B8D3717F /* SmartBallooning-Bridging-Header.h */,
-				18B40285845AE80C61061243 /* PrivacyInfo.xcprivacy */,
+				7AEEC09561954F2B8B2780B1 /* noop-file.swift */,
+				CF51357E25654FB9A71CC3D2 /* SmartBallooning-Bridging-Header.h */,
+				4D9A087816CC41A88E6F4251 /* PrivacyInfo.xcprivacy */,
 			);
 			name = SmartBallooning;
 			sourceTree = "<group>";
@@ -147,14 +147,14 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SmartBallooning" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				4217A9A4205798A4A4683E37 /* [Expo] Configure project */,
+				174EFA8EF354F6EDA5DB0D8C /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				591E9437420044F4A7C05F51 /* Remove signature files (Xcode 15 workaround) */,
-				E0F45605EC0622C3B9258C69 /* [CP] Embed Pods Frameworks */,
+				F83B7F9D04264C0FAAA8F079 /* Remove signature files (Xcode 15 workaround) */,
+				B85493458D9243707CCCD790 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,7 +162,7 @@
 			);
 			name = SmartBallooning;
 			packageProductDependencies = (
-				04E9E0C8953FE87E90147D63 /* MapLibre */,
+				410BB2E6F5435A99A40B366A /* MapLibre */,
 			);
 			productName = SmartBallooning;
 			productReference = 13B07F961A680F5B00A75B9A /* SmartBallooning.app */;
@@ -193,7 +193,7 @@
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			packageReferences = (
-				FDBFA091C68F17741B4D07FD /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */,
+				86674DF8D798D86A09F628E3 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */,
 			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
@@ -212,7 +212,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				C6A62097AB8DD014393C1290 /* PrivacyInfo.xcprivacy in Resources */,
+				EF2DD0DD9D200119749FFB8B /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +256,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4217A9A4205798A4A4683E37 /* [Expo] Configure project */ = {
+		174EFA8EF354F6EDA5DB0D8C /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -274,20 +274,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-SmartBallooning/expo-configure-project.sh\"\n";
-		};
-		591E9437420044F4A7C05F51 /* Remove signature files (Xcode 15 workaround) */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Remove signature files (Xcode 15 workaround)";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ \"$XCODE_VERSION_MAJOR\" = \"1500\" ]; then\n    echo \"Remove signature files (Xcode 15 workaround)\";\n    rm -rf \"$CONFIGURATION_BUILD_DIR/MapLibre.xcframework-ios.signature\";\n  fi";
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -377,7 +363,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartBallooning/Pods-SmartBallooning-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E0F45605EC0622C3B9258C69 /* [CP] Embed Pods Frameworks */ = {
+		B85493458D9243707CCCD790 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -397,6 +383,20 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartBallooning/Pods-SmartBallooning-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F83B7F9D04264C0FAAA8F079 /* Remove signature files (Xcode 15 workaround) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Remove signature files (Xcode 15 workaround)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"$XCODE_VERSION_MAJOR\" = \"1500\" ]; then\n    echo \"Remove signature files (Xcode 15 workaround)\";\n    rm -rf \"$CONFIGURATION_BUILD_DIR/MapLibre.xcframework-ios.signature\";\n  fi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -407,7 +407,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				98B677C0BEE04314BDAFB107 /* noop-file.swift in Sources */,
+				F94C867F9C8448DCB3F34828 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +623,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FDBFA091C68F17741B4D07FD /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */ = {
+		86674DF8D798D86A09F628E3 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maplibre/maplibre-gl-native-distribution";
 			requirement = {
@@ -634,9 +634,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		04E9E0C8953FE87E90147D63 /* MapLibre */ = {
+		410BB2E6F5435A99A40B366A /* MapLibre */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FDBFA091C68F17741B4D07FD /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
+			package = 86674DF8D798D86A09F628E3 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
 			productName = MapLibre;
 		};
 /* End XCSwiftPackageProductDependency section */

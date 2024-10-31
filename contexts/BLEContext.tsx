@@ -28,11 +28,13 @@ export const BLEProvider = ({ children }) => {
     const sensormap = {
         "C2:6E:D1:70:2B:44": setEnvelope,
         "D4:15:5C:77:56:68": setOat,
-        "C3:03:89:6E:8D:17": setTank1,
-        "CC:52:69:42:FD:86": setTank2,
-        "6E:8D:17": setTank1,
-        "42:FD:86": setTank2,
-        "9B:EA:A3": setTank3,
+        "1C:34:F1:F6:75:E1" : setTank1, // mystery
+        "F8:EE:CC:42:AF:8D": setTank2,  // otodata
+
+        
+        // "6E:8D:17": setTank1,
+        // "42:FD:86": setTank2,
+        // "9B:EA:A3": setTank3,
         "82:EA:CA:32:22:4C": setPressure
     }
 

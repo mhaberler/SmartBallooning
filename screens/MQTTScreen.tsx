@@ -23,18 +23,26 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button } from 'react-native';
 import Paho from 'paho-mqtt';
+import uuid from 'react-native-uuid';
+import Constants from 'expo-constants';
+const { mqttUser, mqttPassword, mqttBroker, mqttSsl, mqttPort, mqttWsPort, mqttTopic } = Constants.manifest.extra;
+const uniqueString = uuid.v4();
 
 const MQTTScreen = () => {
   const [client, setClient] = useState(null);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const connect = () => {
-      // Create a client instance
-      const client = new Paho.Client('mqtt-test.mah.priv.at', 1444, 'clientId');
+    const connectClient = () => {
+
+      const client = new Paho.Client(mqttBroker, Number(mqttWsPort), uniqueString);
       setClient(client);
 
       // Set callback handlers
+      client.onConnected = (reconnected, URI) => {
+        console.log("onConnected:", URI);
+      };
+
       client.onConnectionLost = (responseObject) => {
         if (responseObject.errorCode !== 0) {
           console.log("onConnectionLost:", responseObject.errorMessage);
@@ -46,17 +54,31 @@ const MQTTScreen = () => {
         setMessage(message.payloadString);
       };
 
+      client.onMessageDelivered = (message) => {
+        console.log("onMessageDelivered:", message.payloadString);
+        setMessage(message.payloadString);
+      };
+
       // Connect the client
-      client.connect({ 
+      client.connect({
         onSuccess: () => {
           console.log('Connected to MQTT broker');
           // Subscribe to a topic
-          client.subscribe('react-native');
-        } 
+          client.subscribe(mqttTopic);
+        },
+        onFailure: (ctx, errcode, errormsg) => {
+          console.log('Connect onFailure', ctx, errcode, errormsg);
+        },
+        timeout: 5,
+        keepAliveInterval: 10,
+        cleanSession: true,
+        reconnect: true,
+        userName: mqttUser, password: mqttPassword, useSSL: mqttSsl,
       });
     };
 
-    connect();
+
+    connectClient();
 
     // Cleanup function
     return () => {

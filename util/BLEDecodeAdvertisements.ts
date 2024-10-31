@@ -3,6 +3,7 @@ import { parseRuuvi } from './ruuvi'
 import { parseMopeka } from './mopeka'
 import { parseTPMS0100, parseTPMS00AC } from './tpms'
 import { parseOtodata } from './otodata'
+import { parseMystery } from './mystery'
 
 export const decodeBLE = (ad) => {
     if (!ad?.manufacturerData)
@@ -32,6 +33,9 @@ export const decodeBLE = (ad) => {
             break;
         case 0x00AC: // TPMS manufacturer ID variant 2
             t = parseTPMS00AC(view);
+            break;
+        case 0xFFFF: // mystery sensor
+            t = parseMystery(view);
             break;
         default: ;
     }
