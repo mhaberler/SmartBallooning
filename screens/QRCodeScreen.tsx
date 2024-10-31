@@ -33,7 +33,7 @@ export default function SensorScreen() {
       }
 
     } catch (error) {
-      console.error('[startScan] ble scan error thrown', error);
+      console.error('[QRscan] JSON error', error, data);
     }
   };
 
