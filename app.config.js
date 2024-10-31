@@ -1,5 +1,6 @@
 export default {
   expo: {
+    newArchEnabled: true,
     name: "SmartBallooning",
     slug: "SmartBallooning",
     version: "1.0.0",
