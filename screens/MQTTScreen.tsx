@@ -73,7 +73,7 @@ const MQTTScreen = () => {
         keepAliveInterval: 10,
         cleanSession: true,
         reconnect: true,
-        userName: mqttUser, password: mqttPassword, useSSL: mqttSsl,
+        userName: mqttUser, password: mqttPassword, useSSL: (mqttSsl === '1'),
       });
     };
 
