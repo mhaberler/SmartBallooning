@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { LocationProvider, useLocation } from '../contexts/LocationContext';
 import { PressureProvider, usePressure } from '../contexts/PressureContext';
 // import { AltitudeProvider, AltitudeContext, useAltitude } from '../contexts/AltitudeContext';
-import { SensorProvider, useSensor } from '../contexts/SensorContext';
+import { AltitudeProvider, useAltitude } from '../contexts/AltitudeContext';
 import { BLEProvider, useBLE } from '../contexts/BLEContext';
 
 import { altitudeISAByPres, windspeedMSToKMH } from 'meteojs/calc.js';
@@ -48,18 +48,18 @@ const LocationDisplay = () => {
 //   );
 // }
 
-const SensorDisplay  = () => { 
-  const {pressure, altitude, verticalSpeed, verticalSpeedKF, error, isLoading, lastTimestamp } = useSensor();
+const AltitudeDisplay = () => {
+  const { pressure, altitude, verticalSpeed, verticalSpeedKF, error, isLoading, lastTimestamp } = useAltitude();
   // console.log(verticalSpeed, verticalSpeedKF)
 
   return (
     pressure ?
       <View>
-       <Text style={styles.field}>baro altitude: {Math.round(altitude * 1000) / 1000} m</Text>
+        <Text style={styles.field}>baro altitude: {Math.round(altitude * 1000) / 1000} m</Text>
 
         {/* <Text style={styles.field}>baro pressure: {Math.round(pressure * 100) / 100} hPa</Text> */}
         <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 1000) / 1000} m/s</Text>
-        <Text style={styles.field}>baro vspeedKF: {Math.round(verticalSpeedKF * 1000) / 100}0 m/s</Text>
+        <Text style={styles.field}>baro vspeedKF: {Math.round(verticalSpeedKF * 1000) / 100} m/s</Text>
         <Text style={styles.field}>lastTimestamp: {lastTimestamp} m/s</Text>
 
 
@@ -122,9 +122,9 @@ const HomeScreen = () => {
         <AltitudeDisplay />
       </AltitudeProvider> */}
 
-<SensorProvider>
-      <SensorDisplay />
-    </SensorProvider>
+      <AltitudeProvider>
+        <AltitudeDisplay />
+      </AltitudeProvider>
 
       <BLEProvider>
         <BLEDisplay />

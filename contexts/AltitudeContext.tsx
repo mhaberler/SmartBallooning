@@ -3,36 +3,30 @@ import { Barometer } from 'expo-sensors';
 import { altitudeISAByPres, windspeedMSToKMH } from 'meteojs/calc.js';
 import KalmanFilter from 'kalmanjs';
 
-const SensorContext = createContext();
-//const kf = new KalmanFilter();
+const AltitudeContext = createContext();
 
-
+// default = {R = 1, Q = 1, A = 1, B = 0, C = 1} 
 const kf = new KalmanFilter({
     // R: 0.4,
-    // Q: 2,
+     Q: 10,
     //  A: 0.5, 
     // C: 0.5
 });
 
-console.log("---kf init")
-export const SensorProvider = ({ children }) => {
+
+export const AltitudeProvider = ({ children }) => {
     const [pressure, setPressure] = useState(0);
     const [altitude, setAltitude] = useState(0);
     const [verticalSpeed, setVerticalSpeed] = useState(0);
     const [verticalSpeedKF, setVerticalSpeedKF] = useState(0);
     const [lastTimestamp, setLastTimestamp] = useState(0);
     const [timestamp, setTimestamp] = useState(0);
-
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-
-
 
     const getlastTimestamp = (() => { return lastTimestamp });
 
     const subscribe = async () => {
-        console.log("---subscribe")
-
         setIsLoading(true);
         let { status } = await Barometer.isAvailableAsync();
         if (status) {
@@ -48,7 +42,6 @@ export const SensorProvider = ({ children }) => {
             return () => {
                 subscription.remove();
                 Barometer.stop();
-                console.log("Barometer.stop()")
             };
         } catch (err) {
             setError(err.message);
@@ -72,33 +65,16 @@ export const SensorProvider = ({ children }) => {
 
         // console.log(timeDiff, speed, speedKF)
         setVerticalSpeedKF(speedKF)
-
         setLastTimestamp(timestamp)
         setAltitude(newAltitude)
     }, [timestamp]);
 
     return (
-        <SensorContext.Provider value={{ pressure, altitude, verticalSpeed, verticalSpeedKF, error, isLoading, lastTimestamp }}>
+        <AltitudeContext.Provider value={{ pressure, altitude, verticalSpeed, verticalSpeedKF, error, isLoading, lastTimestamp }}>
             {children}
-        </SensorContext.Provider>
+        </AltitudeContext.Provider>
     );
 };
 
-export const useSensor = () => useContext(SensorContext);
+export const useAltitude = () => useContext(AltitudeContext);
 
-
-// const timeDiff = (currentTimestamp -lastTimestamp); //  getlastTimestamp());
-// const newAltitude = altitudeISAByPres(newPressure);
-
-// const altitudeChange = newAltitude - altitude;
-// const speed = altitudeChange / timeDiff; // meters per second
-
-// setVerticalSpeedKF(kf.filter(speed))
-// setPressure(newPressure);
-// setAltitude(newAltitude);
-
-// setVerticalSpeed(speed);
-// setLastTimestamp(currentTimestamp);
-// setAltitude(altitudeISAByPres(newPressure))
-// // console.log("---",verticalSpeed, verticalSpeedKF, timeDiff, lastTimestamp, getlastTimestamp(), currentTimestamp)
-// console.log("---", timeDiff, lastTimestamp,  currentTimestamp)
