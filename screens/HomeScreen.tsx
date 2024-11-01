@@ -55,11 +55,11 @@ const SensorDisplay  = () => {
   return (
     pressure ?
       <View>
-       <Text style={styles.field}>baro altitude: {Math.round(altitude * 100) / 100} m</Text>
+       <Text style={styles.field}>baro altitude: {Math.round(altitude * 1000) / 1000} m</Text>
 
         {/* <Text style={styles.field}>baro pressure: {Math.round(pressure * 100) / 100} hPa</Text> */}
-        <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 100) / 100} m/s</Text>
-        <Text style={styles.field}>baro vspeedKF: {Math.round(verticalSpeedKF * 100) / 100} m/s</Text>
+        <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 1000) / 1000} m/s</Text>
+        <Text style={styles.field}>baro vspeedKF: {Math.round(verticalSpeedKF * 1000) / 100}0 m/s</Text>
         <Text style={styles.field}>lastTimestamp: {lastTimestamp} m/s</Text>
 
 

@@ -8,10 +8,10 @@ const SensorContext = createContext();
 
 
 const kf = new KalmanFilter({
-    R: 0.01,
-    Q: 0.2,
-    A: 1, // 0.8,
-    C: 2
+    // R: 0.4,
+    // Q: 2,
+    //  A: 0.5, 
+    // C: 0.5
 });
 
 console.log("---kf init")
@@ -53,7 +53,7 @@ export const SensorProvider = ({ children }) => {
         } catch (err) {
             setError(err.message);
         } finally {
-            Barometer.setUpdateInterval(200);
+            Barometer.setUpdateInterval(500);
             setIsLoading(false);
         }
     };
@@ -70,7 +70,7 @@ export const SensorProvider = ({ children }) => {
         setVerticalSpeed(speed);
         const speedKF = kf.filter(speed)
 
-        console.log(timeDiff, speed, speedKF)
+        // console.log(timeDiff, speed, speedKF)
         setVerticalSpeedKF(speedKF)
 
         setLastTimestamp(timestamp)
