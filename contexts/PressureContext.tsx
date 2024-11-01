@@ -1,8 +1,12 @@
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { altitudeISAByPres, windspeedMSToKMH } from 'meteojs/calc.js';
+import KalmanFilter from 'kalmanjs';
+
 import {
     // Accelerometer,
     Barometer,
+    BarometerMeasurement
     // DeviceMotion,
     // Gyroscope,
     // LightSensor,
@@ -13,11 +17,21 @@ import {
 
 const PressureContext = createContext();
 
+Barometer.setUpdateInterval(100);
+
 export const PressureProvider = ({ children }) => {
     const [pressure, setPressure] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [altitude, setAltitude] = useState(0);
+    const [lastAltitude, setLastAltitude] = useState(0);
+    const [timestamp, setTimestamp] = useState(-1);
+    const [vspeed, setVspeed] = useState(0);
+    const [vspeedKF, setVspeedKF] = useState(0);
 
+    const getTimestamp = () => { return timestamp; }
+
+    const kf = new KalmanFilter({R: 0.01, Q: 3});
     useEffect(() => {
         const subscribe = async () => {
             setIsLoading(true);
@@ -30,8 +44,26 @@ export const PressureProvider = ({ children }) => {
             }
 
             try {
-                const subscription = Barometer.addListener(pressureData => {
-                    setPressure(pressureData);
+                const subscription = Barometer.addListener(barometerData => {
+                    setPressure(barometerData);
+                    const newAltitude = altitudeISAByPres(barometerData.pressure);
+                    const newTimestamp = barometerData.timestamp;
+                    // const ts = getTimestamp()
+
+                    // if (ts > 0) {
+                    //     const dt = newTimestamp - ts;
+                    //     const vs = (newAltitude - altitude) / dt;
+                    //     setVspeed(vs);
+                    //     setVspeedKF(kf.filter(vs))
+                    //     // console.log(vs, vspeedKF)
+
+                    // } else {
+                    //     // console.log("timestamp", timestamp)
+
+                    // }
+                    // setAltitude(newAltitude);
+                    // setTimestamp(newTimestamp);
+                    // console.log("newTimestamp", newTimestamp, timestamp, ts)
                 });
 
                 return () => {
@@ -50,7 +82,7 @@ export const PressureProvider = ({ children }) => {
     }, []);
 
     return (
-        <PressureContext.Provider value={{ pressure, error, isLoading }}>
+        <PressureContext.Provider value={{ pressure, altitude, vspeed, vspeedKF, error, isLoading }}>
             {children}
         </PressureContext.Provider>
     );

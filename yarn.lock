@@ -4340,7 +4340,7 @@ expo-router@~3.5.23:
     react-native-helmet-async "2.0.4"
     schema-utils "^4.0.1"
 
-expo-sensors@~13.0.9:
+expo-sensors@^13.0.9:
   version "13.0.9"
   resolved "https://registry.yarnpkg.com/expo-sensors/-/expo-sensors-13.0.9.tgz#7c937925df131f6ea3abd247d60464f80987eb42"
   integrity sha512-yi/TERUP8dpsJWWRgjT+UuQ7PI604PMndwXh9iBnfNO7q+dtoKZKsVSNJw61IKLNflbtCAyJxgmzPoe/JDT04Q==
@@ -5729,6 +5729,11 @@ jsonify@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.1.tgz#2aa3111dae3d34a0f151c63f3a45d995d9420978"
   integrity sha512-2/Ki0GcmuqSrgFyelQq9M05y7PS0mEwuIzrf3f1fPqkVDVRvZrPZtVSMHxdgo8Aq0sxAOb/cr2aqqA3LeWHVPg==
+
+kalmanjs@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/kalmanjs/-/kalmanjs-1.1.0.tgz#9554566a0a7ca72722d35a23ab05915c0ddba99e"
+  integrity sha512-Gkm2DAKIX8geuDcEJ92e80EmQ6TyIzWBJk6AFk+aDLofQ4G/KoDe1RCY9WMuXFe0NQxsTi7HYh9BVQneOtlvkg==
 
 keyv@^4.5.4:
   version "4.5.4"
