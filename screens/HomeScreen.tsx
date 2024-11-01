@@ -49,7 +49,7 @@ const LocationDisplay = () => {
 // }
 
 const SensorDisplay  = () => { 
-  const {pressure, altitude, verticalSpeed, verticalSpeedKF, error, isLoading } = useSensor();
+  const {pressure, altitude, verticalSpeed, verticalSpeedKF, error, isLoading, lastTimestamp } = useSensor();
   // console.log(verticalSpeed, verticalSpeedKF)
 
   return (
@@ -60,6 +60,7 @@ const SensorDisplay  = () => {
         {/* <Text style={styles.field}>baro pressure: {Math.round(pressure * 100) / 100} hPa</Text> */}
         <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 100) / 100} m/s</Text>
         <Text style={styles.field}>baro vspeedKF: {Math.round(verticalSpeedKF * 100) / 100} m/s</Text>
+        <Text style={styles.field}>lastTimestamp: {lastTimestamp} m/s</Text>
 
 
       </View>
