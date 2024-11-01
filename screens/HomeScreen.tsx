@@ -49,7 +49,7 @@ const LocationDisplay = () => {
 // }
 
 const SensorDisplay  = () => { 
-  const {pressure,altitude, verticalSpeed, verticalSpeedKF } = useSensor();
+  const {pressure, altitude, verticalSpeed, verticalSpeedKF, error, isLoading } = useSensor();
   // console.log(verticalSpeed, verticalSpeedKF)
 
   return (

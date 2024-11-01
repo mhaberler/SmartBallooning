@@ -15,45 +15,47 @@ export const SensorProvider = ({ children }) => {
     const [error, setError] = useState(null);
 
     const kf = new KalmanFilter({ R: 0.3, Q: 3 });
+
+    const subscribe = async () => {
+        setIsLoading(true);
+        let { status } = await Barometer.isAvailableAsync();
+        if (status) {
+            setError('pressure sensor not available');
+            setIsLoading(false);
+            return;
+        }
+        try {
+            const subscription = Barometer.addListener(({ pressure: newPressure, timestamp }) => {
+                const currentTimestamp = timestamp || Date.now();
+                const timeDiff = (currentTimestamp - lastTimestamp);
+                const newAltitude = altitudeISAByPres(newPressure);
+
+                const altitudeChange = newAltitude - altitude;
+                const speed = altitudeChange / timeDiff; // meters per second
+
+                setVerticalSpeedKF(kf.filter(speed))
+                setPressure(newPressure);
+                setAltitude(newAltitude);
+
+                setVerticalSpeed(speed);
+                setLastTimestamp(currentTimestamp);
+                setAltitude(altitudeISAByPres(newPressure))
+                console.log(verticalSpeed, verticalSpeedKF)
+
+            });
+            return () => {
+                subscription.remove();
+                Barometer.stop();
+                console.log("Barometer.stop()")
+            };
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const subscribe = async () => {
-            setIsLoading(true);
-            let { status } = await Barometer.isAvailableAsync();
-            if (status) {
-                setError('pressure sensor not available');
-                setIsLoading(false);
-                return;
-            }
-            try {
-                const subscription = Barometer.addListener(({ pressure: newPressure, timestamp }) => {
-                    const currentTimestamp = timestamp || Date.now();
-                    const timeDiff = (currentTimestamp - lastTimestamp);
-                    const newAltitude = altitudeISAByPres(newPressure);
-
-                    const altitudeChange = newAltitude - altitude;
-                    const speed = altitudeChange / timeDiff; // meters per second
-
-                    setVerticalSpeedKF(kf.filter(speed))
-                    setPressure(newPressure);
-                    setAltitude(newAltitude);
-
-                    setVerticalSpeed(speed);
-                    setLastTimestamp(currentTimestamp);
-                    setAltitude(altitudeISAByPres(newPressure))
-                    console.log(verticalSpeed, verticalSpeedKF)
-
-                });
-                return () => {
-                    subscription.remove();
-                    Barometer.stop();
-                    console.log("Barometer.stop()")
-                };
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setIsLoading(false);
-            }
-        };
         subscribe();
     }, []);
     return (
