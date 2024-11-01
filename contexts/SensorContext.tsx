@@ -4,7 +4,17 @@ import { altitudeISAByPres, windspeedMSToKMH } from 'meteojs/calc.js';
 import KalmanFilter from 'kalmanjs';
 
 const SensorContext = createContext();
+//const kf = new KalmanFilter();
 
+
+const kf = new KalmanFilter({
+    R: 0.01,
+    Q: 0.2,
+    A: 1, // 0.8,
+    C: 2
+});
+
+console.log("---kf init")
 export const SensorProvider = ({ children }) => {
     const [pressure, setPressure] = useState(0);
     const [altitude, setAltitude] = useState(0);
@@ -16,7 +26,8 @@ export const SensorProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const kf = new KalmanFilter({ R: 0.3, Q: 3 });
+
+
     const getlastTimestamp = (() => { return lastTimestamp });
 
     const subscribe = async () => {
@@ -42,7 +53,7 @@ export const SensorProvider = ({ children }) => {
         } catch (err) {
             setError(err.message);
         } finally {
-            Barometer.setUpdateInterval(1000);
+            Barometer.setUpdateInterval(200);
             setIsLoading(false);
         }
     };
@@ -52,17 +63,18 @@ export const SensorProvider = ({ children }) => {
     }, []);
 
     useEffect(() => {
-        console.log("--- timestamp change", timestamp)
-        if (timestamp == 0) {
-            return;
-        }
-        const timeDiff = (timestamp -lastTimestamp); 
-        // if (timeDiff == 0) {
-        //     setLastTimestamp(timestamp)
-        //     return;
-        // }
-        console.log(timeDiff)
+        const timeDiff = (timestamp - lastTimestamp);
+        const newAltitude = altitudeISAByPres(pressure);
+        const altitudeChange = newAltitude - altitude;
+        const speed = altitudeChange / timeDiff; // meters per second
+        setVerticalSpeed(speed);
+        const speedKF = kf.filter(speed)
+
+        console.log(timeDiff, speed, speedKF)
+        setVerticalSpeedKF(speedKF)
+
         setLastTimestamp(timestamp)
+        setAltitude(newAltitude)
     }, [timestamp]);
 
     return (
