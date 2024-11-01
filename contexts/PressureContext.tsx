@@ -17,7 +17,7 @@ import {
 
 const PressureContext = createContext();
 
-Barometer.setUpdateInterval(100);
+// Barometer.setUpdateInterval(100);
 
 export const PressureProvider = ({ children }) => {
     const [pressure, setPressure] = useState(null);

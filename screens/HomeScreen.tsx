@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LocationProvider, useLocation } from '../contexts/LocationContext';
 import { PressureProvider, usePressure } from '../contexts/PressureContext';
-import { AltitudeProvider, AltitudeContext, useAltitude } from '../contexts/AltitudeContext';
+// import { AltitudeProvider, AltitudeContext, useAltitude } from '../contexts/AltitudeContext';
+import { SensorProvider, useSensor } from '../contexts/SensorContext';
 import { BLEProvider, useBLE } from '../contexts/BLEContext';
 
 import { altitudeISAByPres, windspeedMSToKMH } from 'meteojs/calc.js';
@@ -33,32 +34,31 @@ const LocationDisplay = () => {
 };
 
 
-const AltitudeDisplay = () => {
-  const { altitude, verticalSpeed } = useAltitude();
-  return (
-    altitude ?
-      <View>
-        <Text style={styles.field}>baro altitude: {Math.round(altitude * 100) / 100} m</Text>
-        <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 100) / 100} m/s</Text>
-        {/* <Text style={styles.field}>vspeedKF: {Math.round(vspeedKF * 100) / 100} m/s</Text> */}
+// const AltitudeDisplay = () => {
+//   const { altitude, verticalSpeed } = useAltitude();
+//   return (
+//     altitude ?
+//       <View>
+//         <Text style={styles.field}>baro altitude: {Math.round(altitude * 100) / 100} m</Text>
+//         <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 100) / 100} m/s</Text>
+//         {/* <Text style={styles.field}>vspeedKF: {Math.round(vspeedKF * 100) / 100} m/s</Text> */}
 
-      </View>
-      : null
-  );
-}
+//       </View>
+//       : null
+//   );
+// }
 
-const PressureDisplay = () => {
-  const { pressure, altitude, vspeed, vspeedKF, error, isLoading } = usePressure();
-
-  if (isLoading) return <Text>Loading pressure data...</Text>;
-  if (error) return <Text>Error: {error}</Text>;
+const SensorDisplay  = () => { 
+  const {pressure,altitude, verticalSpeed } = useSensor();
 
   return (
     pressure ?
       <View>
-        <Text style={styles.field}>baro altitude: {Math.round(altitude * 100) / 100} m</Text>
-        <Text style={styles.field}>baro vspeed: {Math.round(vspeed * 100) / 100} m/s</Text>
-        <Text style={styles.field}>vspeedKF: {Math.round(vspeedKF * 100) / 100} m/s</Text>
+       <Text style={styles.field}>baro altitude: {Math.round(altitude * 100) / 100} m</Text>
+
+        <Text style={styles.field}>baro pressure: {Math.round(pressure * 100) / 100} hPa</Text>
+        <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 100) / 100} m/s</Text>
+
 
       </View>
       : null
@@ -115,9 +115,13 @@ const HomeScreen = () => {
       {/* <PressureProvider>
         <PressureDisplay />
       </PressureProvider> */}
-      <AltitudeProvider >
+      {/* <AltitudeProvider >
         <AltitudeDisplay />
-      </AltitudeProvider>
+      </AltitudeProvider> */}
+
+<SensorProvider>
+      <SensorDisplay />
+    </SensorProvider>
 
       <BLEProvider>
         <BLEDisplay />
