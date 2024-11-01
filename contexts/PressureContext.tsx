@@ -31,7 +31,7 @@ export const PressureProvider = ({ children }) => {
 
     const getTimestamp = () => { return timestamp; }
 
-    const kf = new KalmanFilter({R: 0.01, Q: 3});
+    const kf = new KalmanFilter({ R: 0.01, Q: 3 });
     useEffect(() => {
         const subscribe = async () => {
             setIsLoading(true);
@@ -42,28 +42,11 @@ export const PressureProvider = ({ children }) => {
                 setIsLoading(false);
                 return;
             }
-
             try {
                 const subscription = Barometer.addListener(barometerData => {
                     setPressure(barometerData);
                     const newAltitude = altitudeISAByPres(barometerData.pressure);
                     const newTimestamp = barometerData.timestamp;
-                    // const ts = getTimestamp()
-
-                    // if (ts > 0) {
-                    //     const dt = newTimestamp - ts;
-                    //     const vs = (newAltitude - altitude) / dt;
-                    //     setVspeed(vs);
-                    //     setVspeedKF(kf.filter(vs))
-                    //     // console.log(vs, vspeedKF)
-
-                    // } else {
-                    //     // console.log("timestamp", timestamp)
-
-                    // }
-                    // setAltitude(newAltitude);
-                    // setTimestamp(newTimestamp);
-                    // console.log("newTimestamp", newTimestamp, timestamp, ts)
                 });
 
                 return () => {
@@ -77,7 +60,6 @@ export const PressureProvider = ({ children }) => {
                 setIsLoading(false);
             }
         };
-
         subscribe();
     }, []);
 

@@ -3,43 +3,64 @@ import { Barometer } from 'expo-sensors';
 import { altitudeISAByPres, windspeedMSToKMH } from 'meteojs/calc.js';
 import KalmanFilter from 'kalmanjs';
 
-// Create a context for sensor data
 const SensorContext = createContext();
 
 export const SensorProvider = ({ children }) => {
-  const [pressure, setPressure] = useState(0);
-  const [altitude, setAltitude] = useState(0);
-  const [verticalSpeed, setVerticalSpeed] = useState(0);
-  const [lastTimestamp, setLastTimestamp] = useState(Date.now());
+    const [pressure, setPressure] = useState(0);
+    const [altitude, setAltitude] = useState(0);
+    const [verticalSpeed, setVerticalSpeed] = useState(0);
+    const [verticalSpeedKF, setVerticalSpeedKF] = useState(0);
+    const [lastTimestamp, setLastTimestamp] = useState(Date.now());
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const subscription = Barometer.addListener(({ pressure: newPressure, timestamp }) => {
-      const currentTimestamp = timestamp || Date.now();
-      const timeDiff = (currentTimestamp - lastTimestamp); 
+    const kf = new KalmanFilter({ R: 0.3, Q: 3 });
+    useEffect(() => {
+        const subscribe = async () => {
+            setIsLoading(true);
+            let { status } = await Barometer.isAvailableAsync();
+            if (status) {
+                setError('pressure sensor not available');
+                setIsLoading(false);
+                return;
+            }
+            try {
+                const subscription = Barometer.addListener(({ pressure: newPressure, timestamp }) => {
+                    const currentTimestamp = timestamp || Date.now();
+                    const timeDiff = (currentTimestamp - lastTimestamp);
+                    const newAltitude = altitudeISAByPres(newPressure);
 
-      // Assuming standard atmospheric conditions where 
-      // every 1 mbar change in pressure equates to roughly 8.5 meters of altitude change
-      const altitudeChange = (pressure - newPressure) * 8.5; // in meters
-      const speed = altitudeChange / timeDiff; // meters per second
+                    const altitudeChange = newAltitude - altitude;
+                    const speed = altitudeChange / timeDiff; // meters per second
 
-      setPressure(newPressure);
-      setVerticalSpeed(speed);
-      setLastTimestamp(currentTimestamp);
-      setAltitude(altitudeISAByPres(newPressure))
-    });
+                    setVerticalSpeedKF(kf.filter(speed))
+                    setPressure(newPressure);
+                    setAltitude(newAltitude);
 
-    // Start the barometer
-    Barometer.setUpdateInterval(1000); // Update every 500ms
+                    setVerticalSpeed(speed);
+                    setLastTimestamp(currentTimestamp);
+                    setAltitude(altitudeISAByPres(newPressure))
+                    console.log(verticalSpeed, verticalSpeedKF)
 
-    // Clean up
-    return () => subscription.remove();
-  }, [pressure]);
-
-  return (
-    <SensorContext.Provider value={{ pressure, altitude, verticalSpeed }}>
-      {children}
-    </SensorContext.Provider>
-  );
+                });
+                return () => {
+                    subscription.remove();
+                    Barometer.stop();
+                    console.log("Barometer.stop()")
+                };
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        subscribe();
+    }, []);
+    return (
+        <SensorContext.Provider value={{ pressure, altitude, verticalSpeed, verticalSpeedKF, error, isLoading }}>
+            {children}
+        </SensorContext.Provider>
+    );
 };
 
 export const useSensor = () => useContext(SensorContext);
