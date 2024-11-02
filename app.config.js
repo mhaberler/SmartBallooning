@@ -1,8 +1,12 @@
+console.log("----NODE_ENV", process.env.NODE_ENV)
+
 export default {
   expo: {
     newArchEnabled: true,
-    name: "SmartBallooning",
-    slug: "SmartBallooning",
+    name: process.env.NODE_ENV === 'development' ? 'SB development' : 'SB production',
+    // name: "SmartBallooning",
+    slug: process.env.NODE_ENV === 'development' ? 'SB development' : 'SB production',
+    // slug: "SmartBallooning",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/images/icon.png",
@@ -24,7 +28,9 @@ export default {
     },
     ios: {
       supportsTablet: true,
-      bundleIdentifier: "com.haberler.SmartBallooning",
+      // see npx expo run:android --variant freeDebug --app-id dev.expo.myapp.free
+      // https://docs.expo.dev/guides/local-app-development/
+      bundleIdentifier: "com.haberler.SmartBallooning", // process.env.NODE_ENV === 'development' ?  "com.haberler.SmartBallooning" :"com.haberler.SmartBallooningProd",
       infoPlist: {
         NSMotionUsageDescription: "Since iOS 17.4 the access is required to read the built-in barometer pressure sensor. Without this permission, the app will not be able to use the barometer option for altitude. Enable in Settings > App Name > Motion & Fitness",
         NSBonjourServices: [
@@ -33,9 +39,24 @@ export default {
           "_arduino._tcp"
         ],
         NSLocalNetworkUsageDescription: "Describe why you want to use local network discovery here"
-      }
+      },
+      // config: {
+      //   appName: {
+      //     debug: "SB Debug",
+      //     release:  "SB Release",
+      //     production:  "SB Production",
+      //   }
+      // }
     },
     android: {
+      // config: {
+      //   appName: {
+      //     debug: "SB Debug",
+      //     release:  "SB Release",
+      //     production:  "SB Production",
+          
+      //   }
+      // },
       adaptiveIcon: {
         foregroundImage: "./assets/images/adaptive-icon.png",
         backgroundColor: "#ffffff"

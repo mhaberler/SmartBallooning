@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "SmartBallooning.app"
-               BlueprintName = "SmartBallooning"
-               ReferencedContainer = "container:SmartBallooning.xcodeproj">
+               BuildableName = "SBproduction.app"
+               BlueprintName = "SBproduction"
+               ReferencedContainer = "container:SBproduction.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "SmartBallooningTests.xctest"
-               BlueprintName = "SmartBallooningTests"
-               ReferencedContainer = "container:SmartBallooning.xcodeproj">
+               BuildableName = "SBproductionTests.xctest"
+               BlueprintName = "SBproductionTests"
+               ReferencedContainer = "container:SBproduction.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "SmartBallooning.app"
-            BlueprintName = "SmartBallooning"
-            ReferencedContainer = "container:SmartBallooning.xcodeproj">
+            BuildableName = "SBproduction.app"
+            BlueprintName = "SBproduction"
+            ReferencedContainer = "container:SBproduction.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "SmartBallooning.app"
-            BlueprintName = "SmartBallooning"
-            ReferencedContainer = "container:SmartBallooning.xcodeproj">
+            BuildableName = "SBproduction.app"
+            BlueprintName = "SBproduction"
+            ReferencedContainer = "container:SBproduction.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

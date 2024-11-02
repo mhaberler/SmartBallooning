@@ -8,7 +8,7 @@ const AltitudeContext = createContext();
 // default = {R = 1, Q = 1, A = 1, B = 0, C = 1} 
 const kf = new KalmanFilter({
     // R: 0.4,
-     Q: 10,
+    //  Q: 10,
     //  A: 0.5, 
     // C: 0.5
 });
@@ -46,7 +46,7 @@ export const AltitudeProvider = ({ children }) => {
         } catch (err) {
             setError(err.message);
         } finally {
-            Barometer.setUpdateInterval(500);
+            Barometer.setUpdateInterval(200);
             setIsLoading(false);
         }
     };
@@ -63,7 +63,7 @@ export const AltitudeProvider = ({ children }) => {
         setVerticalSpeed(speed);
         const speedKF = kf.filter(speed)
 
-        // console.log(timeDiff, speed, speedKF)
+        console.log(timeDiff, speed, speedKF)
         setVerticalSpeedKF(speedKF)
         setLastTimestamp(timestamp)
         setAltitude(newAltitude)
