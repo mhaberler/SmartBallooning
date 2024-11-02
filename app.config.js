@@ -81,6 +81,8 @@ export default {
       favicon: "./assets/images/favicon.png"
     },
     plugins: [
+      "expo-build-properties",
+      "expo-font",
       "expo-router",
       "@maplibre/maplibre-react-native",
       [
