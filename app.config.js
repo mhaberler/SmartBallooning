@@ -2,11 +2,10 @@ console.log("----NODE_ENV", process.env.NODE_ENV)
 
 export default {
   expo: {
-    newArchEnabled: true,
+    newArchEnabled: false,
     name: process.env.NODE_ENV === 'development' ? 'SB development' : 'SB production',
     // name: "SmartBallooning",
-    slug: process.env.NODE_ENV === 'development' ? 'SB development' : 'SB production',
-    // slug: "SmartBallooning",
+    slug: process.env.NODE_ENV === 'development' ? 'SmartBallooning' : 'SmartBallooning',
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/images/icon.png",
