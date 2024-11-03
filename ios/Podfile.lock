@@ -1469,13 +1469,6 @@ PODS:
     - Yoga
   - RNWifi (4.13.0):
     - React-Core
-  - RNZipArchive (6.1.2):
-    - React-Core
-    - RNZipArchive/Core (= 6.1.2)
-    - SSZipArchive (~> 2.2)
-  - RNZipArchive/Core (6.1.2):
-    - React-Core
-    - SSZipArchive (~> 2.2)
   - Sentry/HybridSDK (8.36.0)
   - SocketRocket (0.7.0)
   - "sqlite3 (3.45.3+1)":
@@ -1487,7 +1480,6 @@ PODS:
     - sqlite3/common
   - "sqlite3/fts5 (3.45.3+1)":
     - sqlite3/common
-  - SSZipArchive (2.4.3)
   - Yoga (0.0.0)
   - ZXingObjC/Core (3.6.9)
   - ZXingObjC/OneD (3.6.9):
@@ -1605,7 +1597,6 @@ DEPENDENCIES:
   - RNShare (from `../node_modules/react-native-share`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - RNWifi (from `../node_modules/react-native-wifi-reborn`)
-  - RNZipArchive (from `../node_modules/react-native-zip-archive`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1614,7 +1605,6 @@ SPEC REPOS:
     - Sentry
     - SocketRocket
     - sqlite3
-    - SSZipArchive
     - ZXingObjC
 
 EXTERNAL SOURCES:
@@ -1833,8 +1823,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-vector-icons"
   RNWifi:
     :path: "../node_modules/react-native-wifi-reborn"
-  RNZipArchive:
-    :path: "../node_modules/react-native-zip-archive"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1947,11 +1935,9 @@ SPEC CHECKSUMS:
   RNShare: 0fad69ae2d71de9d1f7b9a43acf876886a6cb99c
   RNVectorIcons: 845eda5c7819bd29699cafd0fc98c9d4afe28c96
   RNWifi: 89e8d602c782b6e0a4e4ecca3e26b62c9c6b5dab
-  RNZipArchive: 6d736ee4e286dbbd9d81206b7a4da355596ca04a
   Sentry: f8374b5415bc38dfb5645941b3ae31230fbeae57
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   sqlite3: 02d1f07eaaa01f80a1c16b4b31dfcbb3345ee01a
-  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Yoga: 950bbfd7e6f04790fdb51149ed51df41f329fcc8
   ZXingObjC: 8898711ab495761b2dbbdec76d90164a6d7e14c5
 
