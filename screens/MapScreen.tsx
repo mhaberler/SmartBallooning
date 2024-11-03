@@ -36,7 +36,8 @@ const MapDisplay = () => {
 
           >
             <MapLibreGL.Camera
-              zoomLevel={4}
+              zoomLevel={8}
+              centerCoordinate={ [15, 47]}
             />
             <UserLocation visible={true} animated={true} showsUserHeadingIndicator={true} androidRenderMode="compass" />
             <HeadingIndicator heading={270} />
