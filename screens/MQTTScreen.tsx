@@ -25,7 +25,7 @@ import { View, Text, Button } from 'react-native';
 import Paho from 'paho-mqtt';
 import uuid from 'react-native-uuid';
 import Constants from 'expo-constants';
-const { mqttUser, mqttPassword, mqttBroker, mqttSsl, mqttPort, mqttWsPort, mqttTopic } = Constants.manifest.extra;
+const { mqttUser, mqttPassword, mqttBroker, mqttSsl, mqttPort, mqttWsPort, mqttTopic } = Constants.expoConfig.extra;
 const uniqueString = uuid.v4();
 
 const MQTTScreen = () => {
