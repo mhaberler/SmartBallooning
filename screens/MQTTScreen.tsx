@@ -25,7 +25,13 @@ import { View, Text, Button } from 'react-native';
 import Paho from 'paho-mqtt';
 import uuid from 'react-native-uuid';
 import Constants from 'expo-constants';
-const { mqttUser, mqttPassword, mqttBroker, mqttSsl, mqttPort, mqttWsPort, mqttTopic } = Constants.expoConfig.extra;
+const { mqttUser, mqttPassword, mqttBroker, mqttSsl, mqttPort, mqttWsPort, mqttTopic,useLeaflet, useNFC} = Constants.expoConfig.extra;
+if (mqttUser == 'test') {
+  console.log("------test",mqttUser,useLeaflet, useNFC)
+} else {
+  console.log("-!!!!--test",mqttUser,useLeaflet, useNFC)
+
+}
 const uniqueString = uuid.v4();
 
 const MQTTScreen = () => {

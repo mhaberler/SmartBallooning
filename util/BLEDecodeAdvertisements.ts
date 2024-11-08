@@ -12,10 +12,10 @@ export const decodeBLE = (ad) => {
     if (data.length < 2)
         return {};
     const view = new DataView(data.buffer);
-
     const mfId = view.getInt16(0, true);
+
     // console.log("mfid: " + mfId.toString(16), view.buffer.byteLength)
-    // console.log(ad)
+
 
     let t = {}
     switch (mfId) {
@@ -34,8 +34,8 @@ export const decodeBLE = (ad) => {
         case 0x00AC: // TPMS manufacturer ID variant 2
             t = parseTPMS00AC(view);
             break;
-        case 0xFFFF: // mystery sensor
-            t = parseMystery(view);
+        case -1: // mystery sensor
+            t = parseMystery(view, ad);
             break;
         default: ;
     }

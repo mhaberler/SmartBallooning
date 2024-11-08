@@ -63,7 +63,7 @@ export const AltitudeProvider = ({ children }) => {
         setVerticalSpeed(speed);
         const speedKF = kf.filter(speed)
 
-        console.log(timeDiff, speed, speedKF)
+        // console.log(timeDiff, speed, speedKF)
         setVerticalSpeedKF(speedKF)
         setLastTimestamp(timestamp)
         setAltitude(newAltitude)

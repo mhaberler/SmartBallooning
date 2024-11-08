@@ -1,17 +1,28 @@
 import { volt2percent, bytesToMacAddress } from './misc'
 
-export const parseMystery = function (data : DataView) : any{
-    if (data.buffer.byteLength != 21) {
+export const parseMystery = function (data : DataView, ad: Object) : any{
+
+    if (data.buffer.byteLength != 12) {
         return {};
     }
+    mystery = {}
+    mystery.mac = bytesToMacAddress(data, 2);
+    let level = data.getInt16(8, true);
+    if (level == -32768) {
+        mystery.status = "no sensor"
+    } else {
+        mystery.status = "OK"
+        mystery.level = level
+    }
+    if (ad?.rssi)
+        mystery.rssi = ad.rssi;
+    mystery.buttonPressed = ad.isConnectable;
+    mystery.name = ad.name;
+    mystery.txPowerLevel = ad.txPowerLevel;
 
-    tpms = {}
-    tpms.pressure = data.getInt32(0, true) / 100000.0;
-    tpms.temperature = data.getInt32(4, true) / 100.0 + 273.15;
-    tpms.batpct = data.getUint8(8);
-    tpms.location = data.getUint8(9) & 0x7f;
-    tpms.mac = bytesToMacAddress(data, 9);
+    mystery.voltage = data.getInt16(10, true) / 1000.0;
+    console.log("----- mystery", JSON.stringify(mystery))
 
-    return tpms;
+    return mystery;
 };
 

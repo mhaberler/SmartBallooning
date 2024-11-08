@@ -17,6 +17,9 @@ export default {
       backgroundColor: "#ffffff"
     },
     extra: {
+      useLeaflet: true,
+      useNFC: false,
+      useKalmanjs: true,
       mqttUser: process.env.MQTT_USER || "ro",
       mqttPassword: process.env.MQTT_PASS || "readonly",
       mqttBroker: process.env.MQTT_BROKER || "test.mosquitto.org",

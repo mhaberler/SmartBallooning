@@ -181,6 +181,9 @@ import {
       };
       for (const service of info.characteristics) {
         if (
+          // 0x180A - Device Information Service
+          // 0x2a29 - Manufacturer Name String
+          // 2a24 - Model Number String
           service.service === "180a" &&
           (service.characteristic === "2a29" || service.characteristic === "2a24")
         ) {
