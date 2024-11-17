@@ -119,19 +119,19 @@ export default {
           motionPermission: "Allow $(PRODUCT_NAME) to access your device motion."
         }
       ],
-      [
-        "react-native-nfc-manager",
-        {
-          nfcPermission: "Custom NFC permission message",
-          // "selectIdentifiers": [
-          //   "A0000002471001"
-          // ],
-          // "systemCodes": [
-          //   "8008"
-          // ],
-          // "includeNdefEntitlement": false,
-        }
-      ]
+      // [
+      //   "react-native-nfc-manager",
+      //   {
+      //     nfcPermission: "Custom NFC permission message",
+      //     // "selectIdentifiers": [
+      //     //   "A0000002471001"
+      //     // ],
+      //     // "systemCodes": [
+      //     //   "8008"
+      //     // ],
+      //     // "includeNdefEntitlement": false,
+      //   }
+      // ]
     ],
     experiments: {
       typedRoutes: true
