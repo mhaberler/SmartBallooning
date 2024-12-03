@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Platform, StyleSheet, View } from 'react-native';
 import MapLibreGL, { MapView, RasterSource, Camera, locationManager, Location, UserLocation, } from '@maplibre/maplibre-react-native';
 import { request, PERMISSIONS, RESULTS } from 'react-native-permissions';
-import HeadingIndicator from '@maplibre/maplibre-react-native/javascript/components/HeadingIndicator';
+// import HeadingIndicator from '@maplibre/maplibre-react-native/javascript/components/HeadingIndicator';
 import { LocationProvider, useLocation } from '../contexts/LocationContext';
 
 
@@ -40,7 +40,7 @@ const MapDisplay = () => {
               centerCoordinate={ [15, 47]}
             />
             <UserLocation visible={true} animated={true} showsUserHeadingIndicator={true} androidRenderMode="compass" />
-            <HeadingIndicator heading={270} />
+            {/* <HeadingIndicator heading={270} /> */}
             <MapLibreGL.RasterSource {...rasterSourceProps}>
               <MapLibreGL.RasterLayer
                 id="stamenWatercolorLayer"
@@ -60,7 +60,7 @@ const MapDisplay = () => {
         >
           <Camera zoomLevel={12} centerCoordinate={[location?.coords.longitude, location?.coords.latitude]} followUserLocation />
           <UserLocation visible={true} animated={true} showsUserHeadingIndicator={true} androidRenderMode="compass" />
-          <HeadingIndicator heading={270} />
+          {/* <HeadingIndicator heading={270} /> */}
           {/* <HeadingIndicator heading={location?.coords.heading ? location.coords.heading : null} /> */}
           {/* <RasterSource tileUrlTemplates={["https://api.maptiler.com/tiles/jp-forest/{z}/{x}/{y}.png?key=8P7TgUWT5JtUUmMMgtga"]} /> */}
 
