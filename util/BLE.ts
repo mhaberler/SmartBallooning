@@ -15,7 +15,7 @@ import {
   import { Buffer } from "buffer";
 
   const BleManagerModule = NativeModules.BleManager;
-  const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
+  // const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
   let onUpdateCallback = () => {};
   let setIsScanning;
   let isStarted = false;
@@ -63,11 +63,15 @@ import {
           return;
         }
         await BleManager.start({ showAlert: false });
-        bleManagerEmitter.addListener(
-          "BleManagerDiscoverPeripheral",
-          handleDiscoverPeripheral
+        
+        // https://github.com/innoveit/react-native-ble-manager/pull/1285#issuecomment-2525458931
+        const subscription = BleManager.onDiscoverPeripheral(
+          (device) => { handleDiscoverPeripheral(device); }
         );
-        bleManagerEmitter.addListener("BleManagerStopScan", handleStopScan);
+
+        const stopScanSubscription = BleManager.onStopScan(
+          (device) => { handleStopScan(device); }
+        );
         nextAllowedUpdate = {};
         isStarted = true;
       }
