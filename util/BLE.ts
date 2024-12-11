@@ -63,7 +63,7 @@ import {
           return;
         }
         await BleManager.start({ showAlert: false });
-        
+
         // https://github.com/innoveit/react-native-ble-manager/pull/1285#issuecomment-2525458931
         const subscription = BleManager.onDiscoverPeripheral(
           (device) => { handleDiscoverPeripheral(device); }
@@ -116,12 +116,20 @@ import {
     if (permissions.length === 0) {
       return;
     }
+    console.log('[requestMultiple]', permissions);
+
     const requestResult = await PermissionsAndroid.requestMultiple(permissions);
+    console.log('[requestMultiple] ---done');
+
     for (const permission in requestResult) {
       if (requestResult[permission] !== PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('[notGranted]', permission);
+
         return false;
       }
     }
+    console.log('[permsAllFine]');
+
     await BleManager.enableBluetooth();
     return true;
   };

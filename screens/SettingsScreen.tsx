@@ -79,7 +79,7 @@ export default class SettingsScreen extends Component {
 
     this.setState({ services: [] })
 
-    zeroconf.scan('mqtt', 'tcp', 'local.')
+    zeroconf.scan('arduino', 'tcp', 'local.')
 
     clearTimeout(this.timeout)
     this.timeout = setTimeout(() => {

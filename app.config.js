@@ -23,9 +23,9 @@ export default {
       mqttUser: process.env.MQTT_USER || "ro",
       mqttPassword: process.env.MQTT_PASS || "readonly",
       mqttBroker: process.env.MQTT_BROKER || "test.mosquitto.org",
-      mqttSsl: process.env.MQTT_SSL  || '1',
+      mqttSsl: process.env.MQTT_SSL || '1',
       mqttPort: process.env.MQTT_PORT || 8091, // MQTT over WebSockets, encrypted, authenticated
-      mqttWsPort: process.env.MQTT_WSPORT || 443, 
+      mqttWsPort: process.env.MQTT_WSPORT || 443,
       mqttTopic: process.env.MQTT_TOPIC || "#"
     },
     ios: {
@@ -40,7 +40,9 @@ export default {
           "_mqttws._tcp.",
           "_arduino._tcp"
         ],
-        NSLocalNetworkUsageDescription: "Describe why you want to use local network discovery here"
+        NSLocalNetworkUsageDescription: "Describe why you want to use local network discovery here",
+        NSCameraUsageDescription: "needed to scan QR codes",
+        NSMicrophoneUsageDescription: "needed to record audio"
       },
       // config: {
       //   appName: {
@@ -56,7 +58,7 @@ export default {
       //     debug: "SB Debug",
       //     release:  "SB Release",
       //     production:  "SB Production",
-          
+
       //   }
       // },
       adaptiveIcon: {
@@ -65,16 +67,25 @@ export default {
       },
       package: "com.haberler.SmartBallooning",
       permissions: [
-        "android.permission.ACCESS_NETWORK_STATE",
-        "android.permission.ACCESS_WIFI_STATE",
-        "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+        // "android.permission.ACCESS_NETWORK_STATE",
+        // "android.permission.ACCESS_WIFI_STATE",
+        // "android.permission.CHANGE_WIFI_MULTICAST_STATE",
         "android.permission.CAMERA",
-        "android.permission.READ_EXTERNAL_STORAGE",
-        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.RECORD_AUDIO",
+        // "android.permission.READ_EXTERNAL_STORAGE",
+        // "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.BLUETOOTH_SCAN",
         "android.permission.BLUETOOTH",
         "android.permission.BLUETOOTH_ADMIN",
         "android.permission.BLUETOOTH_CONNECT",
-        "android.permission.HIGH_SAMPLING_RATE_SENSORS"
+        // "android.permission.HIGH_SAMPLING_RATE_SENSORS",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        //         <!-- Optional permissions -->
+        // <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+        // <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+        // <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
       ],
     },
     web: {

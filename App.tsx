@@ -1,6 +1,6 @@
 
 import React, {useRef, useState, useEffect} from 'react';
-import {AppState, StyleSheet, Text, View} from 'react-native';
+import {AppState, StyleSheet, Text, View, Platform} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,6 +14,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import HomeScreen from './screens/HomeScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import QRCodeScreen from './screens/QRCodeScreen';
+// import QRCodeScreen from './screens/newQRScreen';
 import VertcialProfileScreen from './screens/VerticalProfileScreen';
 // import NFCScreen from './screens/NFCScreen';
 import MQTTScreen from './screens/MQTTScreen'
@@ -21,6 +22,8 @@ import MapScreen from './screens/MapScreen'
 // import UPlotExample from './screens/UplotScreen'
 
 // import AppStateExample from './AppStateExample'
+
+console.log("Platform.Version:", Platform.Version)
 
 const Tab = createBottomTabNavigator();
 

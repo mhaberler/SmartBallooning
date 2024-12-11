@@ -2375,6 +2375,13 @@
     "@types/react" "*"
     "@types/react-native" "^0.70"
 
+"@types/react-native-zeroconf@^0.13.1":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/@types/react-native-zeroconf/-/react-native-zeroconf-0.13.1.tgz#59ae87bf2b86054a7056beec2c2a31f9e713bd4e"
+  integrity sha512-edAbIS+1/o9OTYU6S7stNli9ATHlJA2z2jOv6ZC+n38Q2qyUKqzycuD+hLqRLIxe1BibYYcpOoJtuoBkLSsdYg==
+  dependencies:
+    "@types/node" "*"
+
 "@types/react-native@0.67.8":
   version "0.67.8"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.67.8.tgz#edaaa0527b835fffbfc34c09874722b6e4a4d1f3"
@@ -4047,10 +4054,10 @@ expo-linking@~7.0.3:
     expo-constants "~17.0.0"
     invariant "^2.2.4"
 
-expo-location@~18.0.3:
-  version "18.0.3"
-  resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-18.0.3.tgz#ef6eb442bb18f75165caaf344be0c19a45820048"
-  integrity sha512-QwdPzbWWAqhTjUDMwbcnMnOpkNAZMjw//c345Fxf3BEKMPc9z1Tg4tMFUbnYGFaCrPcNYa2A13u4mtV1ha7wwQ==
+expo-location@~18.0.4:
+  version "18.0.4"
+  resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-18.0.4.tgz#ccc13fb12751b7b897ce286d77c411094187446b"
+  integrity sha512-OrZTxRpfi4bCJxjW186wt3kfoe0FHwXceE6dXdbxvjxnwMP9cbKeqY6Y2M1bVwboq7PI2eV/e1rOaGq+F+fZyw==
 
 expo-manifests@~0.15.0:
   version "0.15.3"
@@ -6741,11 +6748,6 @@ react-native-paper@^5.12.5:
     "@callstack/react-theme-provider" "^3.0.9"
     color "^3.1.2"
     use-latest-callback "^0.1.5"
-
-react-native-permissions@^5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-5.2.1.tgz#b028b7bc60d813588d8d3f2b80f19d1f67ba907f"
-  integrity sha512-F8CaDVi+zYjl2pO4Fwh5n5SCi5s0TvvRzQnczb8nwkzHJTv6HqlO6Sj1ZmqrAeuCN06b5Ysu9BEWhK4qT4ekXg==
 
 react-native-qrcode-svg@^6.3.12:
   version "6.3.12"
