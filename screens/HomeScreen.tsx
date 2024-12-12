@@ -49,7 +49,7 @@ const LocationDisplay = () => {
 // }
 
 const AltitudeDisplay = () => {
-  const { pressure, altitude, verticalSpeed, verticalSpeedKF, error, isLoading, lastTimestamp } = useAltitude();
+  const { pressure, altitude, verticalSpeed, error, isLoading, lastTimestamp } = useAltitude();
   // console.log(verticalSpeed, verticalSpeedKF)
 
   return (
@@ -59,7 +59,7 @@ const AltitudeDisplay = () => {
 
         {/* <Text style={styles.field}>baro pressure: {Math.round(pressure * 100) / 100} hPa</Text> */}
         <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 1000) / 1000} m/s</Text>
-        <Text style={styles.field}>baro vspeedKF: {Math.round(verticalSpeedKF * 1000) / 100} m/s</Text>
+        {/* <Text style={styles.field}>baro vspeedKF: {Math.round(verticalSpeedKF * 1000) / 100} m/s</Text> */}
         {/* <Text style={styles.field}>lastTimestamp: {lastTimestamp} m/s</Text> */}
 
 

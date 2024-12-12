@@ -12,13 +12,13 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 // Screens
 import HomeScreen from './screens/HomeScreen';
-import SettingsScreen from './screens/SettingsScreen';
-import QRCodeScreen from './screens/QRCodeScreen';
+// import SettingsScreen from './screens/SettingsScreen';
+// import QRCodeScreen from './screens/QRCodeScreen';
 // import QRCodeScreen from './screens/newQRScreen';
-import VertcialProfileScreen from './screens/VerticalProfileScreen';
+// import VertcialProfileScreen from './screens/VerticalProfileScreen';
 // import NFCScreen from './screens/NFCScreen';
-import MQTTScreen from './screens/MQTTScreen'
-import MapScreen from './screens/MapScreen'
+// import MQTTScreen from './screens/MQTTScreen'
+// import MapScreen from './screens/MapScreen'
 // import UPlotExample from './screens/UplotScreen'
 
 // import AppStateExample from './AppStateExample'
@@ -104,17 +104,17 @@ function App() {
       // })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Profile" component={VertcialProfileScreen} />
+        {/* <Tab.Screen name="Profile" component={VertcialProfileScreen} /> */}
         {/* <Tab.Screen name="Uplot" component={UPlotExample} /> */
             //  <Tab.Screen name="NFC" component={NFCScreen} />
         }
 
         
-        <Tab.Screen name="Map" component={MapScreen } />
+        {/* <Tab.Screen name="Map" component={MapScreen } />
         <Tab.Screen name="MQTT" component={MQTTScreen} />
    
         <Tab.Screen name="Sensors" component={QRCodeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} /> */}
 
         
       </Tab.Navigator>
