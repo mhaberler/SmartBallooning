@@ -74,7 +74,7 @@ const syncPressed = (report) => {
 
 const BLEDisplay = () => {
   const { scanning, error,
-    envelope, oat, tank1, tank2, tank3, tank4, tank5, tank6, pressure1, pressure2
+    envelope, oat, tank1, tank2, tank3, tank4, tank5, tank6
   } = useBLE();
 
   useEffect(() => {
@@ -89,6 +89,23 @@ const BLEDisplay = () => {
   if (!scanning) return <Text>scanning stopped</Text>;
   if (error) return <Text>Error: {error}</Text>;
 
+  function renderSensor(t) {
+
+
+    return t ? (
+      <View>
+        <Text style={styles.field}>{t.unit + ': '} 
+        {t.sensors.elg  ? t.sensors.elg.percent + '% ' : '' }
+        {t.sensors.otodata  ? t.sensors.otodata.percent + '% ' : '' }
+        {t.sensors.mopeka  ? Math.round(t.sensors.mopeka.level) + 'mm ' : '' }
+        {t.sensors.tpms  ? Math.round(t.sensors.tpms.pressure*10)/10 + 'bar ' : '' }
+        </Text>
+      </View>
+    ) :
+      null;
+
+  };
+
   return (
     <View>
       {/* return <View style={[{ backgroundColor }, style]} {...otherProps} />; */}
@@ -100,14 +117,21 @@ const BLEDisplay = () => {
         {tank1 ? tank1.unit + ':' : ''} {tank1.percent ? tank1.percent + '%' : ''}
         {pressure1 ? ' ' + Math.round(pressure1.pressure * 10) / 10 + ' bar' : ''}
       </Text> */}
-      <Text style={[syncPressed(tank1), styles.field]}>{tank1 ? tank1.unit + ':' : ''} {tank1 ? tank1.level + '%' : ''}</Text>
+      {renderSensor(tank1)}
+      {renderSensor(tank2)}
+      {renderSensor(tank3)}
+      {renderSensor(tank4)}
+      {renderSensor(tank5)}
+      {renderSensor(tank6)}
+
+      {/* <Text style={[syncPressed(tank1), styles.field]}>{tank1 ? tank1.unit + ':' : ''} {tank1 ? tank1.level + '%' : ''}</Text>
       <Text style={[syncPressed(tank2), styles.field]}>{tank2 ? tank2.unit + ':' : ''} {tank2 ? tank2.level + '%' : ''}</Text>
       <Text style={[syncPressed(tank3), styles.field]}>{tank3 ? tank3.unit + ':' : ''} {tank3 ? Math.round(tank3.level) : ''}</Text>
       <Text style={[syncPressed(tank4), styles.field]}>{tank4 ? tank4.unit + ':' : ''}  {tank4 ? Math.round(tank4.level) : ''}</Text>
       <Text style={[syncPressed(tank5), styles.field]}>{tank5 ? tank5.unit + ':' : ''}  {tank5 ? Math.round(tank5.level) : ''}</Text>
-      <Text style={[syncPressed(tank6), styles.field]}>{tank6 ? tank6.unit + ':' : ''}  {tank6 ? Math.round(tank6.level) : ''}</Text>
-      <Text style={styles.field}>pressure1: {pressure1 ? Math.round(pressure1.pressure * 10) / 10 : ''}</Text>
-      <Text style={styles.field}>pressure2: {pressure2 ? Math.round(pressure2.pressure * 10) / 10 : ''}</Text>
+      <Text style={[syncPressed(tank6), styles.field]}>{tank6 ? tank6.unit + ':' : ''}  {tank6 ? Math.round(tank6.level) : ''}</Text> */}
+      {/* <Text style={styles.field}>pressure1: {pressure1 ? Math.round(pressure1.pressure * 10) / 10 : ''}</Text>
+      <Text style={styles.field}>pressure2: {pressure2 ? Math.round(pressure2.pressure * 10) / 10 : ''}</Text> */}
 
       {/* <Text style={styles.field}>Envelope: {envelope !== {} ? envelope.temp + "°" : ''}</Text> */}
     </View>
@@ -150,7 +174,9 @@ const styles = StyleSheet.create({
   field: {
     fontSize: 20,
     fontWeight: 'bold',
-    // alignItems: 'right',
+    alignItems: 'center',
+    justifyContent: 'left',
+
   }
 });
 

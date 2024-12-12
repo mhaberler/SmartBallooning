@@ -60,7 +60,7 @@ const MOPEKA_TANK_LEVEL_COEFFICIENTS_PROPANE_2 = -0.00000535;
 export const parseMopeka = function (data: DataView, ad: Object): any {
     if (data.buffer.byteLength != 12)
         return {};
-    mopeka = {}
+    mopeka = { type: 'mopeka'}
 
     mopeka.batt = (data.getUint8(3) & 0x7f) / 32.0;
     mopeka.batpct = volt2percent(mopeka.batt);

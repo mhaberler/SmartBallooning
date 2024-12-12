@@ -5,7 +5,7 @@ export const parseMystery = function (data : DataView, ad: Object) : any{
     if (data.buffer.byteLength != 12) {
         return {};
     }
-    mystery = {}
+    mystery = { type: 'elg'}
     mystery.mac = bytesToMacAddress(data, 2);
     let level = data.getInt16(8, true);
     if (level == -32768) {

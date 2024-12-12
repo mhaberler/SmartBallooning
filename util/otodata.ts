@@ -1,7 +1,7 @@
 // import { volt2percent, bytesToMacAddress } from './misc'
 
 export const parseOtodata = function (data: DataView, ad: Object): any {
-    otodata = {}
+    otodata = { type: 'otodata'}
 
     // LOG  {"advertisement": "02010616ffb1034f544f54454c4502007a26000034650f00000017096c6576656c3a2039382e35202520766572746963616c", 
     // "id": "D8:2C:C3:C6:5D:32", "isConnectable": true,

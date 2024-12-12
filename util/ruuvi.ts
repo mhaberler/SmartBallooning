@@ -9,7 +9,7 @@ export const parseRuuvi = function (data : DataView, ad: Object): any {
         // old ruuvi fw
         return {};
     }
-    const ruuvi = {};
+    const ruuvi = { type: 'ruuvi'};
     let v = data.getInt16(3)
     if (v != 0x8000) {
         ruuvi.temp = Math.round(v * 0.005 * 100) / 100;
