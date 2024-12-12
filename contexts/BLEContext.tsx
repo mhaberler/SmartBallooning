@@ -23,35 +23,53 @@ export const BLEProvider = ({ children }) => {
     const [tank2, setTank2] = useState(null);
     const [tank3, setTank3] = useState(null);
     const [tank4, setTank4] = useState(null);
-    const [pressure, setPressure] = useState(null);
+    const [tank5, setTank5] = useState(null);
+    const [tank6, setTank6] = useState(null);
+    const [pressure1, setPressure1] = useState(null);
+    const [pressure2, setPressure2] = useState(null);
 
     const sensormap = {
-        "C2:6E:D1:70:2B:44": setEnvelope,
-        "D4:15:5C:77:56:68": setOat,
-        "1C:34:F1:F6:75:E1" : setTank1, // mystery
-        "F8:EE:CC:42:AF:8D": setTank2,  // otodata
+        "C2:6E:D1:70:2B:44": { func: setEnvelope, unit: "envelope" },
+        "DD:79:C6:8F:BD:A2": { func: setOat, unit: "oat" },
 
-        
-        // "6E:8D:17": setTank1,
-        // "42:FD:86": setTank2,
-        // "9B:EA:A3": setTank3,
-        "82:EA:CA:32:22:4C": setPressure
+        "E1:75:F6:F1:34:1C": { func: setTank1, unit: "5020/27", aspect: "percent" }, // mystery 
+        "82:EA:CA:32:22:4C": { func: setTank1, unit: "5020/27", aspect: "pressure" }, // tpms
+        "C7:D8:88:F2:EB:44": { func: setTank1, unit: "5020/27", aspect: "level" }, // mopeka
+        "F2:EB:44": { func: setTank1, unit: "5020/27", aspect: "level" }, // mopeka
+
+        "F8:EE:CC:42:AF:8D": { func: setTank2, unit: "5020/16" }, // otodata
+        "80:EA:CA:11:79:6F": { func: setPressure2, unit: "5020/16" }, // tpms
+        "D8:C6:11:CA:12:55": { func: setTank2, unit: "5020/16" }, // mopeka
+        "CA:12:55": { func: setTank2, unit: "5020/16" }, // mopeka
+
+
+        "EC:A7:32:91:78:E2": { func: setTank3, unit: "5020/24" }, // mopeka
+        "91:78:E2": { func: setTank3, unit: "5020/24" }, // mopeka
+
+        "F8:95:D1:79:44:21": { func: setTank4, unit: "5020/15" }, // mopeka
+        "79:44:21": { func: setTank4, unit: "5020/15" }, // mopeka
+
+        "CA:E3:54:FA:09:B7": { func: setTank5, unit: "5020/69" }, // mopeka
+        "FA:09:B7": { func: setTank5, unit: "5020/69" }, // mopeka
+
+        "E7:38:29:A0:A1:D7": { func: setTank6, unit: "5020/40" }, // mopeka
+        "A0:A1:D7": { func: setTank6, unit: "5020/40" }, // mopeka
     }
 
     function updateCallback(p) {
         // console.log("--- updateCallback(p)" )
 
         const s = decodeBLE(p);
-        //  LOG  {"id": "77d0b863-bdb9-e712-bb3b-c5b15959be20", "isConnectable": 1, "localName": "Ruuvi 2B44", "manufacturerData": "9904050fb652ebffff01e00044fc78bd76289440c26ed1702b44", "name": "Ruuvi 2B44", "rssi": -65, "serviceUUIDs": "6e400001-b5a3-f393-e0a9-e50e24dcca9e"}
-        // {"accY": 17408, "accZ": 30972, "batpct": 100, "batt": 3115, "hum": 53.0675, "mac": "C2:6E:D1:70:2B:44", "moves": 40, "seq": 37952, "temp": 20.11, "txpwr": 4}
-        if (!isEmpty(s))
-            console.log(s)
         const id = s['mac']
         if (id) {
+            let desc =  sensormap[id];
+
             // console.log(s.mac)
             if (sensormap[id]) {
-                // console.log(s, sensormap[id])
-                sensormap[id](s)
+                desc = { unit: sensormap[id].unit}
+
+                console.log(sensormap[id].unit, ":", s)
+                sensormap[id].func(s)
             }
         }
         if (!isEmpty(s)) {
@@ -69,7 +87,7 @@ export const BLEProvider = ({ children }) => {
                     devices,
                     scanDuration,
                     updateCallback);
-                    console.log("----await startScan done")
+                console.log("----await startScan done")
 
             } catch (e) {
                 setError('BLE failed to start');
@@ -87,8 +105,8 @@ export const BLEProvider = ({ children }) => {
 
     return (
         <BLEContext.Provider value={{
-            scanning, devices, error, envelope, oat,
-            tank1, tank2, tank3, tank4
+            scanning, error, envelope, oat,
+            tank1, tank2, tank3, tank4, tank5, tank6, pressure1, pressure2
         }}>
             {children}
         </BLEContext.Provider>

@@ -55,10 +55,10 @@ const AltitudeDisplay = () => {
   return (
     pressure ?
       <View>
-        <Text style={styles.field}>baro altitude: {Math.round(altitude * 1000) / 1000} m</Text>
+        <Text style={styles.field}>baro altitude: {Math.round(altitude * 10) / 10} m</Text>
 
-        {/* <Text style={styles.field}>baro pressure: {Math.round(pressure * 100) / 100} hPa</Text> */}
-        <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 1000) / 1000} m/s</Text>
+        <Text style={styles.field}>baro pressure: {Math.round(pressure * 10) / 10} hPa</Text>
+        <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 10) / 10} m/s</Text>
         {/* <Text style={styles.field}>baro vspeedKF: {Math.round(verticalSpeedKF * 1000) / 100} m/s</Text> */}
         {/* <Text style={styles.field}>lastTimestamp: {lastTimestamp} m/s</Text> */}
 
@@ -73,8 +73,8 @@ const syncPressed = (report) => {
 };
 
 const BLEDisplay = () => {
-  const { scanning, devices, error,
-    envelope, oat, tank1, tank2, tank3, tank4, tank5, tank6
+  const { scanning, error,
+    envelope, oat, tank1, tank2, tank3, tank4, tank5, tank6, pressure1, pressure2
   } = useBLE();
 
   useEffect(() => {
@@ -94,12 +94,20 @@ const BLEDisplay = () => {
       {/* return <View style={[{ backgroundColor }, style]} {...otherProps} />; */}
 
       {/* <Text style={styles.field}>BLE Devices: {devices ? devices : ''}</Text> */}
-      <Text style={styles.field}>envelope: {envelope ? Math.round(envelope.temp * 10) / 10 : ''}</Text>
-      <Text style={styles.field}>oat: {oat ? Math.round(oat.temp * 10) / 10 : ''}</Text>
-      <Text style={[syncPressed(tank1), styles.field]}>tank1: {tank1 ? tank1.level : ''}</Text>
-      <Text style={[syncPressed(tank2), styles.field]}>tank2: {tank2 ? tank2.level : ''}</Text>
-      <Text style={[syncPressed(tank3), styles.field]}>tank3: {tank3 ? tank3.level : ''}</Text>
-      <Text style={[syncPressed(tank4), styles.field]}>tank4: {tank4 ? tank4.level : ''}</Text>
+      <Text style={styles.field}>envelope: {envelope ? Math.round(envelope.temp * 10) / 10 + '°' : ''}</Text>
+      <Text style={styles.field}>oat: {oat ? Math.round(oat.temp * 10) / 10 + '°' : ''}</Text>
+      {/* <Text style={[syncPressed(tank1), styles.field]}>
+        {tank1 ? tank1.unit + ':' : ''} {tank1.percent ? tank1.percent + '%' : ''}
+        {pressure1 ? ' ' + Math.round(pressure1.pressure * 10) / 10 + ' bar' : ''}
+      </Text> */}
+      <Text style={[syncPressed(tank1), styles.field]}>{tank1 ? tank1.unit + ':' : ''} {tank1 ? tank1.level + '%' : ''}</Text>
+      <Text style={[syncPressed(tank2), styles.field]}>{tank2 ? tank2.unit + ':' : ''} {tank2 ? tank2.level + '%' : ''}</Text>
+      <Text style={[syncPressed(tank3), styles.field]}>{tank3 ? tank3.unit + ':' : ''} {tank3 ? Math.round(tank3.level) : ''}</Text>
+      <Text style={[syncPressed(tank4), styles.field]}>{tank4 ? tank4.unit + ':' : ''}  {tank4 ? Math.round(tank4.level) : ''}</Text>
+      <Text style={[syncPressed(tank5), styles.field]}>{tank5 ? tank5.unit + ':' : ''}  {tank5 ? Math.round(tank5.level) : ''}</Text>
+      <Text style={[syncPressed(tank6), styles.field]}>{tank6 ? tank6.unit + ':' : ''}  {tank6 ? Math.round(tank6.level) : ''}</Text>
+      <Text style={styles.field}>pressure1: {pressure1 ? Math.round(pressure1.pressure * 10) / 10 : ''}</Text>
+      <Text style={styles.field}>pressure2: {pressure2 ? Math.round(pressure2.pressure * 10) / 10 : ''}</Text>
 
       {/* <Text style={styles.field}>Envelope: {envelope !== {} ? envelope.temp + "°" : ''}</Text> */}
     </View>

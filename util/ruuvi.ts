@@ -1,7 +1,7 @@
 import { volt2percent, bytesToMacAddress } from './misc'
 
 // https://docs.ruuvi.com/communication/bluetooth-advertisements/data-format-5-rawv2
-export const parseRuuvi = function (data: DataView): any {
+export const parseRuuvi = function (data : DataView, ad: Object): any {
 
     if (data.buffer.byteLength != 26)
         return false;
@@ -12,7 +12,7 @@ export const parseRuuvi = function (data: DataView): any {
     const ruuvi = {};
     let v = data.getInt16(3)
     if (v != 0x8000) {
-        ruuvi.temp = v * 0.005;
+        ruuvi.temp = Math.round(v * 0.005 * 100) / 100;
     }
     v = data.getUint16(5);
     if (v != 65535) {

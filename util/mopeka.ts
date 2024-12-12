@@ -57,7 +57,7 @@ const MOPEKA_TANK_LEVEL_COEFFICIENTS_PROPANE_0 = 0.573045;
 const MOPEKA_TANK_LEVEL_COEFFICIENTS_PROPANE_1 = -0.002822;
 const MOPEKA_TANK_LEVEL_COEFFICIENTS_PROPANE_2 = -0.00000535;
 
-export const parseMopeka = function (data: DataView): any {
+export const parseMopeka = function (data: DataView, ad: Object): any {
     if (data.buffer.byteLength != 12)
         return {};
     mopeka = {}
@@ -73,13 +73,17 @@ export const parseMopeka = function (data: DataView): any {
     mopeka.accX = data.getUint8(10);
     mopeka.accY = data.getUint8(11);
 
-    mopeka.raw_level = data.getUint16(5, true) & 0x3fff; // ((data[6] << 8) + data[5]) & 0x3fff;
+    mopeka.raw_level = data.getUint16(5, true) & 0x3fff; 
     mopeka.level = mopeka.raw_level *
         (MOPEKA_TANK_LEVEL_COEFFICIENTS_PROPANE_0 +
             (MOPEKA_TANK_LEVEL_COEFFICIENTS_PROPANE_1 * mopeka.raw_temp) +
             (MOPEKA_TANK_LEVEL_COEFFICIENTS_PROPANE_2 * mopeka.raw_temp *
                 mopeka.raw_temp));
+
+    mopeka.level = Math.round(mopeka.level * 10) / 10
     mopeka.mac = bytesToMacAddress(data, 7, 3);
+    if (ad?.rssi)
+        mopeka.rssi = ad.rssi;
     return mopeka;
 };
 

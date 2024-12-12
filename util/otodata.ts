@@ -1,6 +1,6 @@
 // import { volt2percent, bytesToMacAddress } from './misc'
 
-export const parseOtodata = function (data: DataView): any {
+export const parseOtodata = function (data: DataView, ad: Object): any {
     otodata = {}
 
     // LOG  {"advertisement": "02010616ffb1034f544f54454c4502007a26000034650f00000017096c6576656c3a2039382e35202520766572746963616c", 
@@ -15,8 +15,13 @@ export const parseOtodata = function (data: DataView): any {
     // >>> hex(9850) '0x267a'
 
     if (data.buffer.byteLength == 21) {
-        otodata.level = data.getUint16(11, true) / 100.0;
+        otodata.percent = data.getUint16(11, true) / 100.0;
         otodata.status = data.getUint16(13, true);
+        otodata.name = ad.name;
+        if (ad?.rssi)
+            otodata.rssi = ad.rssi;
+        // console.log("----- otodata21", JSON.stringify(otodata))
+        otodata.mac = ad.id;
     }
     if (data.buffer.byteLength == 24) {
 
@@ -44,6 +49,11 @@ export const parseOtodata = function (data: DataView): any {
         // >>> hex(1010) '0x3 f2'
         otodata.serial = data.getUint32(9, true).toString(10)
         otodata.model = data.getUint16(21, true).toString(10)
+        otodata.name = ad.name;
+        if (ad?.rssi)
+            otodata.rssi = ad.rssi;
+        // console.log("----- otodata24", JSON.stringify(otodata))
+
     }
     return otodata;
 };

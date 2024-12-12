@@ -20,19 +20,19 @@ export const decodeBLE = (ad) => {
     let t = {}
     switch (mfId) {
         case 0x0499:  // ruuvi
-            t = parseRuuvi(view);
+            t = parseRuuvi(view, ad);
             break;
         case 0x03b1:  // otodata
-            t = parseOtodata(view);
+            t = parseOtodata(view, ad);
             break;
         case 0x0059:  // mopeka
-            t = parseMopeka(view);
+            t = parseMopeka(view, ad);
             break;
         case 0x0100: // TPMS manufacturer ID variant 1
-            t = parseTPMS0100(view);
+            t = parseTPMS0100(view, ad);
             break;
         case 0x00AC: // TPMS manufacturer ID variant 2
-            t = parseTPMS00AC(view);
+            t = parseTPMS00AC(view, ad);
             break;
         case -1: // mystery sensor
             t = parseMystery(view, ad);

@@ -1,6 +1,6 @@
 import { volt2percent, bytesToMacAddress } from './misc'
 
-export const parseTPMS0100 = function (data : DataView) : any{
+export const parseTPMS0100 = function (data : DataView, ad: Object) : any{
     if (data.buffer.byteLength != 18) {
         return {};
     }
@@ -14,6 +14,8 @@ export const parseTPMS0100 = function (data : DataView) : any{
     tpms.temperature = data.getInt32(12, true) / 100.0;
     tpms.batpct = data.getUint8(16);
     tpms.status = data.getUint8(17);
+    if (ad?.rssi)
+        tpms.rssi = ad.rssi;
     return tpms;
 };
 
@@ -36,7 +38,7 @@ export const parseTPMS0100 = function (data : DataView) : any{
 //     uint8_t battery;
 //     uint8_t adress[6];
 // } tpms172Raw_t;
-export const parseTPMS00AC = function (data : DataView) : any{
+export const parseTPMS00AC = function (data : DataView, ad: Object) : any{
     if (data.buffer.byteLength != 15) {
         return {};
     }
@@ -47,7 +49,8 @@ export const parseTPMS00AC = function (data : DataView) : any{
     tpms.batpct = data.getUint8(8);
     tpms.location = data.getUint8(9) & 0x7f;
     tpms.mac = bytesToMacAddress(data, 9);
-
+    if (ad?.rssi)
+        tpms.rssi = ad.rssi;
     return tpms;
 };
 
