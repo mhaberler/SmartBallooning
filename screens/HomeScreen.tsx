@@ -112,9 +112,9 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       {/* <Text>Home Screen</Text> */}
-      {/* <LocationProvider >
+      <LocationProvider >
         <LocationDisplay />
-      </LocationProvider> */}
+      </LocationProvider>
       {/* <PressureProvider>
         <PressureDisplay />
       </PressureProvider> */}

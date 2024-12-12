@@ -44,7 +44,7 @@ export const BLEProvider = ({ children }) => {
         const s = decodeBLE(p);
         //  LOG  {"id": "77d0b863-bdb9-e712-bb3b-c5b15959be20", "isConnectable": 1, "localName": "Ruuvi 2B44", "manufacturerData": "9904050fb652ebffff01e00044fc78bd76289440c26ed1702b44", "name": "Ruuvi 2B44", "rssi": -65, "serviceUUIDs": "6e400001-b5a3-f393-e0a9-e50e24dcca9e"}
         // {"accY": 17408, "accZ": 30972, "batpct": 100, "batt": 3115, "hum": 53.0675, "mac": "C2:6E:D1:70:2B:44", "moves": 40, "seq": 37952, "temp": 20.11, "txpwr": 4}
-        if (s)
+        if (!isEmpty(s))
             console.log(s)
         const id = s['mac']
         if (id) {
