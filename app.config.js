@@ -81,7 +81,7 @@ export default {
     plugins: [
       "expo-build-properties",
       "expo-font",
-      // "expo-router",
+      "expo-router",
       // "@maplibre/maplibre-react-native",
       // [
       //   "expo-camera",
