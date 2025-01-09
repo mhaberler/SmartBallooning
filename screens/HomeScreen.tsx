@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LocationProvider, useLocation } from '../contexts/LocationContext';
-import { PressureProvider, usePressure } from '../contexts/PressureContext';
-// import { AltitudeProvider, AltitudeContext, useAltitude } from '../contexts/AltitudeContext';
 import { AltitudeProvider, useAltitude } from '../contexts/AltitudeContext';
 import { BLEProvider, useBLE } from '../contexts/BLEContext';
 
-import { altitudeISAByPres, windspeedMSToKMH } from 'meteojs/calc.js';
+import { windspeedMSToKMH } from 'meteojs/calc.js';
 
 const LocationDisplay = () => {
   const { location, error, isLoading, watchLocation } = useLocation();
@@ -28,49 +26,22 @@ const LocationDisplay = () => {
         <Text>Waiting for location...</Text>
       )}
       {error && <Text style={styles.errorText}>Error: {error}</Text>}
-      {/* <Button title="Watch Location" onPress={watchLocation} /> */}
     </View>
   );
 };
 
-
-// const AltitudeDisplay = () => {
-//   const { altitude, verticalSpeed } = useAltitude();
-//   return (
-//     altitude ?
-//       <View>
-//         <Text style={styles.field}>baro altitude: {Math.round(altitude * 100) / 100} m</Text>
-//         <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 100) / 100} m/s</Text>
-//         {/* <Text style={styles.field}>vspeedKF: {Math.round(vspeedKF * 100) / 100} m/s</Text> */}
-
-//       </View>
-//       : null
-//   );
-// }
-
 const AltitudeDisplay = () => {
   const { pressure, altitude, verticalSpeed, error, isLoading, lastTimestamp } = useAltitude();
-  // console.log(verticalSpeed, verticalSpeedKF)
-
   return (
     pressure ?
       <View>
         <Text style={styles.field}>baro altitude: {Math.round(altitude * 10) / 10} m</Text>
-
-        <Text style={styles.field}>baro pressure: {Math.round(pressure * 10) / 10} hPa</Text>
         <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 10) / 10} m/s</Text>
-        {/* <Text style={styles.field}>baro vspeedKF: {Math.round(verticalSpeedKF * 1000) / 100} m/s</Text> */}
-        {/* <Text style={styles.field}>lastTimestamp: {lastTimestamp} m/s</Text> */}
-
-
       </View>
       : null
   );
 };
 
-const syncPressed = (report) => {
-  return { backgroundColor: report?.syncPressed ? 'red' : 'transparent' };
-};
 
 const BLEDisplay = () => {
   const { scanning, error,
@@ -90,15 +61,16 @@ const BLEDisplay = () => {
   if (error) return <Text>Error: {error}</Text>;
 
   function renderSensor(t) {
-
-
     return t ? (
       <View>
-        <Text style={styles.field}>{t.unit + ': '} 
-        {t.sensors.elg  ? t.sensors.elg.percent + '% ' : '' }
-        {t.sensors.otodata  ? t.sensors.otodata.percent + '% ' : '' }
-        {t.sensors.mopeka  ? Math.round(t.sensors.mopeka.level) + 'mm ' : '' }
-        {t.sensors.tpms  ? Math.round(t.sensors.tpms.pressure*10)/10 + 'bar ' : '' }
+        <Text style={styles.field}>{t.unit + ': '}
+          {t.sensors.elg ? t.sensors.elg.percent + '% ' : ''}
+          {t.sensors.otodata ? t.sensors.otodata.percent + '% ' : ''}
+          {t.sensors.mopeka ? Math.round(t.sensors.mopeka.level) + 'mm ' : ''}
+          {t.sensors.tpms ? Math.round(t.sensors.tpms.pressure * 10) / 10 + 'bar ' : ''}
+          {t.sensors.ruuvi ? (Math.round(t.sensors.ruuvi.temp * 10) / 10 + '° ' +
+            (t.sensors.ruuvi.hum ? Math.round(t.sensors.ruuvi.hum) + '% ' : ''))
+            : ''}
         </Text>
       </View>
     ) :
@@ -108,32 +80,14 @@ const BLEDisplay = () => {
 
   return (
     <View>
-      {/* return <View style={[{ backgroundColor }, style]} {...otherProps} />; */}
-
-      {/* <Text style={styles.field}>BLE Devices: {devices ? devices : ''}</Text> */}
-      <Text style={styles.field}>envelope: {envelope ? Math.round(envelope.temp * 10) / 10 + '°' : ''}</Text>
-      <Text style={styles.field}>oat: {oat ? Math.round(oat.temp * 10) / 10 + '°' : ''}</Text>
-      {/* <Text style={[syncPressed(tank1), styles.field]}>
-        {tank1 ? tank1.unit + ':' : ''} {tank1.percent ? tank1.percent + '%' : ''}
-        {pressure1 ? ' ' + Math.round(pressure1.pressure * 10) / 10 + ' bar' : ''}
-      </Text> */}
+      {renderSensor(envelope)}
+      {renderSensor(oat)}
       {renderSensor(tank1)}
       {renderSensor(tank2)}
       {renderSensor(tank3)}
       {renderSensor(tank4)}
       {renderSensor(tank5)}
       {renderSensor(tank6)}
-
-      {/* <Text style={[syncPressed(tank1), styles.field]}>{tank1 ? tank1.unit + ':' : ''} {tank1 ? tank1.level + '%' : ''}</Text>
-      <Text style={[syncPressed(tank2), styles.field]}>{tank2 ? tank2.unit + ':' : ''} {tank2 ? tank2.level + '%' : ''}</Text>
-      <Text style={[syncPressed(tank3), styles.field]}>{tank3 ? tank3.unit + ':' : ''} {tank3 ? Math.round(tank3.level) : ''}</Text>
-      <Text style={[syncPressed(tank4), styles.field]}>{tank4 ? tank4.unit + ':' : ''}  {tank4 ? Math.round(tank4.level) : ''}</Text>
-      <Text style={[syncPressed(tank5), styles.field]}>{tank5 ? tank5.unit + ':' : ''}  {tank5 ? Math.round(tank5.level) : ''}</Text>
-      <Text style={[syncPressed(tank6), styles.field]}>{tank6 ? tank6.unit + ':' : ''}  {tank6 ? Math.round(tank6.level) : ''}</Text> */}
-      {/* <Text style={styles.field}>pressure1: {pressure1 ? Math.round(pressure1.pressure * 10) / 10 : ''}</Text>
-      <Text style={styles.field}>pressure2: {pressure2 ? Math.round(pressure2.pressure * 10) / 10 : ''}</Text> */}
-
-      {/* <Text style={styles.field}>Envelope: {envelope !== {} ? envelope.temp + "°" : ''}</Text> */}
     </View>
   ); r
 };
@@ -143,21 +97,12 @@ const BLEDisplay = () => {
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      {/* <Text>Home Screen</Text> */}
       <LocationProvider >
         <LocationDisplay />
       </LocationProvider>
-      {/* <PressureProvider>
-        <PressureDisplay />
-      </PressureProvider> */}
-      {/* <AltitudeProvider >
-        <AltitudeDisplay />
-      </AltitudeProvider> */}
-
       <AltitudeProvider>
         <AltitudeDisplay />
       </AltitudeProvider>
-
       <BLEProvider>
         <BLEDisplay />
       </BLEProvider>
@@ -172,11 +117,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   field: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     alignItems: 'center',
     justifyContent: 'left',
-
   }
 });
 

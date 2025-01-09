@@ -1,10 +1,9 @@
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
-
-import { startScan, stopScan, clearSensors, strengthHeuristics } from '../util/BLE';
+import { startScan, stopScan, clearSensors } from '../util/BLE';
 import { decodeBLE } from '../util/BLEDecodeAdvertisements';
 
-const BLEContext = createContext();
+const BLEContext = createContext(null);
 
 let scanDuration = 0;
 
@@ -114,15 +113,6 @@ export const BLEProvider = ({ children }) => {
             console.log(unitName, ":", o)
 
             unitmap[unitName].func(o)
-
-
-            // // console.log(s.mac)
-            // if () {
-            //     desc = {sensors: {}, unit: sensormap[id].unit }
-
-            //     console.log(sensormap[id].unit, ":", s)
-            //     sensormap[id].func(s)
-            // }
         }
         if (!isEmpty(s)) {
             setDevices(JSON.stringify(s));
