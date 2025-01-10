@@ -27,7 +27,9 @@ export const BLEProvider = ({ children }) => {
     const [tank6, setTank6] = useState(null);
 
     const mac2unit = {
-        "C2:6E:D1:70:2B:44": "envelope",
+        // "C2:6E:D1:70:2B:44": "envelope",   // testing ruuvi
+        "E6:91:DF:7B:E5:4D": "envelope",   // real envelope ruuvi, currently dead battery?
+        
         "DD:79:C6:8F:BD:A2": "oat",
 
         "E1:75:F6:F1:34:1C": "5020/27",
@@ -64,35 +66,6 @@ export const BLEProvider = ({ children }) => {
         "5020/69": { func: setTank5, sensors: {} },
         "5020/40": { func: setTank6, sensors: {} },
     }
-
-
-    // const sensormap = {
-    //     "C2:6E:D1:70:2B:44": { func: setEnvelope, sensors: {}, unit: "envelope" },
-    //     "DD:79:C6:8F:BD:A2": { func: setOat, sensors: {}, unit: "oat" },
-
-    //     "E1:75:F6:F1:34:1C": { func: setTank1, sensors: {}, unit: "5020/27" }, // mystery 
-    //     "82:EA:CA:32:22:4C": { func: setTank1, sensors: {}, unit: "5020/27" }, // tpms
-    //     "C7:D8:88:F2:EB:44": { func: setTank1, sensors: {}, unit: "5020/27" }, // mopeka
-    //     "F2:EB:44": { func: setTank1, sensors: {}, unit: "5020/27" }, // mopeka
-
-    //     "F8:EE:CC:42:AF:8D": { func: setTank2, sensors: {}, unit: "5020/16" }, // otodata
-    //     "80:EA:CA:11:79:6F": { func: setTank2, sensors: {}, unit: "5020/16" }, // tpms
-    //     "D8:C6:11:CA:12:55": { func: setTank2, sensors: {}, unit: "5020/16" }, // mopeka
-    //     "CA:12:55": { func: setTank2, sensors: {}, unit: "5020/16" }, // mopeka
-
-
-    //     "EC:A7:32:91:78:E2": { func: setTank3, sensors: {}, unit: "5020/24" }, // mopeka
-    //     "91:78:E2": { func: setTank3, sensors: {}, unit: "5020/24" }, // mopeka
-
-    //     "F8:95:D1:79:44:21": { func: setTank4, sensors: {}, unit: "5020/15" }, // mopeka
-    //     "79:44:21": { func: setTank4, sensors: {}, unit: "5020/15" }, // mopeka
-
-    //     "CA:E3:54:FA:09:B7": { func: setTank5, sensors: {}, unit: "5020/69" }, // mopeka
-    //     "FA:09:B7": { func: setTank5, sensors: {}, unit: "5020/69" }, // mopeka
-
-    //     "E7:38:29:A0:A1:D7": { func: setTank6, sensors: {}, unit: "5020/40" }, // mopeka
-    //     "A0:A1:D7": { func: setTank6, sensors: {}, unit: "5020/40" }, // mopeka
-    // }
 
 
 
@@ -154,6 +127,22 @@ export const BLEProvider = ({ children }) => {
         </BLEContext.Provider>
     );
 };
+
+export function clearValues() {
+    console.log("clearValues")
+    for (let unit in unitmap) {
+        unitmap[unit].sensors = {};
+    }
+    clearSensors();
+    setEnvelope(null);
+    setOat(null);
+    setTank1(null);
+    setTank2(null);
+    setTank3(null);
+    setTank4(null);
+    setTank5(null);
+    setTank6(null);
+}
 
 export const useBLE = () => {
     const context = useContext(BLEContext);

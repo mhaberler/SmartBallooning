@@ -214,9 +214,9 @@ import {
     } finally {
       BleManager.disconnect(id);
     }
-    if (idsToLookup.length > 0) {
-      setTimeout(getDeviceInformation, 200);
-    }
+    // if (idsToLookup.length > 0) {
+    //   setTimeout(getDeviceInformation, 200);
+    // }
     lookupInProgress -= 1;
   }
   
@@ -236,10 +236,10 @@ import {
   
     if (connectMeta[peripheral.id] === undefined) {
       connectMeta[peripheral.id] = null;
-      if (peripheral?.advertising?.isConnectable) {
-        idsToLookup.push(peripheral.id);
-        getDeviceInformation();
-      }
+      // if (peripheral?.advertising?.isConnectable) {
+      //   idsToLookup.push(peripheral.id);
+      //   getDeviceInformation();
+      // }
     }
   
     delete peripheral.advertising.kCBAdvDataRxPrimaryPHY;

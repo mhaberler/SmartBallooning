@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { LocationProvider, useLocation } from '../contexts/LocationContext';
 import { AltitudeProvider, useAltitude } from '../contexts/AltitudeContext';
-import { BLEProvider, useBLE } from '../contexts/BLEContext';
+import { BLEProvider, useBLE, clearValues } from '../contexts/BLEContext';
 
 import { windspeedMSToKMH } from 'meteojs/calc.js';
+
 
 const LocationDisplay = () => {
   const { location, error, isLoading, watchLocation } = useLocation();
@@ -16,6 +17,7 @@ const LocationDisplay = () => {
     <View>
       {location ? (
         <View>
+
           {/* <Text style={styles.field}>Latitude: {location.coords.latitude}</Text>
           <Text style={styles.field}>Longitude: {location.coords.longitude}</Text> */}
           <Text style={styles.field}>GPS altitude: {Math.round(location.coords.altitude * 10) / 10}m</Text>
@@ -47,6 +49,7 @@ const BLEDisplay = () => {
   const { scanning, error,
     envelope, oat, tank1, tank2, tank3, tank4, tank5, tank6
   } = useBLE();
+
 
   useEffect(() => {
     console.log('BLEDisplay did mount');
@@ -80,6 +83,9 @@ const BLEDisplay = () => {
 
   return (
     <View>
+      {/* <Button title="Clear" onPress={clearValues} /> */}
+
+
       {renderSensor(envelope)}
       {renderSensor(oat)}
       {renderSensor(tank1)}
