@@ -79,6 +79,12 @@ export default {
       favicon: "./assets/images/favicon.png"
     },
     plugins: [
+      [
+        "expo-dev-client",
+        {
+          "launchMode": "most-recent" // or "launcher"
+        }
+      ],
       "expo-build-properties",
       "expo-font",
       "expo-router",
