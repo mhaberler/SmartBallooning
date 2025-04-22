@@ -34,6 +34,7 @@ export default {
       bundleIdentifier: "com.haberler.SmartBallooning", // process.env.NODE_ENV === 'development' ?  "com.haberler.SmartBallooning" :"com.haberler.SmartBallooningProd",
       infoPlist: {
         NSMotionUsageDescription: "Since iOS 17.4 the access is required to read the built-in barometer pressure sensor. Without this permission, the app will not be able to use the barometer option for altitude. Enable in Settings > App Name > Motion & Fitness",
+        "NSBluetoothAlwaysUsageDescription": "This app requires access", // https://github.com/innoveit/react-native-ble-manager/pull/1285#issuecomment-2500898712
         // NSBonjourServices: [
         //   "_mqtt._tcp.",
         //   "_mqttws._tcp.",

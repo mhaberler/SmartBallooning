@@ -29,7 +29,7 @@ export const BLEProvider = ({ children }) => {
     const mac2unit = {
         // "C2:6E:D1:70:2B:44": "envelope",   // testing ruuvi
         "E6:91:DF:7B:E5:4D": "envelope",   // real envelope ruuvi, currently dead battery?
-        
+
         "DD:79:C6:8F:BD:A2": "oat",
 
         "E1:75:F6:F1:34:1C": "5020/27",
@@ -70,11 +70,16 @@ export const BLEProvider = ({ children }) => {
 
 
     function updateCallback(p) {
-        // console.log("--- updateCallback(p)" )
-
+        //
+        if (p.serviceUUIDs == "fcd2")  {
+            console.log("--- BTHome" )
+        }
+        if (p.name == "n5-32A500")  {
+            console.log("--- n5-32A500" )
+        }
         const s = decodeBLE(p);
         const id = s['mac']
-        const unitName = mac2unit[id] 
+        const unitName = mac2unit[id]
 
         if (unitName && unitmap[unitName]) {
             s.lastheard = Date.now();
@@ -83,7 +88,7 @@ export const BLEProvider = ({ children }) => {
 
             //{ ... sensormap[id].sensors, ...s}
             let o = unitmap[unitName]
-            console.log(unitName, ":", o)
+            // console.log(unitName, ":", o)
 
             unitmap[unitName].func(o)
         }

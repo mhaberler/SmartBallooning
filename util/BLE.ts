@@ -21,8 +21,8 @@ import {
   let isStarted = false;
   let filteredDevices = [];
   let peripherals = {};
-  
-  
+
+
   export function strengthHeuristics(rssi) {
     // Turn rssi into a number
     if (rssi == null) {
@@ -39,12 +39,12 @@ import {
       return 0;
     }
   }
-  
-  
+
+
   export const clearSensors = () => {
     peripherals = {};
   };
-  
+
   export const startScan = async (
     scanning,
     setScanning,
@@ -75,7 +75,7 @@ import {
         nextAllowedUpdate = {};
         isStarted = true;
       }
-  
+
       if (!scanning) {
         setIsScanning = setScanning;
         onUpdateCallback = updateCallback;
@@ -93,7 +93,7 @@ import {
       console.error("[startScan] ble error thrown", error);
     }
   };
-  
+
   function neededAndroidPermissions() {
     const permissions = [];
     if (Platform.Version >= 31) {
@@ -107,7 +107,7 @@ import {
     }
     return permissions;
   }
-  
+
   const handleAndroidPermissions = async () => {
     if (Platform.OS !== "android") {
       return true;
@@ -133,16 +133,16 @@ import {
     await BleManager.enableBluetooth();
     return true;
   };
-  
+
   export const stopScan = () => {
     return BleManager.stopScan();
   };
-  
+
   const handleStopScan = async () => {
     onUpdateCallback = () => {};
     setIsScanning(false);
   };
-  
+
   function getAdvertisingData(bytes) {
     let index = 0;
     while (index < bytes.length) {
@@ -154,7 +154,7 @@ import {
     }
     return bytes;
   }
-  
+
   function getManufacturerData(bytes) {
     let index = 0;
     while (index < bytes.length) {
@@ -166,18 +166,18 @@ import {
       index += length - 1;
     }
   }
-  
+
   let nextAllowedUpdate = {};
-  
+
   const connectMeta = {};
   const idsToLookup = [];
   let lookupInProgress = 0;
-  
+
   const nameMap = {
     "2a29": "manufacturer",
     "2a24": "model",
   };
-  
+
   async function getDeviceInformation() {
     const maxConcurrent = 2;
     if (lookupInProgress > maxConcurrent || idsToLookup.length === 0) {
@@ -219,12 +219,20 @@ import {
     // }
     lookupInProgress -= 1;
   }
-  
+
   const handleDiscoverPeripheral = (peripheral) => {
+    if (peripheral.name == "test32A500") {
+      console.log("test32A500 advertising.serviceData", peripheral.advertising.serviceData);
+    }
+
+    if (peripheral.name == "DIY-sensor") {
+      console.log("DIY-sensor advertising.serviceData", peripheral.advertising.serviceData);
+    }
+
     if (filteredDevices.length > 0 && !filteredDevices.includes(peripheral.id)) {
       return;
     }
-  
+
     const time = Date.now();
     if (
       nextAllowedUpdate[peripheral.id] != null &&
@@ -233,7 +241,7 @@ import {
       return;
     }
     nextAllowedUpdate[peripheral.id] = time + 1000;
-  
+
     if (connectMeta[peripheral.id] === undefined) {
       connectMeta[peripheral.id] = null;
       // if (peripheral?.advertising?.isConnectable) {
@@ -241,10 +249,12 @@ import {
       //   getDeviceInformation();
       // }
     }
-  
+
     delete peripheral.advertising.kCBAdvDataRxPrimaryPHY;
     delete peripheral.advertising.kCBAdvDataRxSecondaryPHY;
     delete peripheral.advertising.kCBAdvDataTimestamp;
+
+
     if (peripheral.rssi === 127) {
       peripheral.rssi = null;
     }
@@ -277,6 +287,10 @@ import {
       delete peripheral.advertising.manufacturerRawData;
       delete peripheral.advertising.manufacturerData;
     }
+
+    // if (peripheral.advertising.serviceData?.fcd2) {
+    //   console.log("advertising.serviceData", peripheral.advertising.serviceData);
+    // }
     if (peripheral.advertising.serviceData?.bytes) {
       peripheral.advertising.serviceData = toHexString(
         peripheral.advertising.serviceData.bytes
@@ -286,7 +300,7 @@ import {
     }
     Object.assign(peripheral, peripheral.advertising);
     delete peripheral.advertising;
-  
+
     if (peripheral.serviceUUIDs?.length > 0) {
       peripheral.serviceUUIDs = peripheral.serviceUUIDs.join("|");
     }
@@ -296,17 +310,17 @@ import {
     if (peripheral.name?.length > 0) {
       peripheral.name = peripheral.name.replace(/,/g, "-");
     }
-  
+
     addOrUpdatePeripheral(peripheral);
   };
-  
+
   function toHexString(byteArray) {
     if (byteArray == null) {
       return null;
     }
     return Buffer.from(byteArray).toString("hex");
   }
-  
+
   const addOrUpdatePeripheral = (updatedPeripheral) => {
     if (onUpdateCallback == null) {
       peripherals[updatedPeripheral.id] = updatedPeripheral;
@@ -322,5 +336,4 @@ import {
       }
     }
   };
-  
-  
+
