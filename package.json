@@ -44,7 +44,7 @@
     "@types/react-native-zeroconf": "^0.13.1",
     "buffer": "^6.0.3",
     "eslint": "^9.17.0",
-    "expo": "^52.0.37",
+    "expo": "^52.0.46",
     "expo-application": "~6.0.2",
     "expo-brightness": "~13.0.3",
     "expo-build-properties": "~0.13.2",
@@ -75,8 +75,8 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@react-native-community/cli": "latest",
     "@babel/core": "^7.26.0",
+    "@react-native-community/cli": "latest",
     "@types/react": "~18.3.12",
     "patch-package": "^8.0.0"
   },
