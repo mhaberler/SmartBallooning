@@ -288,16 +288,16 @@ import {
       delete peripheral.advertising.manufacturerData;
     }
 
-    // if (peripheral.advertising.serviceData?.fcd2) {
-    //   console.log("advertising.serviceData", peripheral.advertising.serviceData);
-    // }
-    if (peripheral.advertising.serviceData?.bytes) {
-      peripheral.advertising.serviceData = toHexString(
-        peripheral.advertising.serviceData.bytes
-      );
-    } else {
-      delete peripheral.advertising.serviceData;
+    if (peripheral.advertising.serviceData?.fcd2) {
+      console.log("advertising.serviceData", peripheral.advertising.serviceData);
     }
+    // if (peripheral.advertising.serviceData?.bytes) {
+    //   peripheral.advertising.serviceData = toHexString(
+    //     peripheral.advertising.serviceData.bytes
+    //   );
+    // } else {
+    //   delete peripheral.advertising.serviceData;
+    // }
     Object.assign(peripheral, peripheral.advertising);
     delete peripheral.advertising;
 

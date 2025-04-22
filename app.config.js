@@ -80,6 +80,7 @@ export default {
       favicon: "./assets/images/favicon.png"
     },
     plugins: [
+      "react-native-ota-hot-update",
       [
         "expo-dev-client",
         {
