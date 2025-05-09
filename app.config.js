@@ -47,6 +47,7 @@ export default {
 
     },
     android: {
+      edgeToEdgeEnabled: true,
       adaptiveIcon: {
         foregroundImage: "./assets/images/adaptive-icon.png",
         backgroundColor: "#ffffff"
@@ -103,8 +104,9 @@ export default {
         "@matthewwarnes/react-native-ble-manager-plugin",
         {
           isBackgroundEnabled: true,
+          neverForLocation: false,
           modes: [
-            // "peripheral",
+            "peripheral",
             "central"
           ],
           bluetoothAlwaysPermission: "Allow $(PRODUCT_NAME) to connect to bluetooth devices",

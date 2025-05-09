@@ -71,12 +71,12 @@ export const BLEProvider = ({ children }) => {
 
     function updateCallback(p) {
         //
-        if (p.serviceUUIDs == "fcd2")  {
-            console.log("--- BTHome" )
-        }
-        if (p.name == "n5-32A500")  {
-            console.log("--- n5-32A500" )
-        }
+        // if (p.serviceUUIDs == "fcd2")  {
+        //     console.log("--- BTHome" )
+        // }
+        // if (p.name == "n5-32A500")  {
+        //     console.log("--- n5-32A500" )
+        // }
         const s = decodeBLE(p);
         const id = s['mac']
         const unitName = mac2unit[id]

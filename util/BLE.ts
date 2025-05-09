@@ -119,6 +119,8 @@ import {
     console.log('[requestMultiple]', permissions);
 
     const requestResult = await PermissionsAndroid.requestMultiple(permissions);
+
+
     console.log('[requestMultiple] ---done');
 
     for (const permission in requestResult) {
