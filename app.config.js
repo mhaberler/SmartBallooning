@@ -15,6 +15,11 @@ export default {
       resizeMode: "contain",
       backgroundColor: "#ffffff"
     },
+    extra: {
+      eas: {
+        projectId: "5e78364f-edb1-4b5b-aaaf-8dc6352668f1"
+      }
+    },
     // extra: {
     //   useLeaflet: true,
     //   useNFC: false,
@@ -33,6 +38,7 @@ export default {
       // https://docs.expo.dev/guides/local-app-development/
       bundleIdentifier: "com.haberler.SmartBallooning", // process.env.NODE_ENV === 'development' ?  "com.haberler.SmartBallooning" :"com.haberler.SmartBallooningProd",
       infoPlist: {
+        ITSAppUsesNonExemptEncryption: false,
         NSMotionUsageDescription: "Since iOS 17.4 the access is required to read the built-in barometer pressure sensor. Without this permission, the app will not be able to use the barometer option for altitude. Enable in Settings > App Name > Motion & Fitness",
         "NSBluetoothAlwaysUsageDescription": "This app requires access", // https://github.com/innoveit/react-native-ble-manager/pull/1285#issuecomment-2500898712
         // NSBonjourServices: [
