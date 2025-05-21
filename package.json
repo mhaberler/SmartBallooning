@@ -32,7 +32,13 @@
     "android": "npx expo run:android",
     "ios": "npx expo run:ios"
   },
+  "react-native": {
+    "net": "react-native-tcp-socket",
+    "tls": "react-native-tcp-socket"
+  },
   "dependencies": {
+    "@generac/react-native-local-network-permission": "^1.2.0",
+    "@inthepocket/react-native-service-discovery": "^0.2.0",
     "@babel/preset-env": "^7.26.0",
     "@expo-google-fonts/ubuntu": "^0.2.3",
     "@expo/config-plugins": "~10.0.0",
@@ -72,7 +78,10 @@
     "replace-in-file": "^8.3.0",
     "tslib": "^2.8.1",
     "typescript": "~5.8.3",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "react-native-tcp-socket": "6.2.0",
+    "mqtt": "5.10.1",
+    "react-native-fs": "2.20.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",

@@ -40,13 +40,14 @@ export default {
       infoPlist: {
         ITSAppUsesNonExemptEncryption: false,
         NSMotionUsageDescription: "Since iOS 17.4 the access is required to read the built-in barometer pressure sensor. Without this permission, the app will not be able to use the barometer option for altitude. Enable in Settings > App Name > Motion & Fitness",
-        "NSBluetoothAlwaysUsageDescription": "This app requires access", // https://github.com/innoveit/react-native-ble-manager/pull/1285#issuecomment-2500898712
-        // NSBonjourServices: [
-        //   "_mqtt._tcp.",
-        //   "_mqttws._tcp.",
-        //   "_arduino._tcp"
-        // ],
-        // NSLocalNetworkUsageDescription: "Describe why you want to use local network discovery here",
+        NSBluetoothAlwaysUsageDescription: "This app requires access", // https://github.com/innoveit/react-native-ble-manager/pull/1285#issuecomment-2500898712
+        NSBonjourServices: [
+          "_mqtt._tcp.",
+          "_mqtt-ws._tcp.",
+          "_mqtts._tcp.",
+          "_mqtt-wss._tcp."
+        ],
+        NSLocalNetworkUsageDescription: "This app uses the local network to discover MQTT services"
         // NSCameraUsageDescription: "needed to scan QR codes",
         // NSMicrophoneUsageDescription: "needed to record audio"
       },
@@ -60,6 +61,9 @@ export default {
       },
       package: "com.haberler.SmartBallooning",
       permissions: [
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.CHANGE_WIFI_MULTICAST_STATE",
         // "android.permission.ACCESS_NETWORK_STATE",
         // "android.permission.ACCESS_WIFI_STATE",
         // "android.permission.CHANGE_WIFI_MULTICAST_STATE",
