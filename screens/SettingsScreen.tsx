@@ -9,7 +9,7 @@ import {
   View
 } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ListItem } from 'react-native-elements'
 import Zeroconf from 'react-native-zeroconf'
