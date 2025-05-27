@@ -24,3 +24,5 @@ android/
 .idea/
 fastlane/README.md
 fastlane/report.xml
+SmartBallooning.app.dSYM.zip
+SmartBallooning.ipa

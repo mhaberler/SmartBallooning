@@ -48,9 +48,9 @@ export default {
           "_mqtts._tcp.",
           "_mqtt-wss._tcp."
         ],
-        NSLocalNetworkUsageDescription: "This app uses the local network to discover MQTT services"
-        // NSCameraUsageDescription: "needed to scan QR codes",
-        // NSMicrophoneUsageDescription: "needed to record audio"
+        NSLocalNetworkUsageDescription: "This app uses the local network to discover MQTT services",
+        NSCameraUsageDescription: "needed to scan QR codes",
+        NSMicrophoneUsageDescription: "needed to record audio for burner noise"
       },
 
     },
