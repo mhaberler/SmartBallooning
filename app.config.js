@@ -1,4 +1,4 @@
-console.log("----NODE_ENV", process.env.NODE_ENV)
+// console.log("----NODE_ENV", process.env.NODE_ENV)
 
 export default {
   expo: {
@@ -33,10 +33,11 @@ export default {
     //   mqttTopic: process.env.MQTT_TOPIC || "#"
     // },
     ios: {
+      buildNumber: "2",
       supportsTablet: true,
       // see npx expo run:android --variant freeDebug --app-id dev.expo.myapp.free
       // https://docs.expo.dev/guides/local-app-development/
-      bundleIdentifier: "com.haberler.SmartBallooning", // process.env.NODE_ENV === 'development' ?  "com.haberler.SmartBallooning" :"com.haberler.SmartBallooningProd",
+      bundleIdentifier: "com.haberlerm.SmartBallooning",
       infoPlist: {
         ITSAppUsesNonExemptEncryption: false,
         NSMotionUsageDescription: "Since iOS 17.4 the access is required to read the built-in barometer pressure sensor. Without this permission, the app will not be able to use the barometer option for altitude. Enable in Settings > App Name > Motion & Fitness",
@@ -59,7 +60,7 @@ export default {
         foregroundImage: "./assets/images/adaptive-icon.png",
         backgroundColor: "#ffffff"
       },
-      package: "com.haberler.SmartBallooning",
+      package: "com.haberlerm.SmartBallooning",
       permissions: [
         "android.permission.ACCESS_NETWORK_STATE",
         "android.permission.ACCESS_WIFI_STATE",
