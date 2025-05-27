@@ -44,13 +44,6 @@ platform(:android) do
     )
   end
 
-  lane(:clean_build) do
-    gradle(
-      task: "clean",
-      project_dir: "android"
-    )
-  end
-
   desc("Build Android AAB locally with release signing")
   lane(:release_aab) do
     gradle(

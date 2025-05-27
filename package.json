@@ -1,8 +1,6 @@
 {
-  "version": "1.0.17",
+  "version": "1.0.19",
   "name": "SmartBallooning",
-  "kmain": "index.js",
-  "mainx": "expo-router/entry",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "postinstall": "patch-package",
@@ -14,7 +12,7 @@
     "ios-release": "npx expo run:ios --configuration Release",
     "ios-device": "npx expo run:ios --device",
     "ios-release-device": "npx expo run:ios --configuration Release --device",
-    "pod instal": "npx pod-install",
+    "pod-install": "npx pod-install",
     "web": "npx expo start --web",
     "test": "jest --watchAll",
     "lint": "npx expo lint",
