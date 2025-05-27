@@ -36,6 +36,36 @@ platform(:ios) do
 end
 
 platform(:android) do
+  lane(:test_api) do
+    google_play_track_version_codes(
+      json_key: GOOGLE_PLAY_JSON_KEY,
+      package_name: ANDROID_PACKAGE_NAME,
+      track: "alpha"
+    )
+  end
+
+  lane(:clean_build) do
+    gradle(
+      task: "clean",
+      project_dir: "android"
+    )
+  end
+
+  desc("Build Android AAB locally with release signing")
+  lane(:release_aab) do
+    gradle(
+      task: "bundle",
+      build_type: "Release",
+      project_dir: "android",
+      properties: {
+        "android.injected.signing.store.file" => ENV["ANDROID_KEYSTORE_PATH"],
+        "android.injected.signing.store.password" => ENV["ANDROID_KEYSTORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["ANDROID_KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["ANDROID_KEY_PASSWORD"]
+      }
+    )
+  end
+
   desc("Deploy a new beta build to Google Play")
   lane(:beta) do
 
@@ -58,8 +88,8 @@ platform(:android) do
     upload_to_play_store(
       track: "alpha",
       aab: "android/app/build/outputs/bundle/release/app-release.aab",
-      json_key: ENV["GOOGLE_PLAY_JSON_KEY_PATH"] || raise("Missing GOOGLE_PLAY_JSON_KEY_PATH"),
-      package_name: ENV["ANDROID_PACKAGE_NAME"] || "com.haberler.SmartBallooning"
+      json_key: GOOGLE_PLAY_JSON_KEY,
+      package_name: ANDROID_PACKAGE_NAME
     )
   end
 end
@@ -71,55 +101,22 @@ lane(:show_version) do
   UI.message("Default: #{version_code}")
 end
 
-lane(:test_api) do
-  google_play_track_version_codes(
-    json_key: GOOGLE_PLAY_JSON_KEY,
-    package_name: ANDROID_PACKAGE_NAME,
-    track: "alpha"
-  )
-end
-
-lane :clean_build do
-  gradle(
-    task: "clean",
-    project_dir: "android"
-  )
-end
-
-desc "Android: Increment versionCode and set versionName to package.json version"
-private_lane :inc_ver_and do
+desc("Android: Increment versionCode and set versionName to package.json version")
+private_lane(:inc_ver_and) do
   package = load_json(json_path: "./package.json")
   increment_version_code(gradle_file_path: "./android/app/build.gradle")
-  increment_version_name(gradle_file_path: "./android/app/build.gradle", version_name: package['version'])
+  increment_version_name(gradle_file_path: "./android/app/build.gradle", version_name: package["version"])
 end
 
-desc "iOS: Increment buildNumber and set version to package.json version"
-private_lane :inc_ver_ios do
+desc("iOS: Increment buildNumber and set version to package.json version")
+private_lane(:inc_ver_ios) do
   package = load_json(json_path: "./package.json")
   increment_build_number(xcodeproj: "./ios/SmartBallooning.xcodeproj")
-  increment_version_number(xcodeproj: "./ios/SmartBallooning.xcodeproj", version_number: package['version'])
+  increment_version_number(xcodeproj: "./ios/SmartBallooning.xcodeproj", version_number: package["version"])
 end
 
-desc "Bump versions for both platforms"
-lane :bump do
+desc("Bump versions for both platforms")
+lane(:bump) do
   inc_ver_ios
   inc_ver_and
-end
-
-
-platform :android do
-  desc "Build Android AAB locally with release signing"
-  lane :release_aab do
-    gradle(
-      task: "bundle",
-      build_type: "Release",
-      project_dir: "android",
-      properties: {
-        "android.injected.signing.store.file" => ENV["ANDROID_KEYSTORE_PATH"],
-        "android.injected.signing.store.password" => ENV["ANDROID_KEYSTORE_PASSWORD"],
-        "android.injected.signing.key.alias" => ENV["ANDROID_KEY_ALIAS"],
-        "android.injected.signing.key.password" => ENV["ANDROID_KEY_PASSWORD"]
-      }
-    )
-  end
 end
