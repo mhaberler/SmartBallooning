@@ -1,5 +1,5 @@
 {
-  "version": "1.0.5",
+  "version": "1.0.6",
   "name": "SmartBallooning",
   "kmain": "index.js",
   "mainx": "expo-router/entry",
@@ -31,7 +31,7 @@
     "ios": "npx expo run:ios",
     "ios-beta": "fastlane ios beta",
     "android-beta": "fastlane android beta",
-    "build-android-release-aab":  "fastlane android release_aab",
+    "build-android-release-aab": "fastlane android release_aab",
     "bump-patch": "npm version patch --no-git-tag-version && fastlane bump",
     "bump-minor": "npm version minor --no-git-tag-version && fastlane bump",
     "bump-major": "npm version major --no-git-tag-version && fastlane bump"
