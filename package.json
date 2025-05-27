@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.1.22",
   "name": "SmartBallooning",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -13,13 +13,10 @@
     "ios-device": "npx expo run:ios --device",
     "ios-release-device": "npx expo run:ios --configuration Release --device",
     "pod-install": "npx pod-install",
-    "web": "npx expo start --web",
     "test": "jest --watchAll",
     "lint": "npx expo lint",
     "prebuild-ios": "npx expo prebuild --clean --platform ios",
     "prebuild-android": "npx expo prebuild --clean --platform android",
-    "increment-android-version": "node incrementVersion.js",
-    "push-android-testing": "cd android && fastlane beta && cd ..",
     "doctor": "npx expo-doctor",
     "build-ios-debug": "react-native build-ios --mode=Debug",
     "build-ios-release": "react-native build-ios --mode=Release",
