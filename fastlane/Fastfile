@@ -1,5 +1,5 @@
 GOOGLE_PLAY_JSON_KEY = ENV["GOOGLE_PLAY_JSON_KEY_PATH"] || raise("Missing GOOGLE_PLAY_JSON_KEY_PATH")
-ANDROID_PACKAGE_NAME = ENV["ANDROID_PACKAGE_NAME"] || "com.haberlerm.SmartBallooning"
+ANDROID_PACKAGE_NAME = ENV["ANDROID_PACKAGE_NAME"] || "com.haberler.SmartBallooning"
 
 default_platform(:ios)
 
@@ -59,7 +59,7 @@ platform(:android) do
       track: "alpha",
       aab: "android/app/build/outputs/bundle/release/app-release.aab",
       json_key: ENV["GOOGLE_PLAY_JSON_KEY_PATH"] || raise("Missing GOOGLE_PLAY_JSON_KEY_PATH"),
-      package_name: ENV["ANDROID_PACKAGE_NAME"] || "com.haberlerm.SmartBallooning"
+      package_name: ENV["ANDROID_PACKAGE_NAME"] || "com.haberler.SmartBallooning"
     )
   end
 end
@@ -90,7 +90,7 @@ desc "Android: Increment versionCode and set versionName to package.json version
 private_lane :inc_ver_and do
   package = load_json(json_path: "./package.json")
   increment_version_code(gradle_file_path: "./android/app/build.gradle")
-  # increment_version_name(gradle_file_path: "./android/app/build.gradle", version_name: package['version'])
+  increment_version_name(gradle_file_path: "./android/app/build.gradle", version_name: package['version'])
 end
 
 desc "iOS: Increment buildNumber and set version to package.json version"
