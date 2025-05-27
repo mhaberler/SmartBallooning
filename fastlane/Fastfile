@@ -90,7 +90,7 @@ desc "Android: Increment versionCode and set versionName to package.json version
 private_lane :inc_ver_and do
   package = load_json(json_path: "./package.json")
   increment_version_code(gradle_file_path: "./android/app/build.gradle")
-  increment_version_name(gradle_file_path: "./android/app/build.gradle", version_name: package['version'])
+  # increment_version_name(gradle_file_path: "./android/app/build.gradle", version_name: package['version'])
 end
 
 desc "iOS: Increment buildNumber and set version to package.json version"
@@ -104,4 +104,22 @@ desc "Bump versions for both platforms"
 lane :bump do
   inc_ver_ios
   inc_ver_and
+end
+
+
+platform :android do
+  desc "Build Android AAB locally with release signing"
+  lane :release_aab do
+    gradle(
+      task: "bundle",
+      build_type: "Release",
+      project_dir: "android",
+      properties: {
+        "android.injected.signing.store.file" => ENV["ANDROID_KEYSTORE_PATH"],
+        "android.injected.signing.store.password" => ENV["ANDROID_KEYSTORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["ANDROID_KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["ANDROID_KEY_PASSWORD"]
+      }
+    )
+  end
 end
