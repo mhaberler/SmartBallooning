@@ -10,6 +10,7 @@ export const LocationProvider = ({ children }) => {
 
   useEffect(() => {
     const getLocation = async () => {
+      console.log('LocationProvider --- req');
       setIsLoading(true);
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
@@ -17,6 +18,8 @@ export const LocationProvider = ({ children }) => {
         setIsLoading(false);
         return;
       }
+      console.log('LocationProvider --- success', status);
+      setError(null);
 
       try {
         let location = await Location.getCurrentPositionAsync({});
