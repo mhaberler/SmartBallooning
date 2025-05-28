@@ -33,12 +33,21 @@ const LocationDisplay = () => {
 };
 
 const AltitudeDisplay = () => {
-  const { pressure, altitude, verticalSpeed, error, isLoading, lastTimestamp } = useAltitude();
+  const { pressure, altitude, verticalSpeed, error, isLoading, lastTimestamp, state } = useAltitude();
   return (
     pressure ?
       <View>
-        <Text style={styles.field}>baro altitude: {Math.round(altitude * 10) / 10} m</Text>
-        <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 10) / 10} m/s</Text>
+        {/* <Text style={styles.field}>baro altitude: {Math.round(altitude * 10) / 10} m</Text> */}
+        <Text style={styles.field}>EKF altitude: {Math.round(state.altitude * 10) / 10} m</Text>
+        {/* <Text style={styles.field}>baro vspeed: {Math.round(verticalSpeed * 10) / 10} m/s</Text> */}
+        <Text style={styles.field}>EKF vspeed: {Math.round(state.velocity * 10) / 10} m/s</Text>
+        <Text style={styles.field}>EKF accel: {Math.round(state.acceleration * 1000) / 1000} m/s2</Text>
+        <Text style={styles.field}>
+          {state.isDecelerating ? "Apex in " + Math.round(state.timeToZeroSpeed * 10) / 10 + " s": ""}
+        </Text>
+        <Text style={styles.field}>
+          {state.zeroSpeedValid ? "Apex at " + Math.round(state.zeroSpeedAltitude * 10) / 10 + " m": ""}
+        </Text>
       </View>
       : null
   );

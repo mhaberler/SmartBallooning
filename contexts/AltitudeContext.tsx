@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Barometer } from 'expo-sensors';
 import { altitudeISAByPres, windspeedMSToKMH } from 'meteojs/calc.js';
-
+import BalloonEKF from '../util/BalloonEKF';
 
 const AltitudeContext = createContext();
 
@@ -14,6 +14,19 @@ export const AltitudeProvider = ({ children }) => {
     const [timestamp, setTimestamp] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const [ekf] = useState(() => new BalloonEKF());
+    const [state, setState] = useState({
+        altitude: 0,
+        velocity: 0,
+        acceleration: 0,
+        burnerGain: 0,
+        isDecelerating: false,
+        timeToZeroSpeed: 0,
+        zeroSpeedAltitude: 0,
+        zeroSpeedValid: false,
+    });
+
 
     const getlastTimestamp = (() => { return lastTimestamp });
 
@@ -54,10 +67,27 @@ export const AltitudeProvider = ({ children }) => {
         setVerticalSpeed(speed);
         setLastTimestamp(timestamp)
         setAltitude(newAltitude)
+
+        const loudness = 0.0;
+        const burnerDuration = 0.0;
+        ekf.processMeasurement(timeDiff, newAltitude, loudness, burnerDuration);
+        // Update state with EKF estimates
+        const decelInfo = ekf.isDecelerating();
+        const zeroSpeedInfo = ekf.getZeroSpeedAltitude();
+        setState({
+            altitude: ekf.getAltitude(),
+            velocity: ekf.getVelocity(),
+            acceleration: ekf.getAcceleration(),
+            burnerGain: ekf.getBurnerGain(),
+            isDecelerating: decelInfo.isDecelerating,
+            timeToZeroSpeed: decelInfo.timeToZeroSpeed,
+            zeroSpeedAltitude: zeroSpeedInfo.altitude,
+            zeroSpeedValid: zeroSpeedInfo.valid,
+        });
     }, [timestamp]);
 
     return (
-        <AltitudeContext.Provider value={{ pressure, altitude, verticalSpeed, error, isLoading, lastTimestamp }}>
+        <AltitudeContext.Provider value={{ pressure, altitude, verticalSpeed, error, isLoading, lastTimestamp, state }}>
             {children}
         </AltitudeContext.Provider>
     );
